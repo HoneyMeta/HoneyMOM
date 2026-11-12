@@ -1,0 +1,6 @@
+{
+  "_note": "Copy to config/llm.local.json (not committed) and fill in an OpenAI-compatible endpoint, e.g. base_url https://api.example.com/v1. All three are required; without them AI features fall back to the rule-based versions.",
+  "base_url": "",
+  "model": "",
+  "api_key": ""
+}

@@ -1,0 +1,5169 @@
+{
+"seed": {
+"plant": [
+{
+"code": "GR",
+"name": "某转向器壳体铸造厂",
+"address": "示例厂区",
+"vf_source": "http://127.0.0.1:8800|foundry-housing"
+}
+],
+"workshop": [],
+"line": [],
+"process": [
+{
+"code": "P05",
+"name": "来料收货",
+"ptype": "receiving",
+"std_cycle_s": 106.0,
+"desc": null
+},
+{
+"code": "P10",
+"name": "熔炼",
+"ptype": "melting",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P20",
+"name": "球化孕育",
+"ptype": "treatment",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P30",
+"name": "造型浇注",
+"ptype": "molding",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P40",
+"name": "冷却落砂",
+"ptype": "cooling",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P50",
+"name": "清理抛丸",
+"ptype": "cleaning",
+"std_cycle_s": 25.0,
+"desc": null
+},
+{
+"code": "P60",
+"name": "CNC 机加",
+"ptype": "machining",
+"std_cycle_s": 430.0,
+"desc": null
+},
+{
+"code": "P70",
+"name": "去毛刺",
+"ptype": "deburr",
+"std_cycle_s": 65.0,
+"desc": null
+},
+{
+"code": "P80",
+"name": "内窥检测",
+"ptype": "inspection",
+"std_cycle_s": 60.0,
+"desc": null
+},
+{
+"code": "P90",
+"name": "成品入库",
+"ptype": "storage",
+"std_cycle_s": 10.0,
+"desc": null
+}
+],
+"workstation": [],
+"material": [
+{
+"code": "SGH-450",
+"name": "SGH-450 转向器壳体",
+"spec": "QT450-10 精加工",
+"unit": "件",
+"mtype": "fg",
+"safety_stock": 200.0,
+"price": 380.0,
+"weight_kg": 15.2
+},
+{
+"code": "SGH-450-B",
+"name": "SGH-450 壳体毛坯",
+"spec": "QT450-10 铸件",
+"unit": "件",
+"mtype": "semi",
+"safety_stock": 300.0,
+"price": 160.0,
+"weight_kg": 18.5
+},
+{
+"code": "CM-PIG",
+"name": "Z14 生铁",
+"spec": "炉料",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 30.0,
+"price": 3300.0,
+"weight_kg": null
+},
+{
+"code": "CM-STEEL",
+"name": "废钢",
+"spec": "炉料",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 20.0,
+"price": 2600.0,
+"weight_kg": null
+},
+{
+"code": "CM-RET",
+"name": "回炉料",
+"spec": "浇冒口/废件",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 0.0,
+"price": 1800.0,
+"weight_kg": null
+},
+{
+"code": "CM-CARB",
+"name": "增碳剂",
+"spec": "C≥95%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 4500.0,
+"weight_kg": null
+},
+{
+"code": "CM-FESI",
+"name": "75 硅铁",
+"spec": "Si 75%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 7500.0,
+"weight_kg": null
+},
+{
+"code": "AUX-NODU",
+"name": "球化剂 FeSiMg6",
+"spec": "Mg 6%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 2.0,
+"price": 12500.0,
+"weight_kg": null
+},
+{
+"code": "AUX-INOC",
+"name": "孕育剂 FeSi75-Ba",
+"spec": null,
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 9800.0,
+"weight_kg": null
+},
+{
+"code": "AUX-SAND",
+"name": "型砂",
+"spec": "膨润土湿型砂",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 50.0,
+"price": 380.0,
+"weight_kg": null
+},
+{
+"code": "AUX-SHOT",
+"name": "钢丸 S330",
+"spec": null,
+"unit": "t",
+"mtype": "consumable",
+"safety_stock": 2.0,
+"price": 6200.0,
+"weight_kg": null
+},
+{
+"code": "SGH-520",
+"name": "SGH-520 转向器壳体（加长）",
+"spec": "QT450-10 精加工",
+"unit": "件",
+"mtype": "fg",
+"safety_stock": 100.0,
+"price": 420.0,
+"weight_kg": 17.1
+}
+],
+"bom": [
+{
+"product": "SGH-450",
+"component": "SGH-450-B",
+"qty": 1.0,
+"unit": "件",
+"remark": null
+},
+{
+"product": "SGH-450",
+"component": "AUX-SHOT",
+"qty": 0.0004,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-PIG",
+"qty": 0.0095,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-STEEL",
+"qty": 0.0053,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-RET",
+"qty": 0.0059,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "AUX-NODU",
+"qty": 0.0003,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "AUX-SAND",
+"qty": 0.012,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-520",
+"component": "SGH-450-B",
+"qty": 1.0,
+"unit": "件",
+"remark": null
+},
+{
+"product": "SGH-520",
+"component": "AUX-SHOT",
+"qty": 0.0004,
+"unit": "t",
+"remark": null
+}
+],
+"route": [
+{
+"code": "RT-SGH450",
+"name": "SGH-450 铸造+机加一体",
+"product": "SGH-450",
+"version": "V3",
+"status": "active"
+},
+{
+"code": "RT-SGH520",
+"name": "SGH-520 铸造+机加一体",
+"product": "SGH-520",
+"version": "V1",
+"status": "active"
+}
+],
+"route_step": [
+{
+"route": "RT-SGH450",
+"seq": 10,
+"process": "P10",
+"station_group": "FUR",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+"params": {
+"出铁温度 °C": "1480–1500",
+"C %": "3.60–3.80",
+"Si %": "1.40–1.70"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 20,
+"process": "P20",
+"station_group": "TRT1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+"params": {
+"球化剂 FeSiMg6 %": "1.4–1.6",
+"残镁 %": "0.030–0.055",
+"温度 °C": "≥1420"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 30,
+"process": "P30",
+"station_group": "MOLD1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+"params": {
+"浇注温度 °C": "1380–1420",
+"型砂水分 %": "3.3–3.5",
+"紧实率 %": "38–42"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 40,
+"process": "P40",
+"station_group": "COOL1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH450",
+"seq": 50,
+"process": "P50",
+"station_group": "SHOT1",
+"std_cycle_s": 25.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+"params": {
+"抛丸时间 min": "8",
+"钢丸": "S330"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 60,
+"process": "P60",
+"station_group": "CNC",
+"std_cycle_s": 430.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": true,
+"instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+"params": {
+"主程序": "O1201 V3",
+"缸孔 Φ40 H7": "40.000–40.025 mm",
+"端面平面度": "≤0.03 mm",
+"主轴转速 rpm": "2800",
+"进给 mm/r": "0.15"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 70,
+"process": "P70",
+"station_group": "DEB1",
+"std_cycle_s": 65.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+"params": {
+"毛刷转速 rpm": "1800",
+"节拍 s": "65"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 80,
+"process": "P80",
+"station_group": "INS1",
+"std_cycle_s": 60.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+"params": {
+"残余毛刺": "≤0.1 mm",
+"气孔/缩松": "≤0.8 mm",
+"光源亮度": "≥60%"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 90,
+"process": "P90",
+"station_group": "ASRS1",
+"std_cycle_s": 10.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH520",
+"seq": 10,
+"process": "P10",
+"station_group": "FUR",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+"params": {
+"出铁温度 °C": "1480–1500",
+"C %": "3.60–3.80",
+"Si %": "1.40–1.70"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 20,
+"process": "P20",
+"station_group": "TRT1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+"params": {
+"球化剂 FeSiMg6 %": "1.4–1.6",
+"残镁 %": "0.030–0.055",
+"温度 °C": "≥1420"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 30,
+"process": "P30",
+"station_group": "MOLD1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+"params": {
+"浇注温度 °C": "1380–1420",
+"型砂水分 %": "3.3–3.5",
+"紧实率 %": "38–42"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 40,
+"process": "P40",
+"station_group": "COOL1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH520",
+"seq": 50,
+"process": "P50",
+"station_group": "SHOT1",
+"std_cycle_s": 25.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+"params": {
+"抛丸时间 min": "8",
+"钢丸": "S330"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 60,
+"process": "P60",
+"station_group": "CNC",
+"std_cycle_s": 481.6,
+"inspection": false,
+"report_mode": "auto",
+"fai": true,
+"instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+"params": {
+"主程序": "O1201 V3",
+"缸孔 Φ40 H7": "40.000–40.025 mm",
+"端面平面度": "≤0.03 mm",
+"主轴转速 rpm": "2800",
+"进给 mm/r": "0.15"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 70,
+"process": "P70",
+"station_group": "DEB1",
+"std_cycle_s": 65.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+"params": {
+"毛刷转速 rpm": "1800",
+"节拍 s": "65"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 80,
+"process": "P80",
+"station_group": "INS1",
+"std_cycle_s": 60.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+"params": {
+"残余毛刺": "≤0.1 mm",
+"气孔/缩松": "≤0.8 mm",
+"光源亮度": "≥60%"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 90,
+"process": "P90",
+"station_group": "ASRS1",
+"std_cycle_s": 10.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+}
+],
+"shift": [
+{
+"code": "A",
+"name": "早班",
+"start": "07:00",
+"end": "15:00",
+"active": true,
+"break_min": 0
+},
+{
+"code": "B",
+"name": "中班",
+"start": "15:00",
+"end": "23:00",
+"active": true,
+"break_min": 0
+},
+{
+"code": "C",
+"name": "夜班",
+"start": "23:00",
+"end": "07:00",
+"active": true,
+"break_min": 0
+}
+],
+"skill": [
+{
+"employee": "E002",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E018",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E021",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E003",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E018",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E021",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E004",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E004",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E005",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E006",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E007",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E008",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E017",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E020",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E009",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E019",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E022",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E011",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E019",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E022",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E010",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E015",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E016",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E010",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E015",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E016",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E008",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "4",
+"valid_until": null
+}
+],
+"changeover": [
+{
+"station_group": "CNC",
+"from_product": "SGH-450",
+"to_product": "SGH-520",
+"minutes": 45.0,
+"remark": "换夹具 + 调程序 O1203 + 首件"
+},
+{
+"station_group": "CNC",
+"from_product": "SGH-520",
+"to_product": "SGH-450",
+"minutes": 40.0,
+"remark": "换夹具 + 调程序 O1201 + 首件"
+},
+{
+"station_group": "MOLD1",
+"from_product": "SGH-450",
+"to_product": "SGH-520",
+"minutes": 30.0,
+"remark": "换模板"
+},
+{
+"station_group": "MOLD1",
+"from_product": "SGH-520",
+"to_product": "SGH-450",
+"minutes": 30.0,
+"remark": "换模板"
+},
+{
+"station_group": "DEB1",
+"from_product": null,
+"to_product": null,
+"minutes": 10.0,
+"remark": "换毛刷程序"
+}
+],
+"team": [
+{
+"code": "T1",
+"name": "甲班",
+"shift": "A",
+"leader": "张强"
+},
+{
+"code": "T2",
+"name": "乙班",
+"shift": "B",
+"leader": "刘洋"
+},
+{
+"code": "T3",
+"name": "丙班",
+"shift": "C",
+"leader": "陈刚"
+}
+],
+"employee": [
+{
+"code": "E001",
+"name": "张强",
+"team": "T1",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E002",
+"name": "王建国",
+"team": "T1",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E003",
+"name": "李伟",
+"team": "T1",
+"post": "球化浇包工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E004",
+"name": "马超",
+"team": "T1",
+"post": "浇注工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E005",
+"name": "何军",
+"team": "T1",
+"post": "抛丸挂件工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E006",
+"name": "赵磊",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E007",
+"name": "钱明",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E008",
+"name": "孙涛",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E009",
+"name": "冯杰",
+"team": "T1",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E010",
+"name": "吴芳",
+"team": "T1",
+"post": "仓管员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E011",
+"name": "孙敏",
+"team": "T1",
+"post": "质检员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E012",
+"name": "周涛",
+"team": "T1",
+"post": "设备员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E013",
+"name": "郑凯",
+"team": "T1",
+"post": "工艺工程师",
+"phone": null,
+"skills": null
+},
+{
+"code": "E014",
+"name": "李娜",
+"team": "T1",
+"post": "计划员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E015",
+"name": "刘洋",
+"team": "T2",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E016",
+"name": "陈刚",
+"team": "T3",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E017",
+"name": "黄伟",
+"team": "T2",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E018",
+"name": "林峰",
+"team": "T2",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E019",
+"name": "高原",
+"team": "T2",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E020",
+"name": "罗斌",
+"team": "T3",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E021",
+"name": "谢磊",
+"team": "T3",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E022",
+"name": "韩冰",
+"team": "T3",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E023",
+"name": "唐亮",
+"team": "T2",
+"post": "浇注工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E024",
+"name": "彭宇",
+"team": "T3",
+"post": "浇注工",
+"phone": null,
+"skills": null
+}
+],
+"defect_code": [
+{
+"code": "D01",
+"name": "气孔",
+"category": "casting",
+"severity": "major",
+"process": "P30"
+},
+{
+"code": "D02",
+"name": "缩松",
+"category": "casting",
+"severity": "major",
+"process": "P20"
+},
+{
+"code": "D03",
+"name": "冷隔/开裂",
+"category": "casting",
+"severity": "critical",
+"process": "P30"
+},
+{
+"code": "D04",
+"name": "球化不良",
+"category": "casting",
+"severity": "critical",
+"process": "P20"
+},
+{
+"code": "D05",
+"name": "内腔气孔/缩松",
+"category": "casting",
+"severity": "major",
+"process": "P30"
+},
+{
+"code": "D06",
+"name": "残余毛刺",
+"category": "machining",
+"severity": "minor",
+"process": "P70"
+},
+{
+"code": "D07",
+"name": "缸孔尺寸超差",
+"category": "machining",
+"severity": "major",
+"process": "P60"
+},
+{
+"code": "D08",
+"name": "断刀报废",
+"category": "machining",
+"severity": "major",
+"process": "P60"
+},
+{
+"code": "D09",
+"name": "毛刺返修后仍不合格",
+"category": "machining",
+"severity": "major",
+"process": "P70"
+},
+{
+"code": "D10",
+"name": "误报/待复判",
+"category": "other",
+"severity": "minor",
+"process": "P80"
+}
+],
+"work_order": [
+{
+"code": "WO261104001",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 600,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-04 09:00:00",
+"due": "2026-11-06 09:00:00",
+"status": "draft",
+"priority": 3,
+"customer": "北辰重卡",
+"remark": null,
+"released_at": null,
+"completed_at": null
+},
+{
+"code": "WO261104002",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 800,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-04 17:00:00",
+"due": "2026-11-08 09:00:00",
+"status": "draft",
+"priority": 5,
+"customer": "西岭重卡",
+"remark": null,
+"released_at": null,
+"completed_at": null
+},
+{
+"code": "WO261104003",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 500,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-05 01:00:00",
+"due": "2026-11-10 09:00:00",
+"status": "draft",
+"priority": 5,
+"customer": "长河商用车",
+"remark": null,
+"released_at": null,
+"completed_at": null
+}
+],
+"wo_op": [],
+"report": [],
+"material_issue": [],
+"wo_kitting": [],
+"attendance": [],
+"worker_daily": [],
+"part": [],
+"part_event": [],
+"shipment": [],
+"insp_template": [
+{
+"code": "T-BORE",
+"name": "CNC 在线测量（缸孔）",
+"itype": "IPQC",
+"material": "SGH-450",
+"process": "P60",
+"sample_rule": "100% 测头"
+},
+{
+"code": "T-ENDO",
+"name": "内窥检测（油道交叉孔）",
+"itype": "IPQC",
+"material": "SGH-450",
+"process": "P80",
+"sample_rule": "100% 自动"
+},
+{
+"code": "T-SPEC",
+"name": "炉前光谱（原铁水）",
+"itype": "IPQC",
+"material": null,
+"process": "P10",
+"sample_rule": "每炉"
+},
+{
+"code": "T-NODU",
+"name": "球化检验（试块）",
+"itype": "IPQC",
+"material": "SGH-450-B",
+"process": "P20",
+"sample_rule": "每包"
+},
+{
+"code": "T-FAI",
+"name": "首件检验",
+"itype": "FAI",
+"material": "SGH-450",
+"process": "P60",
+"sample_rule": "每班首件 / 换刀后"
+},
+{
+"code": "T-IQC",
+"name": "炉料来料检验",
+"itype": "IQC",
+"material": "CM-PIG",
+"process": null,
+"sample_rule": "每批"
+},
+{
+"code": "T-OQC",
+"name": "出货检验",
+"itype": "OQC",
+"material": "SGH-450",
+"process": "P90",
+"sample_rule": "GB/T 2828.1 一般Ⅱ AQL 0.65"
+}
+],
+"insp_item": [
+{
+"template": "T-BORE",
+"seq": 10,
+"name": "缸孔直径",
+"char": "BORE_DIA",
+"method": "测头",
+"std": "Φ40 +0.025/0",
+"lo": 40.0,
+"hi": 40.025,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-ENDO",
+"seq": 10,
+"name": "交叉孔毛刺",
+"char": "ENDO_BURR",
+"method": "自动内窥",
+"std": "残余毛刺 ≤0.1 mm",
+"lo": null,
+"hi": 0.1,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-ENDO",
+"seq": 20,
+"name": "内腔气孔/缩松",
+"char": "ENDO_PORE",
+"method": "自动内窥",
+"std": "≤0.8 mm",
+"lo": null,
+"hi": 0.8,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 10,
+"name": "碳 C",
+"char": "C",
+"method": "光谱仪",
+"std": "3.60–3.80",
+"lo": 3.6,
+"hi": 3.8,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 20,
+"name": "硅 Si",
+"char": "Si",
+"method": "光谱仪",
+"std": "1.40–1.70",
+"lo": 1.4,
+"hi": 1.7,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 30,
+"name": "锰 Mn",
+"char": "Mn",
+"method": "光谱仪",
+"std": "≤0.40",
+"lo": null,
+"hi": 0.4,
+"unit": "%",
+"key": false
+},
+{
+"template": "T-SPEC",
+"seq": 40,
+"name": "硫 S",
+"char": "S",
+"method": "光谱仪",
+"std": "≤0.020",
+"lo": null,
+"hi": 0.02,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 50,
+"name": "碳当量 CE",
+"char": "CE",
+"method": "计算",
+"std": "4.15–4.45",
+"lo": 4.15,
+"hi": 4.45,
+"unit": null,
+"key": true
+},
+{
+"template": "T-NODU",
+"seq": 10,
+"name": "残余镁",
+"char": "MG",
+"method": "光谱",
+"std": "0.030–0.055",
+"lo": 0.03,
+"hi": 0.055,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-NODU",
+"seq": 20,
+"name": "球化率",
+"char": "NODU",
+"method": "金相",
+"std": "≥85%",
+"lo": 85.0,
+"hi": null,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 10,
+"name": "缸孔直径",
+"char": "BORE_DIA",
+"method": "三坐标",
+"std": "Φ40 +0.025/0",
+"lo": 40.0,
+"hi": 40.025,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 20,
+"name": "端面平面度",
+"char": "FLAT",
+"method": "三坐标",
+"std": "≤0.03",
+"lo": null,
+"hi": 0.03,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 30,
+"name": "油道孔位置度",
+"char": "POS_OIL",
+"method": "三坐标",
+"std": "≤0.1",
+"lo": null,
+"hi": 0.1,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 40,
+"name": "螺纹 M10",
+"char": "THREAD",
+"method": "通止规",
+"std": "通规通、止规止",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+},
+{
+"template": "T-IQC",
+"seq": 10,
+"name": "碳",
+"char": "IQC_C",
+"method": "光谱",
+"std": "≥4.0",
+"lo": 4.0,
+"hi": null,
+"unit": "%",
+"key": false
+},
+{
+"template": "T-IQC",
+"seq": 20,
+"name": "硫",
+"char": "IQC_S",
+"method": "光谱",
+"std": "≤0.04",
+"lo": null,
+"hi": 0.04,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-OQC",
+"seq": 10,
+"name": "外观",
+"char": "OQC_APP",
+"method": "目视",
+"std": "无磕碰锈蚀",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+},
+{
+"template": "T-OQC",
+"seq": 20,
+"name": "包装标识",
+"char": "OQC_PKG",
+"method": "目视",
+"std": "零件码清晰可扫",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+}
+],
+"insp_record": [],
+"insp_value": [],
+"ncr": [],
+"rework": [],
+"first_article": [],
+"lot_hold": [],
+"report_8d": [],
+"equipment": [],
+"datasource": [
+{
+"code": "VF",
+"name": "虚拟工厂（示范工厂）",
+"protocol": "mqtt",
+"endpoint": "mqtt://127.0.0.1:1883",
+"prefix": "vfactory/foundry-housing/",
+"enabled": true,
+"status": null,
+"remark": "先点\"从虚拟工厂导入\"建设备和点表"
+}
+],
+"tag_point": [],
+"equip_state": [],
+"alarm": [],
+"maint_plan": [],
+"maint_record": [],
+"repair_order": [],
+"tooling": [
+{
+"code": "MB-450-01",
+"name": "SGH-450 模板 1#",
+"ttype": "pattern",
+"product": "SGH-450",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"shots": 18420,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 15000,
+"status": "in_use",
+"available_from": null,
+"location": "模具库 A-01",
+"remark": null
+},
+{
+"code": "MB-450-02",
+"name": "SGH-450 模板 2#（备用）",
+"ttype": "pattern",
+"product": "SGH-450",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"shots": 52300,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 50000,
+"status": "available",
+"available_from": null,
+"location": "模具库 A-02",
+"remark": null
+},
+{
+"code": "MB-520-01",
+"name": "SGH-520 模板 1#",
+"ttype": "pattern",
+"product": "SGH-520",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"shots": 6100,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 5000,
+"status": "available",
+"available_from": null,
+"location": "模具库 A-01",
+"remark": null
+}
+],
+"downtime_plan": [],
+"warehouse": [
+{
+"code": "W-RAW",
+"name": "原材料库",
+"wtype": "raw"
+},
+{
+"code": "W-BLANK",
+"name": "毛坯库",
+"wtype": "blank"
+},
+{
+"code": "W-LINE",
+"name": "机加线边库",
+"wtype": "wip"
+},
+{
+"code": "W-FG",
+"name": "成品立体仓库",
+"wtype": "fg"
+},
+{
+"code": "W-AUX",
+"name": "辅料库",
+"wtype": "aux"
+}
+],
+"location": [
+{
+"code": "W-RAW-01",
+"name": "原材料库 1 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-RAW-02",
+"name": "原材料库 2 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-RAW-03",
+"name": "原材料库 3 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-BLANK-01",
+"name": "毛坯库 1 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-BLANK-02",
+"name": "毛坯库 2 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-BLANK-03",
+"name": "毛坯库 3 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-LINE-01",
+"name": "机加线边库 1 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-LINE-02",
+"name": "机加线边库 2 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-LINE-03",
+"name": "机加线边库 3 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-FG-01",
+"name": "成品立体仓库 1 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-FG-02",
+"name": "成品立体仓库 2 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-FG-03",
+"name": "成品立体仓库 3 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-AUX-01",
+"name": "辅料库 1 区",
+"warehouse": "W-AUX",
+"capacity": 200
+},
+{
+"code": "W-AUX-02",
+"name": "辅料库 2 区",
+"warehouse": "W-AUX",
+"capacity": 200
+},
+{
+"code": "W-AUX-03",
+"name": "辅料库 3 区",
+"warehouse": "W-AUX",
+"capacity": 200
+}
+],
+"stock": [
+{
+"material": "CM-PIG",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 180.0
+},
+{
+"material": "CM-STEEL",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 120.0
+},
+{
+"material": "CM-RET",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 60.0
+},
+{
+"material": "CM-CARB",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 8.0
+},
+{
+"material": "CM-FESI",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 5.0
+},
+{
+"material": "AUX-NODU",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 6.0
+},
+{
+"material": "AUX-INOC",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 3.0
+},
+{
+"material": "AUX-SAND",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 400.0
+},
+{
+"material": "AUX-SHOT",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 4.0
+}
+],
+"stock_txn": [
+{
+"code": "CK2611040001",
+"ttype": "in",
+"material": "CM-PIG",
+"qty": 180.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040002",
+"ttype": "in",
+"material": "CM-STEEL",
+"qty": 120.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040003",
+"ttype": "in",
+"material": "CM-RET",
+"qty": 60.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040004",
+"ttype": "in",
+"material": "CM-CARB",
+"qty": 8.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040005",
+"ttype": "in",
+"material": "CM-FESI",
+"qty": 5.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040006",
+"ttype": "in",
+"material": "AUX-NODU",
+"qty": 6.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040007",
+"ttype": "in",
+"material": "AUX-INOC",
+"qty": 3.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040008",
+"ttype": "in",
+"material": "AUX-SAND",
+"qty": 400.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040009",
+"ttype": "in",
+"material": "AUX-SHOT",
+"qty": 4.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+}
+],
+"agv_task": [],
+"energy_hour": [],
+"heat": [],
+"treatment_rec": [],
+"charge_material": [
+{
+"code": "CM-PIG",
+"name": "Z14 生铁",
+"price": 3300.0,
+"C": 4.2,
+"Si": 1.4,
+"Mn": 0.3,
+"S": 0.03,
+"P": 0.06,
+"min_ratio": 20.0,
+"max_ratio": 70.0,
+"stock_t": 180.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-STEEL",
+"name": "废钢",
+"price": 2600.0,
+"C": 0.2,
+"Si": 0.3,
+"Mn": 0.5,
+"S": 0.02,
+"P": 0.02,
+"min_ratio": 0.0,
+"max_ratio": 45.0,
+"stock_t": 120.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-RET",
+"name": "回炉料",
+"price": 1800.0,
+"C": 3.6,
+"Si": 2.4,
+"Mn": 0.3,
+"S": 0.012,
+"P": 0.03,
+"min_ratio": 15.0,
+"max_ratio": 40.0,
+"stock_t": 60.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-CARB",
+"name": "增碳剂",
+"price": 4500.0,
+"C": 95.0,
+"Si": 0.0,
+"Mn": 0.0,
+"S": 0.05,
+"P": 0.0,
+"min_ratio": 0.0,
+"max_ratio": 3.0,
+"stock_t": 8.0,
+"yield_pct": 92.0
+},
+{
+"code": "CM-FESI",
+"name": "75 硅铁",
+"price": 7500.0,
+"C": 0.1,
+"Si": 75.0,
+"Mn": 0.4,
+"S": 0.02,
+"P": 0.04,
+"min_ratio": 0.0,
+"max_ratio": 2.0,
+"stock_t": 5.0,
+"yield_pct": 95.0
+}
+],
+"charge_plan": [],
+"nc_program": [],
+"tool": [],
+"tool_change": [],
+"kb_doc": [
+{
+"title": "球化处理作业指导书",
+"tags": "工艺,铸造",
+"content": "1. 浇包烘烤到 600°C 以上再用。\n2. 球化剂 FeSiMg6 加入量 1.4–1.6%，冲入法，覆盖铁屑。\n3. 出铁温度 1480–1500°C，球化完成后 12 分钟内浇完，超时回炉。\n\n常见问题：残镁低于 0.030% 时球化不良风险大，检查球化剂加入量和浇包等待时间；浇注温度低于 1380°C 易出冷隔。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P20",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "中频炉安全操作规程",
+"tags": "安全,设备",
+"content": "1. 送电前确认冷却水流量 ≥30 m³/h、出水温度 <55°C。\n2. 炉衬漏电流超过报警值立即停电检查，防止漏炉。\n3. 加料不得有水分、密闭容器。\n\n炉衬余厚低于 60 mm 安排修炉。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P10",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "内窥检测判定标准（SGH-450 油道）",
+"tags": "质量,检测",
+"content": "检测部位：8 个油道交叉孔。\n合格：交叉口残余毛刺 ≤0.1 mm，内腔气孔/缩松 ≤0.8 mm。\n毛刺超标的件返修一次（去毛刺单元复刷），复检仍不合格判废。\n气孔、缩松超标直接判废并回溯炉次。光源亮度不低于 60%。",
+"updated": "2026-11-04 09:30:00",
+"kind": "standard",
+"product": "SGH-450",
+"process": "P80",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "CNC 换刀作业指导",
+"tags": "工艺,机加",
+"content": "T03 Φ8 钻头寿命 100 件，到数自动换刀。\n换刀后首件必须测头复测缸孔，并做首件检验。\n主轴负载比换刀后初始值高 30% 以上时提前换刀（MES 刀具监测会预警）。\n钻头磨损会使交叉孔毛刺变大，是内窥检测毛刺 NG 的主要来源。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": "SGH-450",
+"process": "P60",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "型砂水分控制要点",
+"tags": "工艺,铸造",
+"content": "目标水分 3.3–3.5%，紧实率 38–42%。\n回砂温度高于 45°C 时水分蒸发快，需提高加水量。\n水分偏高时气孔明显增多。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P30",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "设备故障停机处置流程",
+"tags": "SOP,设备",
+"content": "1. 设备故障停机后，操作工立即拉安灯并在 MES 报修，写清报警内容和停机时间。\n2. 设备员 10 分钟内到场，先确认安全（断电挂牌），再按报警代码排查。\n3. 加工中心常见故障：主轴过载（检查刀具磨损、切削参数）、润滑压力低（检查油位和油泵）、气压不足（检查气源 0.5 MPa）。\n4. 中频炉常见故障：冷却水流量低（检查水泵和过滤器）、炉衬漏电报警（立即停电，防止漏炉）。\n\n常用备件：主轴轴承、刀柄拉钉、润滑泵滤芯、电磁阀、冷却水泵密封、炉衬耐火材料。修复后填写故障原因和处理方法，班长验收。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": null,
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "安灯响应规范",
+"tags": "SOP,生产",
+"content": "安灯分为设备、质量、物料、安全四类。设备类由设备员响应，质量类由质检员响应，物料类由仓管员响应，安全类班组长立即到场。\n响应时限：5 分钟内到场；15 分钟内不能解决的升级到车间主任。处理完毕在 MES 关闭安灯并写处理结果。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": null,
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "SGH-450 机加工序图 OP60",
+"tags": "图纸,P60",
+"content": "机加工序图（DXF）：外形、缸孔 Φ40 H7、4×M10 螺栓孔、油道孔位置，平面度 0.03。工位终端和报工详情里按产品 + 工序自动带出。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P60",
+"version": "V3",
+"file_name": "sgh450_op60.dxf",
+"file_type": "dxf",
+"file_size": 1105
+},
+{
+"title": "SGH-450 检验图 OP80",
+"tags": "图纸,P80",
+"content": "内窥 / 出货检验用检验图（PDF），标注缸孔、平面度、油道孔位置度和毛刺要求。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P80",
+"version": "V3",
+"file_name": "sgh450_op80.pdf",
+"file_type": "pdf",
+"file_size": 1897
+},
+{
+"title": "SGH-450 毛坯图（浇口位置）",
+"tags": "图纸,P30",
+"content": "毛坯示意图（图片）：浇口、冒口位置和加工余量。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P30",
+"version": "V2",
+"file_name": "sgh450_blank.png",
+"file_type": "image",
+"file_size": 4108
+}
+],
+"daily_report": [],
+"ai_log": [],
+"andon": [],
+"material_request": [],
+"schedule_proposal": [],
+"notice": [],
+"ai_report": [],
+"sys_user": [
+{
+"username": "admin",
+"name": "系统管理员",
+"roles": "admin",
+"employee": null,
+"active": true,
+"scope": null
+},
+{
+"username": "manager",
+"name": "王厂长",
+"roles": "manager",
+"employee": null,
+"active": true,
+"scope": null
+},
+{
+"username": "planner",
+"name": "计划员李娜",
+"roles": "planner",
+"employee": "E014",
+"active": true,
+"scope": null
+},
+{
+"username": "leader",
+"name": "班长张强",
+"roles": "leader",
+"employee": "E001",
+"active": true,
+"scope": null
+},
+{
+"username": "operator",
+"name": "CNC 操作工赵磊",
+"roles": "operator",
+"employee": "E006",
+"active": true,
+"scope": null
+},
+{
+"username": "qc",
+"name": "质检员孙敏",
+"roles": "qc",
+"employee": "E011",
+"active": true,
+"scope": null
+},
+{
+"username": "maint",
+"name": "设备员周涛",
+"roles": "maint",
+"employee": "E012",
+"active": true,
+"scope": null
+},
+{
+"username": "wh",
+"name": "仓管员吴芳",
+"roles": "warehouse",
+"employee": "E010",
+"active": true,
+"scope": null
+},
+{
+"username": "engineer",
+"name": "工艺工程师郑凯",
+"roles": "engineer",
+"employee": "E013",
+"active": true,
+"scope": null
+}
+],
+"setting": [
+{
+"key": "ts_mode",
+"value": "sqlite",
+"remark": "设备时序存储模式（迁移 v0004 决定：timescale / pgpart / sqlite）"
+},
+{
+"key": "company",
+"value": "蜂元科技（郑州）有限责任公司",
+"remark": "公司名称"
+},
+{
+"key": "tou",
+"value": "谷电 23:00–07:00；峰电 08:00–11:00、18:00–22:00",
+"remark": "峰谷电时段（能耗建议用）"
+},
+{
+"key": "report_auto_interval_min",
+"value": "60",
+"remark": "设备自动报工汇总间隔（分钟：5/10/15/20/30/60）"
+},
+{
+"key": "report_over_pct",
+"value": "0",
+"remark": "报工允许超出计划的比例 %（0 = 不许超报）"
+},
+{
+"key": "demo_fai_orders",
+"value": "1,2,3",
+"remark": "演示工单：下达时自动带已放行的首检（4.7 首检闸门）"
+},
+{
+"key": "demo_fai_v47",
+"value": "0",
+"remark": "4.7 升级时给在制工单补的已放行首检数（只做一次）"
+}
+]
+},
+"after_equipment": {
+"plant": [
+{
+"code": "GR",
+"name": "某转向器壳体铸造厂",
+"address": "示例厂区",
+"vf_source": "http://127.0.0.1:8800|foundry-housing"
+}
+],
+"workshop": [],
+"line": [],
+"process": [
+{
+"code": "P05",
+"name": "来料收货",
+"ptype": "receiving",
+"std_cycle_s": 106.0,
+"desc": null
+},
+{
+"code": "P10",
+"name": "熔炼",
+"ptype": "melting",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P20",
+"name": "球化孕育",
+"ptype": "treatment",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P30",
+"name": "造型浇注",
+"ptype": "molding",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P40",
+"name": "冷却落砂",
+"ptype": "cooling",
+"std_cycle_s": 20.0,
+"desc": null
+},
+{
+"code": "P50",
+"name": "清理抛丸",
+"ptype": "cleaning",
+"std_cycle_s": 25.0,
+"desc": null
+},
+{
+"code": "P60",
+"name": "CNC 机加",
+"ptype": "machining",
+"std_cycle_s": 430.0,
+"desc": null
+},
+{
+"code": "P70",
+"name": "去毛刺",
+"ptype": "deburr",
+"std_cycle_s": 65.0,
+"desc": null
+},
+{
+"code": "P80",
+"name": "内窥检测",
+"ptype": "inspection",
+"std_cycle_s": 60.0,
+"desc": null
+},
+{
+"code": "P90",
+"name": "成品入库",
+"ptype": "storage",
+"std_cycle_s": 10.0,
+"desc": null
+}
+],
+"workstation": [],
+"material": [
+{
+"code": "SGH-450",
+"name": "SGH-450 转向器壳体",
+"spec": "QT450-10 精加工",
+"unit": "件",
+"mtype": "fg",
+"safety_stock": 200.0,
+"price": 380.0,
+"weight_kg": 15.2
+},
+{
+"code": "SGH-450-B",
+"name": "SGH-450 壳体毛坯",
+"spec": "QT450-10 铸件",
+"unit": "件",
+"mtype": "semi",
+"safety_stock": 300.0,
+"price": 160.0,
+"weight_kg": 18.5
+},
+{
+"code": "CM-PIG",
+"name": "Z14 生铁",
+"spec": "炉料",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 30.0,
+"price": 3300.0,
+"weight_kg": null
+},
+{
+"code": "CM-STEEL",
+"name": "废钢",
+"spec": "炉料",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 20.0,
+"price": 2600.0,
+"weight_kg": null
+},
+{
+"code": "CM-RET",
+"name": "回炉料",
+"spec": "浇冒口/废件",
+"unit": "t",
+"mtype": "raw",
+"safety_stock": 0.0,
+"price": 1800.0,
+"weight_kg": null
+},
+{
+"code": "CM-CARB",
+"name": "增碳剂",
+"spec": "C≥95%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 4500.0,
+"weight_kg": null
+},
+{
+"code": "CM-FESI",
+"name": "75 硅铁",
+"spec": "Si 75%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 7500.0,
+"weight_kg": null
+},
+{
+"code": "AUX-NODU",
+"name": "球化剂 FeSiMg6",
+"spec": "Mg 6%",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 2.0,
+"price": 12500.0,
+"weight_kg": null
+},
+{
+"code": "AUX-INOC",
+"name": "孕育剂 FeSi75-Ba",
+"spec": null,
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 1.0,
+"price": 9800.0,
+"weight_kg": null
+},
+{
+"code": "AUX-SAND",
+"name": "型砂",
+"spec": "膨润土湿型砂",
+"unit": "t",
+"mtype": "aux",
+"safety_stock": 50.0,
+"price": 380.0,
+"weight_kg": null
+},
+{
+"code": "AUX-SHOT",
+"name": "钢丸 S330",
+"spec": null,
+"unit": "t",
+"mtype": "consumable",
+"safety_stock": 2.0,
+"price": 6200.0,
+"weight_kg": null
+},
+{
+"code": "SGH-520",
+"name": "SGH-520 转向器壳体（加长）",
+"spec": "QT450-10 精加工",
+"unit": "件",
+"mtype": "fg",
+"safety_stock": 100.0,
+"price": 420.0,
+"weight_kg": 17.1
+}
+],
+"bom": [
+{
+"product": "SGH-450",
+"component": "SGH-450-B",
+"qty": 1.0,
+"unit": "件",
+"remark": null
+},
+{
+"product": "SGH-450",
+"component": "AUX-SHOT",
+"qty": 0.0004,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-PIG",
+"qty": 0.0095,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-STEEL",
+"qty": 0.0053,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "CM-RET",
+"qty": 0.0059,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "AUX-NODU",
+"qty": 0.0003,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-450-B",
+"component": "AUX-SAND",
+"qty": 0.012,
+"unit": "t",
+"remark": null
+},
+{
+"product": "SGH-520",
+"component": "SGH-450-B",
+"qty": 1.0,
+"unit": "件",
+"remark": null
+},
+{
+"product": "SGH-520",
+"component": "AUX-SHOT",
+"qty": 0.0004,
+"unit": "t",
+"remark": null
+}
+],
+"route": [
+{
+"code": "RT-SGH450",
+"name": "SGH-450 铸造+机加一体",
+"product": "SGH-450",
+"version": "V3",
+"status": "active"
+},
+{
+"code": "RT-SGH520",
+"name": "SGH-520 铸造+机加一体",
+"product": "SGH-520",
+"version": "V1",
+"status": "active"
+}
+],
+"route_step": [
+{
+"route": "RT-SGH450",
+"seq": 10,
+"process": "P10",
+"station_group": "FUR",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+"params": {
+"出铁温度 °C": "1480–1500",
+"C %": "3.60–3.80",
+"Si %": "1.40–1.70"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 20,
+"process": "P20",
+"station_group": "TRT1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+"params": {
+"球化剂 FeSiMg6 %": "1.4–1.6",
+"残镁 %": "0.030–0.055",
+"温度 °C": "≥1420"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 30,
+"process": "P30",
+"station_group": "MOLD1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+"params": {
+"浇注温度 °C": "1380–1420",
+"型砂水分 %": "3.3–3.5",
+"紧实率 %": "38–42"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 40,
+"process": "P40",
+"station_group": "COOL1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH450",
+"seq": 50,
+"process": "P50",
+"station_group": "SHOT1",
+"std_cycle_s": 25.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+"params": {
+"抛丸时间 min": "8",
+"钢丸": "S330"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 60,
+"process": "P60",
+"station_group": "CNC",
+"std_cycle_s": 430.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": true,
+"instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+"params": {
+"主程序": "O1201 V3",
+"缸孔 Φ40 H7": "40.000–40.025 mm",
+"端面平面度": "≤0.03 mm",
+"主轴转速 rpm": "2800",
+"进给 mm/r": "0.15"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 70,
+"process": "P70",
+"station_group": "DEB1",
+"std_cycle_s": 65.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+"params": {
+"毛刷转速 rpm": "1800",
+"节拍 s": "65"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 80,
+"process": "P80",
+"station_group": "INS1",
+"std_cycle_s": 60.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+"params": {
+"残余毛刺": "≤0.1 mm",
+"气孔/缩松": "≤0.8 mm",
+"光源亮度": "≥60%"
+}
+},
+{
+"route": "RT-SGH450",
+"seq": 90,
+"process": "P90",
+"station_group": "ASRS1",
+"std_cycle_s": 10.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH520",
+"seq": 10,
+"process": "P10",
+"station_group": "FUR",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+"params": {
+"出铁温度 °C": "1480–1500",
+"C %": "3.60–3.80",
+"Si %": "1.40–1.70"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 20,
+"process": "P20",
+"station_group": "TRT1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+"params": {
+"球化剂 FeSiMg6 %": "1.4–1.6",
+"残镁 %": "0.030–0.055",
+"温度 °C": "≥1420"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 30,
+"process": "P30",
+"station_group": "MOLD1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+"params": {
+"浇注温度 °C": "1380–1420",
+"型砂水分 %": "3.3–3.5",
+"紧实率 %": "38–42"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 40,
+"process": "P40",
+"station_group": "COOL1",
+"std_cycle_s": 20.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+},
+{
+"route": "RT-SGH520",
+"seq": 50,
+"process": "P50",
+"station_group": "SHOT1",
+"std_cycle_s": 25.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+"params": {
+"抛丸时间 min": "8",
+"钢丸": "S330"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 60,
+"process": "P60",
+"station_group": "CNC",
+"std_cycle_s": 481.6,
+"inspection": false,
+"report_mode": "auto",
+"fai": true,
+"instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+"params": {
+"主程序": "O1201 V3",
+"缸孔 Φ40 H7": "40.000–40.025 mm",
+"端面平面度": "≤0.03 mm",
+"主轴转速 rpm": "2800",
+"进给 mm/r": "0.15"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 70,
+"process": "P70",
+"station_group": "DEB1",
+"std_cycle_s": 65.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+"params": {
+"毛刷转速 rpm": "1800",
+"节拍 s": "65"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 80,
+"process": "P80",
+"station_group": "INS1",
+"std_cycle_s": 60.0,
+"inspection": true,
+"report_mode": "auto",
+"fai": false,
+"instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+"params": {
+"残余毛刺": "≤0.1 mm",
+"气孔/缩松": "≤0.8 mm",
+"光源亮度": "≥60%"
+}
+},
+{
+"route": "RT-SGH520",
+"seq": 90,
+"process": "P90",
+"station_group": "ASRS1",
+"std_cycle_s": 10.0,
+"inspection": false,
+"report_mode": "auto",
+"fai": false,
+"instruction": null,
+"params": null
+}
+],
+"shift": [
+{
+"code": "A",
+"name": "早班",
+"start": "07:00",
+"end": "15:00",
+"active": true,
+"break_min": 0
+},
+{
+"code": "B",
+"name": "中班",
+"start": "15:00",
+"end": "23:00",
+"active": true,
+"break_min": 0
+},
+{
+"code": "C",
+"name": "夜班",
+"start": "23:00",
+"end": "07:00",
+"active": true,
+"break_min": 0
+}
+],
+"skill": [
+{
+"employee": "E002",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E018",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E021",
+"process": "P10",
+"station_group": "FUR",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E003",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E018",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E021",
+"process": "P20",
+"station_group": "TRT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E004",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E004",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P40",
+"station_group": "COOL1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E005",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E023",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E024",
+"process": "P50",
+"station_group": "SHOT1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E006",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E007",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E008",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E017",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E020",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "3",
+"valid_until": null
+},
+{
+"employee": "E009",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E019",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E022",
+"process": "P70",
+"station_group": "DEB1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E011",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E019",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E022",
+"process": "P80",
+"station_group": "INS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E010",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E015",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E016",
+"process": "P90",
+"station_group": "ASRS1",
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E010",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E015",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E016",
+"process": "P05",
+"station_group": null,
+"equipment": null,
+"level": "2",
+"valid_until": null
+},
+{
+"employee": "E008",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"level": "4",
+"valid_until": null
+}
+],
+"changeover": [
+{
+"station_group": "CNC",
+"from_product": "SGH-450",
+"to_product": "SGH-520",
+"minutes": 45.0,
+"remark": "换夹具 + 调程序 O1203 + 首件"
+},
+{
+"station_group": "CNC",
+"from_product": "SGH-520",
+"to_product": "SGH-450",
+"minutes": 40.0,
+"remark": "换夹具 + 调程序 O1201 + 首件"
+},
+{
+"station_group": "MOLD1",
+"from_product": "SGH-450",
+"to_product": "SGH-520",
+"minutes": 30.0,
+"remark": "换模板"
+},
+{
+"station_group": "MOLD1",
+"from_product": "SGH-520",
+"to_product": "SGH-450",
+"minutes": 30.0,
+"remark": "换模板"
+},
+{
+"station_group": "DEB1",
+"from_product": null,
+"to_product": null,
+"minutes": 10.0,
+"remark": "换毛刷程序"
+}
+],
+"team": [
+{
+"code": "T1",
+"name": "甲班",
+"shift": "A",
+"leader": "张强"
+},
+{
+"code": "T2",
+"name": "乙班",
+"shift": "B",
+"leader": "刘洋"
+},
+{
+"code": "T3",
+"name": "丙班",
+"shift": "C",
+"leader": "陈刚"
+}
+],
+"employee": [
+{
+"code": "E001",
+"name": "张强",
+"team": "T1",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E002",
+"name": "王建国",
+"team": "T1",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E003",
+"name": "李伟",
+"team": "T1",
+"post": "球化浇包工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E004",
+"name": "马超",
+"team": "T1",
+"post": "浇注工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E005",
+"name": "何军",
+"team": "T1",
+"post": "抛丸挂件工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E006",
+"name": "赵磊",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E007",
+"name": "钱明",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E008",
+"name": "孙涛",
+"team": "T1",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E009",
+"name": "冯杰",
+"team": "T1",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E010",
+"name": "吴芳",
+"team": "T1",
+"post": "仓管员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E011",
+"name": "孙敏",
+"team": "T1",
+"post": "质检员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E012",
+"name": "周涛",
+"team": "T1",
+"post": "设备员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E013",
+"name": "郑凯",
+"team": "T1",
+"post": "工艺工程师",
+"phone": null,
+"skills": null
+},
+{
+"code": "E014",
+"name": "李娜",
+"team": "T1",
+"post": "计划员",
+"phone": null,
+"skills": null
+},
+{
+"code": "E015",
+"name": "刘洋",
+"team": "T2",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E016",
+"name": "陈刚",
+"team": "T3",
+"post": "班长",
+"phone": null,
+"skills": null
+},
+{
+"code": "E017",
+"name": "黄伟",
+"team": "T2",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E018",
+"name": "林峰",
+"team": "T2",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E019",
+"name": "高原",
+"team": "T2",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E020",
+"name": "罗斌",
+"team": "T3",
+"post": "CNC 操作工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E021",
+"name": "谢磊",
+"team": "T3",
+"post": "炉前工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E022",
+"name": "韩冰",
+"team": "T3",
+"post": "去毛刺/返修工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E023",
+"name": "唐亮",
+"team": "T2",
+"post": "浇注工",
+"phone": null,
+"skills": null
+},
+{
+"code": "E024",
+"name": "彭宇",
+"team": "T3",
+"post": "浇注工",
+"phone": null,
+"skills": null
+}
+],
+"defect_code": [
+{
+"code": "D01",
+"name": "气孔",
+"category": "casting",
+"severity": "major",
+"process": "P30"
+},
+{
+"code": "D02",
+"name": "缩松",
+"category": "casting",
+"severity": "major",
+"process": "P20"
+},
+{
+"code": "D03",
+"name": "冷隔/开裂",
+"category": "casting",
+"severity": "critical",
+"process": "P30"
+},
+{
+"code": "D04",
+"name": "球化不良",
+"category": "casting",
+"severity": "critical",
+"process": "P20"
+},
+{
+"code": "D05",
+"name": "内腔气孔/缩松",
+"category": "casting",
+"severity": "major",
+"process": "P30"
+},
+{
+"code": "D06",
+"name": "残余毛刺",
+"category": "machining",
+"severity": "minor",
+"process": "P70"
+},
+{
+"code": "D07",
+"name": "缸孔尺寸超差",
+"category": "machining",
+"severity": "major",
+"process": "P60"
+},
+{
+"code": "D08",
+"name": "断刀报废",
+"category": "machining",
+"severity": "major",
+"process": "P60"
+},
+{
+"code": "D09",
+"name": "毛刺返修后仍不合格",
+"category": "machining",
+"severity": "major",
+"process": "P70"
+},
+{
+"code": "D10",
+"name": "误报/待复判",
+"category": "other",
+"severity": "minor",
+"process": "P80"
+}
+],
+"work_order": [
+{
+"code": "WO261104001",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 600,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-04 09:00:00",
+"due": "2026-11-06 09:00:00",
+"status": "draft",
+"priority": 3,
+"customer": "北辰重卡",
+"remark": null,
+"released_at": null,
+"completed_at": null
+},
+{
+"code": "WO261104002",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 800,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-04 17:00:00",
+"due": "2026-11-08 09:00:00",
+"status": "draft",
+"priority": 5,
+"customer": "西岭重卡",
+"remark": null,
+"released_at": null,
+"completed_at": null
+},
+{
+"code": "WO261104003",
+"product": "SGH-450",
+"route": "RT-SGH450",
+"qty": 500,
+"qty_done": 0,
+"qty_scrap": 0,
+"start_plan": "2026-11-05 01:00:00",
+"due": "2026-11-10 09:00:00",
+"status": "draft",
+"priority": 5,
+"customer": "长河商用车",
+"remark": null,
+"released_at": null,
+"completed_at": null
+}
+],
+"wo_op": [],
+"report": [],
+"material_issue": [],
+"wo_kitting": [],
+"attendance": [],
+"worker_daily": [],
+"part": [],
+"part_event": [],
+"shipment": [],
+"insp_template": [
+{
+"code": "T-BORE",
+"name": "CNC 在线测量（缸孔）",
+"itype": "IPQC",
+"material": "SGH-450",
+"process": "P60",
+"sample_rule": "100% 测头"
+},
+{
+"code": "T-ENDO",
+"name": "内窥检测（油道交叉孔）",
+"itype": "IPQC",
+"material": "SGH-450",
+"process": "P80",
+"sample_rule": "100% 自动"
+},
+{
+"code": "T-SPEC",
+"name": "炉前光谱（原铁水）",
+"itype": "IPQC",
+"material": null,
+"process": "P10",
+"sample_rule": "每炉"
+},
+{
+"code": "T-NODU",
+"name": "球化检验（试块）",
+"itype": "IPQC",
+"material": "SGH-450-B",
+"process": "P20",
+"sample_rule": "每包"
+},
+{
+"code": "T-FAI",
+"name": "首件检验",
+"itype": "FAI",
+"material": "SGH-450",
+"process": "P60",
+"sample_rule": "每班首件 / 换刀后"
+},
+{
+"code": "T-IQC",
+"name": "炉料来料检验",
+"itype": "IQC",
+"material": "CM-PIG",
+"process": null,
+"sample_rule": "每批"
+},
+{
+"code": "T-OQC",
+"name": "出货检验",
+"itype": "OQC",
+"material": "SGH-450",
+"process": "P90",
+"sample_rule": "GB/T 2828.1 一般Ⅱ AQL 0.65"
+}
+],
+"insp_item": [
+{
+"template": "T-BORE",
+"seq": 10,
+"name": "缸孔直径",
+"char": "BORE_DIA",
+"method": "测头",
+"std": "Φ40 +0.025/0",
+"lo": 40.0,
+"hi": 40.025,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-ENDO",
+"seq": 10,
+"name": "交叉孔毛刺",
+"char": "ENDO_BURR",
+"method": "自动内窥",
+"std": "残余毛刺 ≤0.1 mm",
+"lo": null,
+"hi": 0.1,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-ENDO",
+"seq": 20,
+"name": "内腔气孔/缩松",
+"char": "ENDO_PORE",
+"method": "自动内窥",
+"std": "≤0.8 mm",
+"lo": null,
+"hi": 0.8,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 10,
+"name": "碳 C",
+"char": "C",
+"method": "光谱仪",
+"std": "3.60–3.80",
+"lo": 3.6,
+"hi": 3.8,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 20,
+"name": "硅 Si",
+"char": "Si",
+"method": "光谱仪",
+"std": "1.40–1.70",
+"lo": 1.4,
+"hi": 1.7,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 30,
+"name": "锰 Mn",
+"char": "Mn",
+"method": "光谱仪",
+"std": "≤0.40",
+"lo": null,
+"hi": 0.4,
+"unit": "%",
+"key": false
+},
+{
+"template": "T-SPEC",
+"seq": 40,
+"name": "硫 S",
+"char": "S",
+"method": "光谱仪",
+"std": "≤0.020",
+"lo": null,
+"hi": 0.02,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-SPEC",
+"seq": 50,
+"name": "碳当量 CE",
+"char": "CE",
+"method": "计算",
+"std": "4.15–4.45",
+"lo": 4.15,
+"hi": 4.45,
+"unit": null,
+"key": true
+},
+{
+"template": "T-NODU",
+"seq": 10,
+"name": "残余镁",
+"char": "MG",
+"method": "光谱",
+"std": "0.030–0.055",
+"lo": 0.03,
+"hi": 0.055,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-NODU",
+"seq": 20,
+"name": "球化率",
+"char": "NODU",
+"method": "金相",
+"std": "≥85%",
+"lo": 85.0,
+"hi": null,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 10,
+"name": "缸孔直径",
+"char": "BORE_DIA",
+"method": "三坐标",
+"std": "Φ40 +0.025/0",
+"lo": 40.0,
+"hi": 40.025,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 20,
+"name": "端面平面度",
+"char": "FLAT",
+"method": "三坐标",
+"std": "≤0.03",
+"lo": null,
+"hi": 0.03,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 30,
+"name": "油道孔位置度",
+"char": "POS_OIL",
+"method": "三坐标",
+"std": "≤0.1",
+"lo": null,
+"hi": 0.1,
+"unit": "mm",
+"key": true
+},
+{
+"template": "T-FAI",
+"seq": 40,
+"name": "螺纹 M10",
+"char": "THREAD",
+"method": "通止规",
+"std": "通规通、止规止",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+},
+{
+"template": "T-IQC",
+"seq": 10,
+"name": "碳",
+"char": "IQC_C",
+"method": "光谱",
+"std": "≥4.0",
+"lo": 4.0,
+"hi": null,
+"unit": "%",
+"key": false
+},
+{
+"template": "T-IQC",
+"seq": 20,
+"name": "硫",
+"char": "IQC_S",
+"method": "光谱",
+"std": "≤0.04",
+"lo": null,
+"hi": 0.04,
+"unit": "%",
+"key": true
+},
+{
+"template": "T-OQC",
+"seq": 10,
+"name": "外观",
+"char": "OQC_APP",
+"method": "目视",
+"std": "无磕碰锈蚀",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+},
+{
+"template": "T-OQC",
+"seq": 20,
+"name": "包装标识",
+"char": "OQC_PKG",
+"method": "目视",
+"std": "零件码清晰可扫",
+"lo": null,
+"hi": null,
+"unit": null,
+"key": false
+}
+],
+"insp_record": [],
+"insp_value": [],
+"ncr": [],
+"rework": [],
+"first_article": [],
+"lot_hold": [],
+"report_8d": [],
+"equipment": [
+{
+"code": "FUR1",
+"name": "1# 中频炉",
+"etype": "furnace",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "FUR2",
+"name": "2# 中频炉",
+"etype": "furnace",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "TRT1",
+"name": "球化站",
+"etype": "treatment",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "SAND1",
+"name": "砂处理",
+"etype": "sand",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "MOLD1",
+"name": "造型线",
+"etype": "molding",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "COOL1",
+"name": "冷却线",
+"etype": "cooling",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "SHOT1",
+"name": "抛丸机",
+"etype": "shotblast",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "RCV1",
+"name": "收货台",
+"etype": "receiving",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "CNC1",
+"name": "1# 加工中心",
+"etype": "cnc",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "CNC2",
+"name": "2# 加工中心",
+"etype": "cnc",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "CNC3",
+"name": "3# 加工中心",
+"etype": "cnc",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "CNC4",
+"name": "4# 加工中心",
+"etype": "cnc",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "DEB1",
+"name": "去毛刺单元",
+"etype": "deburr",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "INS1",
+"name": "内窥检测站",
+"etype": "inspection",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "ASRS1",
+"name": "立体仓库",
+"etype": "warehouse",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "AGV1",
+"name": "AGV 车队",
+"etype": "agv",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+},
+{
+"code": "CREW1",
+"name": "甲班",
+"etype": "crew",
+"line": null,
+"model": null,
+"vendor": null,
+"install_date": "2026-11-04",
+"rated_kw": null,
+"ideal_cycle_s": null,
+"status": "offline",
+"source": null,
+"location": null
+}
+],
+"datasource": [
+{
+"code": "VF",
+"name": "虚拟工厂（示范工厂）",
+"protocol": "mqtt",
+"endpoint": "mqtt://127.0.0.1:1883",
+"prefix": "vfactory/foundry-housing/",
+"enabled": true,
+"status": null,
+"remark": "先点\"从虚拟工厂导入\"建设备和点表"
+}
+],
+"tag_point": [],
+"equip_state": [],
+"alarm": [],
+"maint_plan": [
+{
+"code": "MP-FUR1-D",
+"name": "1# 中频炉 日常点检",
+"equipment": "FUR1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "冷却水流量/温度；炉衬漏电流；感应圈有无渗水；液压系统油位",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-FUR1-M",
+"name": "1# 中频炉 月度保养",
+"equipment": "FUR1",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-12",
+"owner": null
+},
+{
+"code": "MP-FUR2-D",
+"name": "2# 中频炉 日常点检",
+"equipment": "FUR2",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "冷却水流量/温度；炉衬漏电流；感应圈有无渗水；液压系统油位",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-FUR2-M",
+"name": "2# 中频炉 月度保养",
+"equipment": "FUR2",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-13",
+"owner": null
+},
+{
+"code": "MP-TRT1-D",
+"name": "球化站 日常点检",
+"equipment": "TRT1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "浇包包衬；吊具",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-SAND1-D",
+"name": "砂处理 日常点检",
+"equipment": "SAND1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "混砂机刮板磨损；水分仪校准；皮带跑偏",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-MOLD1-D",
+"name": "造型线 日常点检",
+"equipment": "MOLD1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "液压站油温油位；模板清洁；脱模剂",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-MOLD1-M",
+"name": "造型线 月度保养",
+"equipment": "MOLD1",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-16",
+"owner": null
+},
+{
+"code": "MP-SHOT1-D",
+"name": "抛丸机 日常点检",
+"equipment": "SHOT1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "抛头叶片磨损；钢丸量；除尘器压差",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-SHOT1-M",
+"name": "抛丸机 月度保养",
+"equipment": "SHOT1",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-18",
+"owner": null
+},
+{
+"code": "MP-RCV1-D",
+"name": "收货台 日常点检",
+"equipment": "RCV1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "外观、紧固、润滑",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-CNC1-D",
+"name": "1# 加工中心 日常点检",
+"equipment": "CNC1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "导轨润滑油位；切削液浓度；主轴异响；排屑器；气压 0.5 MPa",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-CNC1-M",
+"name": "1# 加工中心 月度保养",
+"equipment": "CNC1",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-20",
+"owner": null
+},
+{
+"code": "MP-CNC2-D",
+"name": "2# 加工中心 日常点检",
+"equipment": "CNC2",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "导轨润滑油位；切削液浓度；主轴异响；排屑器；气压 0.5 MPa",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-CNC2-M",
+"name": "2# 加工中心 月度保养",
+"equipment": "CNC2",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-21",
+"owner": null
+},
+{
+"code": "MP-CNC3-D",
+"name": "3# 加工中心 日常点检",
+"equipment": "CNC3",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "导轨润滑油位；切削液浓度；主轴异响；排屑器；气压 0.5 MPa",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-CNC3-M",
+"name": "3# 加工中心 月度保养",
+"equipment": "CNC3",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-22",
+"owner": null
+},
+{
+"code": "MP-CNC4-D",
+"name": "4# 加工中心 日常点检",
+"equipment": "CNC4",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "导轨润滑油位；切削液浓度；主轴异响；排屑器；气压 0.5 MPa",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-CNC4-M",
+"name": "4# 加工中心 月度保养",
+"equipment": "CNC4",
+"mtype": "maint",
+"cycle_days": 30,
+"items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+"last_done": null,
+"next_due": "2026-11-23",
+"owner": null
+},
+{
+"code": "MP-DEB1-D",
+"name": "去毛刺单元 日常点检",
+"equipment": "DEB1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "毛刷磨损；机器人原点",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-INS1-D",
+"name": "内窥检测站 日常点检",
+"equipment": "INS1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "镜头清洁；光源亮度；标准件比对",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+},
+{
+"code": "MP-ASRS1-D",
+"name": "立体仓库 日常点检",
+"equipment": "ASRS1",
+"mtype": "spot",
+"cycle_days": 1,
+"items": "堆垛机限位；货叉；光电",
+"last_done": null,
+"next_due": "2026-11-04",
+"owner": null
+}
+],
+"maint_record": [],
+"repair_order": [],
+"tooling": [
+{
+"code": "MB-450-01",
+"name": "SGH-450 模板 1#",
+"ttype": "pattern",
+"product": "SGH-450",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": "MOLD1",
+"shots": 18420,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 15000,
+"status": "in_use",
+"available_from": null,
+"location": "模具库 A-01",
+"remark": null
+},
+{
+"code": "MB-450-02",
+"name": "SGH-450 模板 2#（备用）",
+"ttype": "pattern",
+"product": "SGH-450",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"shots": 52300,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 50000,
+"status": "available",
+"available_from": null,
+"location": "模具库 A-02",
+"remark": null
+},
+{
+"code": "MB-520-01",
+"name": "SGH-520 模板 1#",
+"ttype": "pattern",
+"product": "SGH-520",
+"process": "P30",
+"station_group": "MOLD1",
+"equipment": null,
+"shots": 6100,
+"life_shots": 60000,
+"maint_every": 5000,
+"last_maint_shots": 5000,
+"status": "available",
+"available_from": null,
+"location": "模具库 A-01",
+"remark": null
+},
+{
+"code": "FX-450-01",
+"name": "SGH-450 液压夹具 1#",
+"ttype": "fixture",
+"product": "SGH-450",
+"process": "P60",
+"station_group": "CNC",
+"equipment": "CNC1",
+"shots": 3731,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "in_use",
+"available_from": null,
+"location": "CNC1",
+"remark": null
+},
+{
+"code": "FX-450-02",
+"name": "SGH-450 液压夹具 2#",
+"ttype": "fixture",
+"product": "SGH-450",
+"process": "P60",
+"station_group": "CNC",
+"equipment": "CNC2",
+"shots": 4462,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "in_use",
+"available_from": null,
+"location": "CNC2",
+"remark": null
+},
+{
+"code": "FX-450-03",
+"name": "SGH-450 液压夹具 3#",
+"ttype": "fixture",
+"product": "SGH-450",
+"process": "P60",
+"station_group": "CNC",
+"equipment": "CNC3",
+"shots": 5193,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "in_use",
+"available_from": null,
+"location": "CNC3",
+"remark": null
+},
+{
+"code": "FX-450-04",
+"name": "SGH-450 液压夹具 4#",
+"ttype": "fixture",
+"product": "SGH-450",
+"process": "P60",
+"station_group": "CNC",
+"equipment": "CNC4",
+"shots": 5924,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "in_use",
+"available_from": null,
+"location": "CNC4",
+"remark": null
+},
+{
+"code": "FX-520-01",
+"name": "SGH-520 液压夹具 1#",
+"ttype": "fixture",
+"product": "SGH-520",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"shots": 900,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "available",
+"available_from": null,
+"location": "工装库 B-1",
+"remark": null
+},
+{
+"code": "FX-520-02",
+"name": "SGH-520 液压夹具 2#",
+"ttype": "fixture",
+"product": "SGH-520",
+"process": "P60",
+"station_group": "CNC",
+"equipment": null,
+"shots": 1800,
+"life_shots": 200000,
+"maint_every": 20000,
+"last_maint_shots": 0,
+"status": "available",
+"available_from": null,
+"location": "工装库 B-1",
+"remark": null
+}
+],
+"downtime_plan": [
+{
+"equipment": "CNC3",
+"kind": "maint",
+"start": "2026-11-05 08:00:00",
+"end": "2026-11-05 12:00:00",
+"reason": "月度保养：主轴润滑、导轨精度复测",
+"created_by": "周涛"
+}
+],
+"warehouse": [
+{
+"code": "W-RAW",
+"name": "原材料库",
+"wtype": "raw"
+},
+{
+"code": "W-BLANK",
+"name": "毛坯库",
+"wtype": "blank"
+},
+{
+"code": "W-LINE",
+"name": "机加线边库",
+"wtype": "wip"
+},
+{
+"code": "W-FG",
+"name": "成品立体仓库",
+"wtype": "fg"
+},
+{
+"code": "W-AUX",
+"name": "辅料库",
+"wtype": "aux"
+}
+],
+"location": [
+{
+"code": "W-RAW-01",
+"name": "原材料库 1 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-RAW-02",
+"name": "原材料库 2 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-RAW-03",
+"name": "原材料库 3 区",
+"warehouse": "W-RAW",
+"capacity": 200
+},
+{
+"code": "W-BLANK-01",
+"name": "毛坯库 1 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-BLANK-02",
+"name": "毛坯库 2 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-BLANK-03",
+"name": "毛坯库 3 区",
+"warehouse": "W-BLANK",
+"capacity": 200
+},
+{
+"code": "W-LINE-01",
+"name": "机加线边库 1 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-LINE-02",
+"name": "机加线边库 2 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-LINE-03",
+"name": "机加线边库 3 区",
+"warehouse": "W-LINE",
+"capacity": 200
+},
+{
+"code": "W-FG-01",
+"name": "成品立体仓库 1 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-FG-02",
+"name": "成品立体仓库 2 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-FG-03",
+"name": "成品立体仓库 3 区",
+"warehouse": "W-FG",
+"capacity": 200
+},
+{
+"code": "W-AUX-01",
+"name": "辅料库 1 区",
+"warehouse": "W-AUX",
+"capacity": 200
+},
+{
+"code": "W-AUX-02",
+"name": "辅料库 2 区",
+"warehouse": "W-AUX",
+"capacity": 200
+},
+{
+"code": "W-AUX-03",
+"name": "辅料库 3 区",
+"warehouse": "W-AUX",
+"capacity": 200
+}
+],
+"stock": [
+{
+"material": "CM-PIG",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 180.0
+},
+{
+"material": "CM-STEEL",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 120.0
+},
+{
+"material": "CM-RET",
+"warehouse": "W-RAW",
+"location": null,
+"lot": null,
+"qty": 60.0
+},
+{
+"material": "CM-CARB",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 8.0
+},
+{
+"material": "CM-FESI",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 5.0
+},
+{
+"material": "AUX-NODU",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 6.0
+},
+{
+"material": "AUX-INOC",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 3.0
+},
+{
+"material": "AUX-SAND",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 400.0
+},
+{
+"material": "AUX-SHOT",
+"warehouse": "W-AUX",
+"location": null,
+"lot": null,
+"qty": 4.0
+}
+],
+"stock_txn": [
+{
+"code": "CK2611040001",
+"ttype": "in",
+"material": "CM-PIG",
+"qty": 180.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040002",
+"ttype": "in",
+"material": "CM-STEEL",
+"qty": 120.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040003",
+"ttype": "in",
+"material": "CM-RET",
+"qty": 60.0,
+"warehouse": "W-RAW",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040004",
+"ttype": "in",
+"material": "CM-CARB",
+"qty": 8.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040005",
+"ttype": "in",
+"material": "CM-FESI",
+"qty": 5.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040006",
+"ttype": "in",
+"material": "AUX-NODU",
+"qty": 6.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040007",
+"ttype": "in",
+"material": "AUX-INOC",
+"qty": 3.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040008",
+"ttype": "in",
+"material": "AUX-SAND",
+"qty": 400.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+},
+{
+"code": "CK2611040009",
+"ttype": "in",
+"material": "AUX-SHOT",
+"qty": 4.0,
+"warehouse": "W-AUX",
+"location": null,
+"to_warehouse": null,
+"lot": null,
+"ref_doc": null,
+"employee": "系统",
+"time": "2026-11-04 09:30:00",
+"reason": "期初库存"
+}
+],
+"agv_task": [],
+"energy_hour": [],
+"heat": [],
+"treatment_rec": [],
+"charge_material": [
+{
+"code": "CM-PIG",
+"name": "Z14 生铁",
+"price": 3300.0,
+"C": 4.2,
+"Si": 1.4,
+"Mn": 0.3,
+"S": 0.03,
+"P": 0.06,
+"min_ratio": 20.0,
+"max_ratio": 70.0,
+"stock_t": 180.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-STEEL",
+"name": "废钢",
+"price": 2600.0,
+"C": 0.2,
+"Si": 0.3,
+"Mn": 0.5,
+"S": 0.02,
+"P": 0.02,
+"min_ratio": 0.0,
+"max_ratio": 45.0,
+"stock_t": 120.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-RET",
+"name": "回炉料",
+"price": 1800.0,
+"C": 3.6,
+"Si": 2.4,
+"Mn": 0.3,
+"S": 0.012,
+"P": 0.03,
+"min_ratio": 15.0,
+"max_ratio": 40.0,
+"stock_t": 60.0,
+"yield_pct": 95.0
+},
+{
+"code": "CM-CARB",
+"name": "增碳剂",
+"price": 4500.0,
+"C": 95.0,
+"Si": 0.0,
+"Mn": 0.0,
+"S": 0.05,
+"P": 0.0,
+"min_ratio": 0.0,
+"max_ratio": 3.0,
+"stock_t": 8.0,
+"yield_pct": 92.0
+},
+{
+"code": "CM-FESI",
+"name": "75 硅铁",
+"price": 7500.0,
+"C": 0.1,
+"Si": 75.0,
+"Mn": 0.4,
+"S": 0.02,
+"P": 0.04,
+"min_ratio": 0.0,
+"max_ratio": 2.0,
+"stock_t": 5.0,
+"yield_pct": 95.0
+}
+],
+"charge_plan": [],
+"nc_program": [
+{
+"code": "O1201-V3",
+"name": "SGH-450 壳体加工主程序",
+"product": "SGH-450",
+"station_group": "CNC",
+"version": "V3",
+"status": "released",
+"content": "%\nO1201 (SGH-450 壳体加工主程序 V3)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+"approved_by": "郑凯",
+"released_at": "2026-11-04 09:30:00",
+"remark": "精镗余量 0.25→0.20，提高缸孔一致性"
+},
+{
+"code": "O1201-V4",
+"name": "SGH-450 壳体加工主程序",
+"product": "SGH-450",
+"station_group": "CNC",
+"version": "V4",
+"status": "draft",
+"content": "%\nO1201 (SGH-450 壳体加工主程序 V4)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+"approved_by": null,
+"released_at": null,
+"remark": "OP30 钻油道孔进给 0.15→0.13，降低交叉孔毛刺（待试切）"
+},
+{
+"code": "O1202-V1",
+"name": "SGH-450 测头程序",
+"product": "SGH-450",
+"station_group": "CNC",
+"version": "V1",
+"status": "released",
+"content": "%\nO1202 (SGH-450 测头程序 V1)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+"approved_by": "郑凯",
+"released_at": "2026-11-04 09:30:00",
+"remark": null
+}
+],
+"tool": [],
+"tool_change": [],
+"kb_doc": [
+{
+"title": "球化处理作业指导书",
+"tags": "工艺,铸造",
+"content": "1. 浇包烘烤到 600°C 以上再用。\n2. 球化剂 FeSiMg6 加入量 1.4–1.6%，冲入法，覆盖铁屑。\n3. 出铁温度 1480–1500°C，球化完成后 12 分钟内浇完，超时回炉。\n\n常见问题：残镁低于 0.030% 时球化不良风险大，检查球化剂加入量和浇包等待时间；浇注温度低于 1380°C 易出冷隔。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P20",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "中频炉安全操作规程",
+"tags": "安全,设备",
+"content": "1. 送电前确认冷却水流量 ≥30 m³/h、出水温度 <55°C。\n2. 炉衬漏电流超过报警值立即停电检查，防止漏炉。\n3. 加料不得有水分、密闭容器。\n\n炉衬余厚低于 60 mm 安排修炉。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P10",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "内窥检测判定标准（SGH-450 油道）",
+"tags": "质量,检测",
+"content": "检测部位：8 个油道交叉孔。\n合格：交叉口残余毛刺 ≤0.1 mm，内腔气孔/缩松 ≤0.8 mm。\n毛刺超标的件返修一次（去毛刺单元复刷），复检仍不合格判废。\n气孔、缩松超标直接判废并回溯炉次。光源亮度不低于 60%。",
+"updated": "2026-11-04 09:30:00",
+"kind": "standard",
+"product": "SGH-450",
+"process": "P80",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "CNC 换刀作业指导",
+"tags": "工艺,机加",
+"content": "T03 Φ8 钻头寿命 100 件，到数自动换刀。\n换刀后首件必须测头复测缸孔，并做首件检验。\n主轴负载比换刀后初始值高 30% 以上时提前换刀（MES 刀具监测会预警）。\n钻头磨损会使交叉孔毛刺变大，是内窥检测毛刺 NG 的主要来源。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": "SGH-450",
+"process": "P60",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "型砂水分控制要点",
+"tags": "工艺,铸造",
+"content": "目标水分 3.3–3.5%，紧实率 38–42%。\n回砂温度高于 45°C 时水分蒸发快，需提高加水量。\n水分偏高时气孔明显增多。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": "P30",
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "设备故障停机处置流程",
+"tags": "SOP,设备",
+"content": "1. 设备故障停机后，操作工立即拉安灯并在 MES 报修，写清报警内容和停机时间。\n2. 设备员 10 分钟内到场，先确认安全（断电挂牌），再按报警代码排查。\n3. 加工中心常见故障：主轴过载（检查刀具磨损、切削参数）、润滑压力低（检查油位和油泵）、气压不足（检查气源 0.5 MPa）。\n4. 中频炉常见故障：冷却水流量低（检查水泵和过滤器）、炉衬漏电报警（立即停电，防止漏炉）。\n\n常用备件：主轴轴承、刀柄拉钉、润滑泵滤芯、电磁阀、冷却水泵密封、炉衬耐火材料。修复后填写故障原因和处理方法，班长验收。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": null,
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "安灯响应规范",
+"tags": "SOP,生产",
+"content": "安灯分为设备、质量、物料、安全四类。设备类由设备员响应，质量类由质检员响应，物料类由仓管员响应，安全类班组长立即到场。\n响应时限：5 分钟内到场；15 分钟内不能解决的升级到车间主任。处理完毕在 MES 关闭安灯并写处理结果。",
+"updated": "2026-11-04 09:30:00",
+"kind": "sop",
+"product": null,
+"process": null,
+"version": null,
+"file_name": null,
+"file_type": null,
+"file_size": null
+},
+{
+"title": "SGH-450 机加工序图 OP60",
+"tags": "图纸,P60",
+"content": "机加工序图（DXF）：外形、缸孔 Φ40 H7、4×M10 螺栓孔、油道孔位置，平面度 0.03。工位终端和报工详情里按产品 + 工序自动带出。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P60",
+"version": "V3",
+"file_name": "sgh450_op60.dxf",
+"file_type": "dxf",
+"file_size": 1105
+},
+{
+"title": "SGH-450 检验图 OP80",
+"tags": "图纸,P80",
+"content": "内窥 / 出货检验用检验图（PDF），标注缸孔、平面度、油道孔位置度和毛刺要求。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P80",
+"version": "V3",
+"file_name": "sgh450_op80.pdf",
+"file_type": "pdf",
+"file_size": 1897
+},
+{
+"title": "SGH-450 毛坯图（浇口位置）",
+"tags": "图纸,P30",
+"content": "毛坯示意图（图片）：浇口、冒口位置和加工余量。",
+"updated": "2026-11-04 09:30:00",
+"kind": "drawing",
+"product": "SGH-450",
+"process": "P30",
+"version": "V2",
+"file_name": "sgh450_blank.png",
+"file_type": "image",
+"file_size": 4108
+}
+],
+"daily_report": [],
+"ai_log": [],
+"andon": [],
+"material_request": [],
+"schedule_proposal": [],
+"notice": [],
+"ai_report": [],
+"sys_user": [
+{
+"username": "admin",
+"name": "系统管理员",
+"roles": "admin",
+"employee": null,
+"active": true,
+"scope": null
+},
+{
+"username": "manager",
+"name": "王厂长",
+"roles": "manager",
+"employee": null,
+"active": true,
+"scope": null
+},
+{
+"username": "planner",
+"name": "计划员李娜",
+"roles": "planner",
+"employee": "E014",
+"active": true,
+"scope": null
+},
+{
+"username": "leader",
+"name": "班长张强",
+"roles": "leader",
+"employee": "E001",
+"active": true,
+"scope": null
+},
+{
+"username": "operator",
+"name": "CNC 操作工赵磊",
+"roles": "operator",
+"employee": "E006",
+"active": true,
+"scope": null
+},
+{
+"username": "qc",
+"name": "质检员孙敏",
+"roles": "qc",
+"employee": "E011",
+"active": true,
+"scope": null
+},
+{
+"username": "maint",
+"name": "设备员周涛",
+"roles": "maint",
+"employee": "E012",
+"active": true,
+"scope": null
+},
+{
+"username": "wh",
+"name": "仓管员吴芳",
+"roles": "warehouse",
+"employee": "E010",
+"active": true,
+"scope": null
+},
+{
+"username": "engineer",
+"name": "工艺工程师郑凯",
+"roles": "engineer",
+"employee": "E013",
+"active": true,
+"scope": null
+}
+],
+"setting": [
+{
+"key": "ts_mode",
+"value": "sqlite",
+"remark": "设备时序存储模式（迁移 v0004 决定：timescale / pgpart / sqlite）"
+},
+{
+"key": "company",
+"value": "蜂元科技（郑州）有限责任公司",
+"remark": "公司名称"
+},
+{
+"key": "tou",
+"value": "谷电 23:00–07:00；峰电 08:00–11:00、18:00–22:00",
+"remark": "峰谷电时段（能耗建议用）"
+},
+{
+"key": "report_auto_interval_min",
+"value": "60",
+"remark": "设备自动报工汇总间隔（分钟：5/10/15/20/30/60）"
+},
+{
+"key": "report_over_pct",
+"value": "0",
+"remark": "报工允许超出计划的比例 %（0 = 不许超报）"
+},
+{
+"key": "demo_fai_orders",
+"value": "1,2,3",
+"remark": "演示工单：下达时自动带已放行的首检（4.7 首检闸门）"
+},
+{
+"key": "demo_fai_v47",
+"value": "0",
+"remark": "4.7 升级时给在制工单补的已放行首检数（只做一次）"
+}
+]
+},
+"entities": [
+"plant",
+"workshop",
+"line",
+"process",
+"workstation",
+"material",
+"bom",
+"route",
+"route_step",
+"shift",
+"skill",
+"changeover",
+"team",
+"employee",
+"defect_code",
+"work_order",
+"wo_op",
+"report",
+"material_issue",
+"wo_kitting",
+"attendance",
+"worker_daily",
+"part",
+"part_event",
+"shipment",
+"insp_template",
+"insp_item",
+"insp_record",
+"insp_value",
+"ncr",
+"rework",
+"first_article",
+"lot_hold",
+"report_8d",
+"equipment",
+"datasource",
+"tag_point",
+"equip_state",
+"alarm",
+"maint_plan",
+"maint_record",
+"repair_order",
+"tooling",
+"downtime_plan",
+"warehouse",
+"location",
+"stock",
+"stock_txn",
+"agv_task",
+"energy_hour",
+"heat",
+"treatment_rec",
+"charge_material",
+"charge_plan",
+"nc_program",
+"tool",
+"tool_change",
+"kb_doc",
+"daily_report",
+"ai_log",
+"andon",
+"material_request",
+"schedule_proposal",
+"notice",
+"ai_report",
+"sys_user",
+"setting"
+]
+}

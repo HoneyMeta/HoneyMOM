@@ -1,0 +1,198 @@
+{
+ "version": 1,
+ "feature": "automation",
+ "items": {
+  "parse:39f162705c274798": {
+   "op": "parse",
+   "request": {
+    "text": "主轴负载连续10分钟>90%就提醒班长并建议降速"
+   },
+   "raw_request": {
+    "text": "主轴负载连续 10 分钟 > 90% 就提醒班长并建议降速"
+   },
+   "response": {
+    "flow": {
+     "name": "主轴负载过高",
+     "trigger": {
+      "type": "metric",
+      "equipment": "*",
+      "metric": "spindle_load",
+      "op": ">",
+      "value": 90.0,
+      "for_min": 10.0
+     },
+     "conditions": [],
+     "actions": [
+      {
+       "type": "notify",
+       "to_role": "leader",
+       "title": "主轴负载过高",
+       "content": "{equipment}主轴负载连续{duration}分钟达到{value}%，超过{threshold}%阈值，请关注。",
+       "level": "warn"
+      },
+      {
+       "type": "suggest",
+       "text": "建议适当降低设备进给速度或主轴转速，观察负载恢复情况。"
+      }
+     ],
+     "cooldown_min": 10
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-04 18:09:51"
+  },
+  "parse:c5a872b8d07ec7e0": {
+   "op": "parse",
+   "request": {
+    "text": "cnc主轴负载连续3分钟超过40%就提醒设备员,建议检查刀具"
+   },
+   "raw_request": {
+    "text": "CNC 主轴负载连续 3 分钟超过 40% 就提醒设备员，建议检查刀具"
+   },
+   "response": {
+    "flow": {
+     "name": "主轴负载超限",
+     "trigger": {
+      "type": "metric",
+      "equipment": "*",
+      "metric": "spindle_load",
+      "op": ">",
+      "value": 40.0,
+      "for_min": 3.0
+     },
+     "conditions": [],
+     "actions": [
+      {
+       "type": "notify",
+       "to_role": "maint",
+       "title": "CNC主轴负载超限",
+       "content": "CNC主轴负载连续3分钟超过40%，请及时处理。",
+       "level": "warn"
+      },
+      {
+       "type": "suggest",
+       "text": "建议检查刀具。"
+      }
+     ],
+     "cooldown_min": 30
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-04 18:11:15"
+  },
+  "parse:6e56f7e0d47065bd": {
+   "op": "parse",
+   "request": {
+    "text": "8小时内残余毛刺不合格品超过3条就提醒质检员并发起安灯"
+   },
+   "raw_request": {
+    "text": "8 小时内残余毛刺不合格品超过 3 条就提醒质检员并发起安灯"
+   },
+   "response": {
+    "flow": {
+     "name": "毛刺不合格超限",
+     "trigger": {
+      "type": "ncr",
+      "equipment": "*",
+      "match": "残余毛刺",
+      "count": 3,
+      "within_min": 480
+     },
+     "conditions": [],
+     "actions": [
+      {
+       "type": "notify",
+       "to_role": "qc",
+       "title": "残余毛刺不合格品超限",
+       "content": "8小时内残余毛刺不合格品已超过3条，请及时复核并处理。",
+       "level": "warn"
+      },
+      {
+       "type": "draft",
+       "op": "andon_raise",
+       "payload": {
+        "reason": "8小时内残余毛刺不合格品超过3条",
+        "level": "warn"
+       }
+      }
+     ],
+     "cooldown_min": 480
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-04 18:11:31"
+  },
+  "parse:6b538206f84c1312": {
+   "op": "parse",
+   "request": {
+    "text": "任何设备停机超过15分钟就起草维修单"
+   },
+   "raw_request": {
+    "text": "任何设备停机超过 15 分钟就起草维修单"
+   },
+   "response": {
+    "flow": {
+     "name": "停机维修单",
+     "trigger": {
+      "type": "down",
+      "equipment": "*",
+      "for_min": 15.0
+     },
+     "conditions": [],
+     "actions": [
+      {
+       "type": "draft",
+       "op": "repair_order",
+       "payload": {
+        "equipment": "{equipment}",
+        "reason": "停机超过15分钟"
+       }
+      }
+     ],
+     "cooldown_min": 30
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-04 18:11:38"
+  },
+  "parse:a070ec0207b98ff5": {
+   "op": "parse",
+   "request": {
+    "text": "cnc主轴负载连续1分钟超过40%就提醒设备员,建议检查刀具"
+   },
+   "raw_request": {
+    "text": "CNC 主轴负载连续 1 分钟超过 40% 就提醒设备员，建议检查刀具"
+   },
+   "response": {
+    "flow": {
+     "name": "CNC负载超限",
+     "trigger": {
+      "type": "metric",
+      "equipment": "*",
+      "metric": "spindle_load",
+      "op": ">",
+      "value": 40.0,
+      "for_min": 1.0
+     },
+     "conditions": [],
+     "actions": [
+      {
+       "type": "notify",
+       "to_role": "maint",
+       "title": "CNC主轴负载超限",
+       "content": "CNC主轴负载连续{duration}分钟超过{threshold}%，请及时处理。",
+       "level": "warn"
+      },
+      {
+       "type": "suggest",
+       "text": "建议检查刀具磨损、崩刃及装夹状态。"
+      }
+     ],
+     "cooldown_min": 10
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-04 18:38:35"
+  }
+ }
+}

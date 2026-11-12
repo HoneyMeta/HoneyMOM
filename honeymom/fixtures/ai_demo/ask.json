@@ -1,0 +1,1171 @@
+{
+ "version": 1,
+ "feature": "ask",
+ "items": {
+  "chat:0541ad2f905f3da3": {
+   "op": "chat",
+   "request": {
+    "text": "最近8小时各设备oee对比,哪台最低"
+   },
+   "raw_request": {
+    "text": "最近 8 小时各设备 OEE 对比，哪台最低？",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取最近 8 小时的OEE 与损失树…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "最近 8 小时 OEE 最低的是 [[equipment:ASRS1]]（成品立体仓库），OEE 为 **36.7%**。主要损失是**待机/等待 5.06 小时**，性能仅 **36.7%**。\n\n对比来看，第二低的是 [[equipment:INS1]]，OEE **50.0%**。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "chart",
+        "kind": "hbar",
+        "title": "最近 8 小时各设备 OEE",
+        "x": [
+         "ASRS1",
+         "INS1",
+         "COOL1",
+         "MOLD1",
+         "CNC6",
+         "CNC3",
+         "CNC4",
+         "CNC5",
+         "CNC2",
+         "CNC1",
+         "SHOT1",
+         "DEB1"
+        ],
+        "series": [
+         {
+          "name": "OEE",
+          "data": [
+           0.367,
+           0.5,
+           0.629,
+           0.631,
+           0.642,
+           0.672,
+           0.687,
+           0.687,
+           0.732,
+           0.747,
+           0.787,
+           0.84
+          ]
+         }
+        ],
+        "unit": "%",
+        "id": "b1"
+       },
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "query",
+          "label": "最近 8 小时的OEE 与损失树（12 行）",
+          "args": {
+           "kind": "oee",
+           "hours": 8,
+           "limit": 200
+          },
+          "failed": false
+         }
+        ],
+        "id": "b2"
+       }
+      ],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 16,
+        "code": "ASRS1",
+        "label": "ASRS1 成品立体仓库",
+        "kind": "设备台账"
+       },
+       {
+        "entity": "equipment",
+        "id": 15,
+        "code": "INS1",
+        "label": "INS1 自动内窥检测站",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:17:50"
+  },
+  "chat:2637ccd028294f76": {
+   "op": "chat",
+   "request": {
+    "text": "今天产量和废品率怎么样"
+   },
+   "raw_request": {
+    "text": "今天产量和废品率怎么样",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在汇总2026-11-06的生产、质量、设备和能耗指标…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "今天产量和质量概况：\n\n- **铸件产量：1,822 件**\n- **机加工产量：591 件**\n- **报废：86 件，废品率 4.72%**\n- **返修：136 件**\n\n废品率需要重点关注，当前未关闭不合格品有 **99 单**。缺陷记录中以**残余毛刺**最多，其次是球化不良和内腔气孔/缩松。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "kpis",
+        "title": "",
+        "items": [
+         {
+          "label": "铸件产量",
+          "value": 1822,
+          "unit": "件",
+          "format": "int"
+         },
+         {
+          "label": "机加工产量",
+          "value": 591,
+          "unit": "件",
+          "format": "int"
+         },
+         {
+          "label": "报废数量",
+          "value": 86,
+          "unit": "件",
+          "format": "int"
+         },
+         {
+          "label": "废品率",
+          "value": 0.0472,
+          "format": "pct",
+          "good": "down"
+         },
+         {
+          "label": "返修数量",
+          "value": 136,
+          "unit": "件",
+          "format": "int"
+         }
+        ],
+        "id": "b1"
+       },
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "kpi",
+          "label": "2026-11-06 汇总指标（生产 / 质量 / 设备 / 能耗）",
+          "failed": false
+         }
+        ],
+        "id": "b2"
+       }
+      ],
+      "refs": [],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:18:31"
+  },
+  "chat:5cb804e48c69587f": {
+   "op": "chat",
+   "request": {
+    "text": "今天主要缺陷有哪些?按数量排个序"
+   },
+   "raw_request": {
+    "text": "今天主要缺陷有哪些？按数量排个序",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在查报工记录、缺陷代码数据…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在查不合格品、缺陷代码数据…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在查检验记录、不合格品、缺陷代码数据…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "今天按不合格品单数量统计，主要缺陷依次为：\n\n1. **D06 残余毛刺：152 件**\n2. **D04 球化不良：28 件**\n3. **D05 内腔气孔/缩松：22 件**\n4. **未分类：16 件**\n5. **D07 缸孔尺寸超差：8 件**\n6. **D03 冷隔/开裂：7 件**\n7. **D10 误报/待复判：5 件**\n8. **D08 断刀报废：5 件**\n\n统计范围：2026-11-06 00:00 至 24:00，来源为当天发现的不合格品单。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "chart",
+        "kind": "hbar",
+        "title": "今日缺陷数量排名",
+        "x": [
+         "D06 残余毛刺",
+         "D04 球化不良",
+         "D05 内腔气孔/缩松",
+         "未分类",
+         "D07 缸孔尺寸超差",
+         "D03 冷隔/开裂",
+         "D10 误报/待复判",
+         "D08 断刀报废"
+        ],
+        "series": [
+         {
+          "name": "不合格数量",
+          "data": [
+           152,
+           28,
+           22,
+           16,
+           8,
+           7,
+           5,
+           5
+          ]
+         }
+        ],
+        "unit": "件",
+        "id": "b1"
+       },
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "sql",
+          "label": "查询 报工记录、缺陷代码（0 行）",
+          "sql": "SELECT COALESCE(dc.code, '未分类') AS defect_code, COALESCE(dc.name, '未分类') AS defect_name, SUM(COALESCE(r.qty_ng,0)) AS qty_ng, COUNT(*) AS report_count FROM report r LEFT JOIN defect_code dc ON dc.id = r.defect WHERE r.start >= '2026-11-06 00:00:00' AND r.start < '2026-11-07 00:00:00' AND COALESCE(r.qty_ng,0) > 0 GROUP BY dc.code, dc.name ORDER BY qty_ng DESC, report_count DESC LIMIT 15",
+          "rows": 0,
+          "failed": false
+         },
+         {
+          "id": "q2",
+          "kind": "sql",
+          "label": "查询 不合格品、缺陷代码（8 行）",
+          "sql": "SELECT COALESCE(dc.code,'未分类') AS defect_code, COALESCE(dc.name,'未分类') AS defect_name, SUM(COALESCE(n.qty,0)) AS qty_ng, COUNT(*) AS ncr_count FROM ncr n LEFT JOIN defect_code dc ON dc.id=n.defect WHERE n.found_at >= '2026-11-06 00:00:00' AND n.found_at < '2026-11-07 00:00:00' GROUP BY dc.code,dc.name ORDER BY qty_ng DESC,ncr_count DESC LIMIT 15",
+          "rows": 8,
+          "failed": false
+         },
+         {
+          "id": "q3",
+          "kind": "sql",
+          "label": "查询 检验记录、不合格品、缺陷代码（8 行）",
+          "sql": "SELECT COALESCE(dc.code,'未分类') AS defect_code, COALESCE(dc.name,'未分类') AS defect_name, SUM(COALESCE(ir.qty_ng,0)) AS qty_ng, COUNT(*) AS record_count FROM insp_record ir LEFT JOIN ncr n ON n.id IS NOT NULL LEFT JOIN defect_code dc ON dc.id = n.defect WHERE ir.time >= '2026-11-06 00:00:00' AND ir.time < '2026-11-07 00:00:00' AND COALESCE(ir.qty_ng,0)>0 GROUP BY dc.code,dc.name ORDER BY qty_ng DESC,record_count DESC LIMIT 15",
+          "rows": 8,
+          "failed": false
+         }
+        ],
+        "id": "b2"
+       }
+      ],
+      "refs": [],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:20:25"
+  },
+  "chat:df5f45376f7393ba": {
+   "op": "chat",
+   "request": {
+    "text": "最近8小时哪台设备停机最多?带我去看"
+   },
+   "raw_request": {
+    "text": "最近 8 小时哪台设备停机最多？带我去看",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取最近 8 小时的停机与报警…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在打开页面…"
+     }
+    ],
+    [
+     "navigate",
+     {
+      "path": "/equipment/oee",
+      "label": "OEE 分析",
+      "reason": "查看近8小时设备停机与损失明细"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "最近 8 小时停机最多的是 [[equipment:CNC5]]（5#加工中心），累计约 **28.4 分钟**。已带你打开 **OEE 分析** 页面查看停机明细。\n\n依据：[[equipment:CNC5]] 发生 1 次已记录停机，原因是 **T01 Φ80 面铣刀断刀**；另有等待上下料报警记录。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "query",
+          "label": "最近 8 小时的停机与报警",
+          "args": {
+           "kind": "downtime",
+           "hours": 8,
+           "limit": 200
+          },
+          "failed": false
+         }
+        ],
+        "id": "b1"
+       }
+      ],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 12,
+        "code": "CNC5",
+        "label": "CNC5 5#加工中心",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:22:28"
+  },
+  "chat:9bc47030199ac7d8": {
+   "op": "chat",
+   "request": {
+    "action": "explain",
+    "context": [
+     "废品率7.1%"
+    ],
+    "text": "解释这个数:废品率7.1%。它是怎么算出来的、当前水平算好还是差、需要关注什么"
+   },
+   "raw_request": {
+    "text": "解释这个数：废品率 7.1%。它是怎么算出来的、当前水平算好还是差、需要关注什么？",
+    "context": [
+     "废品率 7.1%"
+    ],
+    "action": "explain"
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在汇总2026-11-06的生产、质量、设备和能耗指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的质量与 SPC…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "结论：**7.1% 表示每 100 件生产数量中约有 7 件被判定为报废，当前水平应视为偏高、需要立即关注。**不过，系统今日汇总显示为 **48 件报废、684 件铸件，废品率 7.02%**，四舍五入应为 **7.0%**；与页面显示的 7.1% 存在轻微口径差异，需要核对统计时点或分母。\n\n### 它是怎么算的\n\n通常公式是：\n\n> **废品率 = 报废数量 ÷ 生产数量 × 100%**\n\n今日查询到：\n\n- 报废数量：**48 件**\n- 生产数量：**684 件**\n- 计算结果：**48 ÷ 684 = 7.02%**\n- 系统页面显示：**7.1%**\n\n因此，页面上的 7.1% 很可能使用了不同的统计时点、生产数量口径，或包含了尚未在日汇总中体现的记录。\n\n### 当前算好还是差\n\n- 系统未返回明确的目标废品率或历史基准，因此不能按企业目标直接判定达标与否。\n- 从绝对水平看，**报废 48 件、废品率约 7% 已经不是可忽略水平**，会直接影响有效产出和材料、加工工时。\n- 另外还有 **16 件返修**，说明实际质量损失不仅是报废，还包括返修占用。\n\n### 需要重点关注什么\n\n今日报废原因主要集中在：\n\n1. **球化不良：26 件**  \n   优先核查球化处理记录、残镁、处理温度、铁水批次及相关试块判定。\n2. **残余毛刺：15 件**  \n   重点检查去毛刺工艺、刀具/工具状态和内窥检测站判定。\n3. **内腔气孔/缩松：8 件**  \n   关注浇注、补缩、型砂及炉次质量。\n4. **缸孔尺寸超差：5 件**  \n   SPC 数据显示缸孔直径 **Cpk=1.144、Ppk=0.999**，并出现连续同侧及超出控制限的判异，需检查刀具磨损、机床状态和尺寸漂移。\n\n此外，当前有 **78 张不合格品单处于未关闭状态**，建议先核对其中是否存在重复判定、待复判或集中批次问题，再按缺陷类别落实责任工序和临时措施。\n\n建议先处理顺序：**球化不良 → 缸孔尺寸超差 → 残余毛刺**，同时让质量人员核对“7.1%”与“48/684=7.02%”的统计口径。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "ctx",
+          "kind": "context",
+          "label": "你选中的：废品率 7.1%"
+         },
+         {
+          "id": "q1",
+          "kind": "kpi",
+          "label": "2026-11-06 汇总指标（生产 / 质量 / 设备 / 能耗）",
+          "failed": false
+         },
+         {
+          "id": "q2",
+          "kind": "query",
+          "label": "的质量与 SPC",
+          "args": {
+           "kind": "quality",
+           "limit": 20
+          },
+          "failed": false
+         }
+        ],
+        "id": "b1"
+       }
+      ],
+      "refs": [],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:00:14"
+  },
+  "chat:a0d64b38cc0a338c": {
+   "op": "chat",
+   "request": {
+    "action": "why",
+    "context": [
+     "平均oee86.8%"
+    ],
+    "text": "平均oee86.8%为什么会变化?对比之前的情况找出主要原因,给出依据(查数据)"
+   },
+   "raw_request": {
+    "text": "平均 OEE 86.8% 为什么会变化？对比之前的情况找出主要原因，给出依据（查数据）。",
+    "context": [
+     "平均 OEE 86.8%"
+    ],
+    "action": "why"
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的OEE 与损失树…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的OEE 与损失树…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的停机与报警…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的停机与报警…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在汇总2026-11-06的生产、质量、设备和能耗指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在汇总2026-11-05的生产、质量、设备和能耗指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的某天汇总指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的某天汇总指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在查日报数据…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的某天汇总指标…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取的某天汇总指标…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "**结论：**页面选中的平均 OEE 为 **86.8%**；按 MES 日汇总，11 月 6 日为 **86.5%**，比 11 月 5 日的 **68.0%** 回升 **18.5 个百分点**。主要依据是机加工设备 OEE 回升、等待损失大幅减少；内窥检测站的质量因子也改善了。\n\n- 11 月 5 日，六台 CNC 的“待机/等待”合计 **38.09 小时**；11 月 6 日降至 **0.94 小时**。当天报警从 **486 次**降至 **12 次**。前一天较突出的报警是 [[equipment:CNC6]] 下游缓存满 **62 次**、等待操作工 **59 次**。\n- 六台 CNC 的 OEE 均回升，尤其是 [[equipment:CNC5]] 从 **64.2%** 到 **93.1%**、[[equipment:CNC6]] 从 **63.2%** 到 **89.7%**。[[equipment:INS1]] 从 **50.0%** 到 **75.6%**，其质量因子从 **63.5%** 升至 **89.6%**。\n- 但全厂废品率并未同步改善：11 月 5 日为 **6.04%**，11 月 6 日为 **6.45%**。因此，这次 OEE 回升更有力的解释是等待损失和设备表现改善，而不是整体废品率下降。\n- 口径提醒：页面选中的 **86.78%** 与 11 月 6 日日汇总 **86.5%** 相差约 **0.3 个百分点**；现有查询无法确认两者统计范围是否完全一致。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "table",
+        "title": "日汇总对比",
+        "columns": [
+         {
+          "key": "day",
+          "label": "日期"
+         },
+         {
+          "key": "oee",
+          "label": "平均 OEE",
+          "num": true,
+          "format": "pct"
+         },
+         {
+          "key": "alarms",
+          "label": "报警",
+          "num": true,
+          "format": "int"
+         },
+         {
+          "key": "scrap_rate",
+          "label": "废品率",
+          "num": true,
+          "format": "pct"
+         }
+        ],
+        "rows": [
+         {
+          "day": "2026-11-05",
+          "oee": 0.68,
+          "alarms": 486,
+          "scrap_rate": 0.0604
+         },
+         {
+          "day": "2026-11-06",
+          "oee": 0.865,
+          "alarms": 12,
+          "scrap_rate": 0.0645
+         }
+        ],
+        "id": "b1"
+       },
+       {
+        "type": "table",
+        "title": "CNC 日 OEE 对比",
+        "columns": [
+         {
+          "key": "code",
+          "label": "设备"
+         },
+         {
+          "key": "prev",
+          "label": "11月5日",
+          "num": true,
+          "format": "pct"
+         },
+         {
+          "key": "current",
+          "label": "11月6日",
+          "num": true,
+          "format": "pct"
+         }
+        ],
+        "rows": [
+         {
+          "code": "CNC1",
+          "prev": 0.712,
+          "current": 0.948
+         },
+         {
+          "code": "CNC2",
+          "prev": 0.702,
+          "current": 0.846
+         },
+         {
+          "code": "CNC3",
+          "prev": 0.672,
+          "current": 0.914
+         },
+         {
+          "code": "CNC4",
+          "prev": 0.667,
+          "current": 0.897
+         },
+         {
+          "code": "CNC5",
+          "prev": 0.642,
+          "current": 0.931
+         },
+         {
+          "code": "CNC6",
+          "prev": 0.632,
+          "current": 0.897
+         }
+        ],
+        "id": "b2"
+       },
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "ctx",
+          "kind": "context",
+          "label": "你选中的：平均 OEE 86.8%"
+         },
+         {
+          "id": "q1",
+          "kind": "query",
+          "label": "的OEE 与损失树（12 行）",
+          "args": {
+           "kind": "oee",
+           "day": "2026-11-06",
+           "limit": 100
+          },
+          "failed": false
+         },
+         {
+          "id": "q2",
+          "kind": "query",
+          "label": "的OEE 与损失树（12 行）",
+          "args": {
+           "kind": "oee",
+           "day": "2026-11-05",
+           "limit": 100
+          },
+          "failed": false
+         },
+         {
+          "id": "q3",
+          "kind": "query",
+          "label": "的停机与报警",
+          "args": {
+           "kind": "downtime",
+           "day": "2026-11-06",
+           "limit": 100
+          },
+          "failed": false
+         },
+         {
+          "id": "q4",
+          "kind": "query",
+          "label": "的停机与报警",
+          "args": {
+           "kind": "downtime",
+           "day": "2026-11-05",
+           "limit": 100
+          },
+          "failed": false
+         },
+         {
+          "id": "q5",
+          "kind": "kpi",
+          "label": "2026-11-06 汇总指标（生产 / 质量 / 设备 / 能耗）",
+          "failed": false
+         },
+         {
+          "id": "q6",
+          "kind": "kpi",
+          "label": "2026-11-05 汇总指标（生产 / 质量 / 设备 / 能耗）",
+          "failed": false
+         },
+         {
+          "id": "q7",
+          "kind": "query",
+          "label": "的某天汇总指标（0 行）",
+          "args": {
+           "kind": "kpi",
+           "day": "2026-11-04",
+           "limit": 20
+          },
+          "failed": false
+         },
+         {
+          "id": "q8",
+          "kind": "query",
+          "label": "的某天汇总指标（0 行）",
+          "args": {
+           "kind": "kpi",
+           "day": "2026-11-03",
+           "limit": 20
+          },
+          "failed": false
+         },
+         {
+          "id": "q9",
+          "kind": "sql",
+          "label": "查询 日报",
+          "sql": "SELECT day, content, kpi, generated_at FROM daily_report WHERE day IN ('2026-11-04','2026-11-05','2026-11-06') ORDER BY day",
+          "rows": null,
+          "failed": false
+         },
+         {
+          "id": "q10",
+          "kind": "query",
+          "label": "的某天汇总指标（0 行）",
+          "args": {
+           "kind": "kpi",
+           "day": "2026-11-05",
+           "limit": 20
+          },
+          "failed": false
+         },
+         {
+          "id": "q11",
+          "kind": "query",
+          "label": "的某天汇总指标（0 行）",
+          "args": {
+           "kind": "kpi",
+           "day": "2026-11-06",
+           "limit": 20
+          },
+          "failed": false
+         }
+        ],
+        "id": "b3"
+       }
+      ],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 13,
+        "code": "CNC6",
+        "label": "CNC6 6#加工中心",
+        "kind": "设备台账"
+       },
+       {
+        "entity": "equipment",
+        "id": 12,
+        "code": "CNC5",
+        "label": "CNC5 5#加工中心",
+        "kind": "设备台账"
+       },
+       {
+        "entity": "equipment",
+        "id": 15,
+        "code": "INS1",
+        "label": "INS1 自动内窥检测站",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:04:09"
+  },
+  "chat:f396af3ad0e86a2b": {
+   "op": "chat",
+   "request": {
+    "text": "cnc6反复出现“等待上下料(操作工未到位)”,帮我起草一张维修工单,紧急程度一般"
+   },
+   "raw_request": {
+    "text": "CNC6 反复出现“等待上下料（操作工未到位）”，帮我起草一张维修工单，紧急程度一般",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在检查这项修改能不能做…"
+     }
+    ],
+    [
+     "propose",
+     {
+      "op": "repair_order",
+      "payload": {
+       "equipment": "CNC6",
+       "fault": "反复出现“等待上下料（操作工未到位）”",
+       "level": "normal",
+       "parts_used": "",
+       "cause": "待排查",
+       "reported_by": ""
+      },
+      "summary": "待排查"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "已起草维修工单，请审批。\n\n- 设备：[[equipment:CNC6]]\n- 故障描述：反复出现“等待上下料（操作工未到位）”\n- 紧急程度：一般\n- 初步原因：待排查"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 13,
+        "code": "CNC6",
+        "label": "CNC6 6#加工中心",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:05:26"
+  },
+  "chat:13f77aade6f455fe": {
+   "op": "chat",
+   "request": {
+    "text": "cnc2的t02刀具磨损偏快,帮我起草:把它的寿命下调10%"
+   },
+   "raw_request": {
+    "text": "CNC2 的 T02 刀具磨损偏快，帮我起草：把它的寿命下调 10%",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在查刀具台账、设备台账数据…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在检查这项修改能不能做…"
+     }
+    ],
+    [
+     "propose",
+     {
+      "op": "param_adjust",
+      "payload": {
+       "entity": "tool",
+       "record": 7,
+       "record_label": "T02 Φ38 粗镗刀",
+       "field": "life_limit",
+       "value": 270,
+       "reason": "CNC2 的 T02 刀具磨损偏快，按要求将寿命下调 10%。当前寿命上限为 300 件。"
+      },
+      "summary": "CNC2 的 T02 刀具磨损偏快，按要求将寿命下调 10%。当前寿命上限为 300 件。"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "已为 [[equipment:CNC2]] 的 T02（Φ38 粗镗刀）起草参数调整，请审批。\n\n- 寿命上限：300 件 → 270 件\n- 调整原因：刀具磨损偏快"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "sql",
+          "label": "查询 刀具台账、设备台账（1 行）",
+          "sql": "SELECT t.id, t.code, t.name, t.equipment, e.code AS equipment_code, t.life_limit, t.used, t.wear_pct, t.status FROM tool t JOIN equipment e ON e.id = t.equipment WHERE e.code = 'CNC2' AND t.code = 'T02' LIMIT 1",
+          "rows": 1,
+          "failed": false
+         }
+        ],
+        "id": "b1"
+       }
+      ],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 9,
+        "code": "CNC2",
+        "label": "CNC2 2#加工中心",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-04 18:07:02"
+  },
+  "draft_suggest:766b90869617c140": {
+   "op": "draft_suggest",
+   "request": {
+    "op": "repair_order",
+    "subject": "cnc6"
+   },
+   "raw_request": {
+    "op": "repair_order",
+    "subject": "CNC6"
+   },
+   "response": {
+    "cause": "近期报警包括等待上下料（操作工未到位）和下游缓存满（堵料）。"
+   },
+   "recorded_at": "2026-11-04 18:07:59"
+  },
+  "draft_suggest:8b6f484d86b5e1ed": {
+   "op": "draft_suggest",
+   "request": {
+    "op": "repair_order",
+    "subject": "cnc5"
+   },
+   "raw_request": {
+    "op": "repair_order",
+    "subject": "CNC5"
+   },
+   "response": {
+    "fault": "等待上下料，操作工未到位",
+    "cause": "操作工未到位"
+   },
+   "recorded_at": "2026-11-04 18:08:18"
+  },
+  "chat:97758c4a30b4887c": {
+   "op": "chat",
+   "request": {
+    "text": "机加区最近8小时的瓶颈工位和瓶颈动作是什么?损失多少"
+   },
+   "raw_request": {
+    "text": "机加区最近 8 小时的瓶颈工位和瓶颈动作是什么？损失多少？",
+    "context": [],
+    "action": ""
+   },
+   "response": [
+    [
+     "progress",
+     {
+      "text": "正在理解你的问题…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在读取工厂模型…"
+     }
+    ],
+    [
+     "tool",
+     {
+      "text": "正在分析L-MACH的动作节拍…"
+     }
+    ],
+    [
+     "answer",
+     {
+      "text": "结论：最近 8 小时机加区瓶颈是 [[equipment:CNC1]]（1#加工中心），瓶颈动作是“夹具气缸伸出（夹紧）”。该动作每循环比基线慢 **3.01 秒**，折算损失约 **474.9 秒/天、1.06 件/天、84.5 元/天**，年化约 **25,361 元**。\n\n依据：\n- 动作中位数：**4.106 秒**；基线：**1.076 秒**。\n- CNC1 并联折算单件节拍：**69.49 秒**，为机加区 7 个有模型工位中最高。\n- 当前损失估算按 **300 个工作日/年、每件价值 80 元**计算。"
+     }
+    ],
+    [
+     "blocks",
+     {
+      "blocks": [
+       {
+        "type": "chart",
+        "kind": "bar",
+        "title": "近 8 小时各工位单件节拍（并联折算）",
+        "x": [
+         "CNC1",
+         "CNC2",
+         "CNC5",
+         "CNC3",
+         "CNC4",
+         "CNC6",
+         "DEB1"
+        ],
+        "series": [
+         {
+          "name": "单件节拍",
+          "data": [
+           69.49,
+           68.995,
+           68.992,
+           68.988,
+           68.986,
+           68.983,
+           66.0
+          ]
+         }
+        ],
+        "unit": "s",
+        "id": "b1"
+       },
+       {
+        "type": "table",
+        "title": "瓶颈动作损失",
+        "columns": [
+         {
+          "key": "equipment",
+          "label": "设备"
+         },
+         {
+          "key": "action",
+          "label": "动作"
+         },
+         {
+          "key": "excess_s",
+          "label": "每循环慢 s",
+          "num": true
+         },
+         {
+          "key": "lost_s_day",
+          "label": "损失 s/天",
+          "num": true
+         },
+         {
+          "key": "parts_day",
+          "label": "少做 件/天",
+          "num": true
+         },
+         {
+          "key": "money_day",
+          "label": "损失 元/天",
+          "num": true
+         }
+        ],
+        "rows": [
+         {
+          "equipment": "CNC1",
+          "action": "夹具气缸伸出（夹紧）",
+          "excess_s": 3.006,
+          "lost_s_day": 474.9,
+          "parts_day": 1.06,
+          "money_day": 84.5
+         }
+        ],
+        "id": "b2"
+       },
+       {
+        "type": "callout",
+        "tone": "warn",
+        "title": "优先改善",
+        "md": "优先检查 CNC1 夹具气缸的动作响应、节流阀及夹具机械阻力；该动作相对基线明显偏慢。",
+        "id": "b3"
+       },
+       {
+        "type": "sources",
+        "items": [
+         {
+          "id": "q1",
+          "kind": "tool",
+          "tool": "factory_model",
+          "args": {},
+          "failed": false,
+          "label": "读取工厂模型"
+         },
+         {
+          "id": "q2",
+          "kind": "tool",
+          "tool": "cycle_analysis",
+          "args": {
+           "line": "L-MACH",
+           "hours": 8,
+           "days": 7
+          },
+          "failed": false,
+          "label": "分析L-MACH的动作节拍"
+         }
+        ],
+        "id": "b4"
+       }
+      ],
+      "refs": [
+       {
+        "entity": "equipment",
+        "id": 8,
+        "code": "CNC1",
+        "label": "CNC1 1#加工中心",
+        "kind": "设备台账"
+       }
+      ],
+      "replay": true
+     }
+    ]
+   ],
+   "recorded_at": "2026-11-05 08:37:07"
+  }
+ }
+}

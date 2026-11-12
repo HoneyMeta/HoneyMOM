@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "feature": "skills",
+ "items": {
+  "polish:97758c4a30b4887c": {
+   "op": "polish",
+   "request": {
+    "text": "机加区最近8小时的瓶颈工位和瓶颈动作是什么?损失多少"
+   },
+   "raw_request": {
+    "text": "机加区最近 8 小时的瓶颈工位和瓶颈动作是什么？损失多少？"
+   },
+   "response": {
+    "name": "瓶颈损失分析",
+    "description": "分析指定产线和时间段内的瓶颈工位、瓶颈动作及损失。",
+    "params": [
+     {
+      "key": "line",
+      "label": "产线"
+     },
+     {
+      "key": "period",
+      "label": "时间段"
+     }
+    ]
+   },
+   "recorded_at": "2026-11-05 08:37:14"
+  },
+  "narrate:766a09bfee2717fa": {
+   "op": "narrate",
+   "request": {
+    "skill": "bottleneck_action",
+    "text": "瓶颈动作日报"
+   },
+   "raw_request": {
+    "skill": "bottleneck_action",
+    "text": "瓶颈动作日报"
+   },
+   "response": "近 8 小时瓶颈在 CNC1，夹具气缸伸出（夹紧）中位数 4.11 秒，比标准/基线慢 3.01 秒，存在明显异常。预计造成约 472 秒/天、1.1 件/天、84 元/天、25,192 元/年的损失。建议先检查夹具气缸及夹紧回路，重点确认气压、节流阀和动作响应。",
+   "recorded_at": "2026-11-05 08:37:43"
+  },
+  "narrate:1b036000895b146a": {
+   "op": "narrate",
+   "request": {
+    "skill": "shift_summary",
+    "text": "班末产量小结"
+   },
+   "raw_request": {
+    "skill": "shift_summary",
+    "text": "班末产量小结"
+   },
+   "response": "夜班废品率为 4.69%，不合格品 158 条，其中残余毛刺 118 条，占主要部分；OEE 最低为 ASRS1 43%，其次 INS1 66%。结果中未提供平时基准，暂无法判断是否异常；建议先处理残余毛刺，并排查 ASRS1 性能仅 43% 和 INS1 质量仅 67% 的原因。",
+   "recorded_at": "2026-11-05 08:37:50"
+  }
+ }
+}

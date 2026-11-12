@@ -1,0 +1,67 @@
+# Push read-only mirrors of this repository to Gitee and GitCode.
+#
+# Secrets (Settings -> Secrets and variables -> Actions):
+#   GITEE_TOKEN    Gitee personal access token with push access to the mirror repository
+#   GITCODE_TOKEN  GitCode personal access token with push access to the mirror repository
+# A mirror is skipped when its secret is not set.
+#
+# Optional repository variables (defaults in brackets):
+#   GITEE_USER [HoneyMeta]    GITEE_REPO [HoneyMeta/HoneyMOM]
+#   GITCODE_USER [HoneyMeta]  GITCODE_REPO [HoneyMeta/HoneyMOM]
+#
+# Branches and tags are mirrored; the cla-signatures branch and pull-request refs are not.
+name: Mirror
+
+on:
+  push:
+    branches: ['**']
+    tags: ['**']
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: github.repository == 'HoneyMeta/HoneyMOM'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: gitee
+            host: gitee.com
+          - name: gitcode
+            host: gitcode.com
+    env:
+      # two separate expressions: an empty GITEE_TOKEN must not fall through to GITCODE_TOKEN
+      TOKEN: ${{ matrix.name == 'gitee' && secrets.GITEE_TOKEN || '' }}${{ matrix.name == 'gitcode' && secrets.GITCODE_TOKEN || '' }}
+      MIRROR_USER: ${{ matrix.name == 'gitee' && (vars.GITEE_USER || 'HoneyMeta') || (vars.GITCODE_USER || 'HoneyMeta') }}
+      MIRROR_REPO: ${{ matrix.name == 'gitee' && (vars.GITEE_REPO || 'HoneyMeta/HoneyMOM') || (vars.GITCODE_REPO || 'HoneyMeta/HoneyMOM') }}
+    steps:
+      - name: Skip when the token is not configured
+        if: env.TOKEN == ''
+        run: echo "::notice::${{ matrix.name }} mirror skipped (secret not set)"
+
+      - name: Clone a bare mirror of this repository
+        if: env.TOKEN != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --mirror "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo.git
+          cd repo.git
+          git update-ref -d refs/heads/cla-signatures 2>/dev/null || true
+          git for-each-ref --format='%(refname)' refs/pull | xargs -r -n1 git update-ref -d
+
+      - name: Push to ${{ matrix.name }}
+        if: env.TOKEN != ''
+        working-directory: repo.git
+        run: |
+          echo "::add-mask::${TOKEN}"
+          url="https://${MIRROR_USER}:${TOKEN}@${{ matrix.host }}/${MIRROR_REPO}.git"
+          git push --prune "$url" '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'

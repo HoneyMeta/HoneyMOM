@@ -1,0 +1,24 @@
+# Production overrides for docker-compose.yml:
+#
+#   docker compose -f docker-compose.yml -f docker/compose.production.yml up -d
+#
+# - MOM_DEMO=0: no demo accounts, no demo data. The first start asks for the administrator account in the browser
+#   (or: docker compose exec mom python -m honeymom create-admin --username admin).
+# - POSTGRES_PASSWORD must be set (in .env next to docker-compose.yml, see docker/env.example).
+# - The replayer does not start. To try the onboarding flow against it, add --profile replayer.
+#
+# Start production on new volumes. A database that was seeded in demo mode keeps its demo data; remove it first with
+# `docker compose down -v` (this deletes all data) or use another project name (-p).
+
+services:
+  mom:
+    environment:
+      MOM_DEMO: "0"
+      MOM_DB: postgresql+psycopg://${POSTGRES_USER:-honeymom}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/${POSTGRES_DB:-honeymom}
+
+  db:
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+
+  replayer:
+    profiles: ["replayer"]

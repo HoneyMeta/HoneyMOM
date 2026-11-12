@@ -1,0 +1,934 @@
+{
+ "code": "assembly_demo",
+ "name": "示范工厂：电动助力转向器（EPS）总成装配",
+ "requires": [
+  "assembly"
+ ],
+ "description": "某 EPS 总成装配厂：EPS 总成 A 型 + 电机组件（半成品），多级 BOM（总成 → 电机组件 → 轴承 / 密封圈）；一条 8 工位装配线（压装机、拧紧轴、气密检测仪、下线测试台、贴标机）；两班；原材料仓 / 线边库 / 成品仓期初库存；客户与供应商；2 张演示工单。",
+ "steps": [
+  {
+   "import": "plant",
+   "rows": [
+    {
+     "code": "ASP",
+     "name": "某转向系统装配厂",
+     "address": "示例开发区 B 区"
+    }
+   ]
+  },
+  {
+   "import": "workshop",
+   "rows": [
+    {
+     "code": "WS-AS",
+     "name": "总装车间",
+     "plant": "ASP",
+     "wtype": "assembly"
+    },
+    {
+     "code": "WS-AW",
+     "name": "物流中心",
+     "plant": "ASP",
+     "wtype": "warehouse"
+    }
+   ]
+  },
+  {
+   "import": "line",
+   "rows": [
+    {
+     "code": "L-AS1",
+     "name": "EPS 总装线",
+     "workshop": "WS-AS"
+    },
+    {
+     "code": "L-SUB",
+     "name": "电机组件分装线",
+     "workshop": "WS-AS"
+    }
+   ]
+  },
+  {
+   "import": "customer",
+   "rows": [
+    {
+     "code": "C-OEM1",
+     "name": "某汽车股份有限公司",
+     "short_name": "某主机厂",
+     "contact": "采购部 王工"
+    }
+   ]
+  },
+  {
+   "import": "supplier",
+   "rows": [
+    {
+     "code": "S-HSG",
+     "name": "某精密铸造有限公司",
+     "short_name": "壳体厂",
+     "category": "raw"
+    },
+    {
+     "code": "S-BRG",
+     "name": "某轴承有限公司",
+     "short_name": "轴承厂",
+     "category": "raw"
+    },
+    {
+     "code": "S-ECU",
+     "name": "某汽车电子有限公司",
+     "short_name": "控制器厂",
+     "category": "raw"
+    }
+   ]
+  },
+  {
+   "import": "material",
+   "rows": [
+    {
+     "code": "AS-EPS-A",
+     "name": "EPS 总成 A 型",
+     "spec": "管柱式 12V 65A",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 120,
+     "price": 1680,
+     "weight_kg": 6.8
+    },
+    {
+     "code": "AS-SUB-MOT",
+     "name": "电机组件",
+     "spec": "无刷电机 + 蜗杆",
+     "unit": "件",
+     "mtype": "semi",
+     "safety_stock": 80,
+     "price": 520,
+     "weight_kg": 2.3
+    },
+    {
+     "code": "P-HSG",
+     "name": "减速器壳体",
+     "spec": "ADC12 压铸 + 机加",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 200,
+     "price": 168,
+     "weight_kg": 1.9
+    },
+    {
+     "code": "P-MOTOR",
+     "name": "无刷电机",
+     "spec": "12V 400W",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 100,
+     "price": 380
+    },
+    {
+     "code": "P-BRG",
+     "name": "深沟球轴承 6205-2RS",
+     "spec": "25×52×15",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 400,
+     "price": 9.5
+    },
+    {
+     "code": "P-SEAL",
+     "name": "骨架油封",
+     "spec": "25×40×7 NBR",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 400,
+     "price": 1.8
+    },
+    {
+     "code": "P-ECU",
+     "name": "控制器 ECU",
+     "spec": "EPS-ECU-V2",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 100,
+     "price": 420
+    },
+    {
+     "code": "P-BOLT-M8",
+     "name": "六角法兰螺栓 M8×25",
+     "spec": "10.9 级 达克罗",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 3000,
+     "price": 0.35
+    },
+    {
+     "code": "P-LABEL",
+     "name": "总成标签",
+     "spec": "耐温 PET 二维码",
+     "unit": "张",
+     "mtype": "consumable",
+     "safety_stock": 1000,
+     "price": 0.2
+    },
+    {
+     "code": "PK-CTN",
+     "name": "包装纸箱",
+     "spec": "8 件 / 箱 带内衬",
+     "unit": "个",
+     "mtype": "consumable",
+     "safety_stock": 60,
+     "price": 12
+    }
+   ]
+  },
+  {
+   "import": "uom_conv",
+   "rows": [
+    {
+     "material": "AS-EPS-A",
+     "from_unit": "箱",
+     "to_unit": "件",
+     "factor": 8
+    },
+    {
+     "material": "P-BOLT-M8",
+     "from_unit": "盒",
+     "to_unit": "件",
+     "factor": 500,
+     "remark": "500 件 / 盒"
+    },
+    {
+     "material": "P-BRG",
+     "from_unit": "箱",
+     "to_unit": "件",
+     "factor": 100
+    }
+   ]
+  },
+  {
+   "import": "bom",
+   "rows": [
+    {
+     "level": 0,
+     "component": "AS-EPS-A"
+    },
+    {
+     "level": 1,
+     "component": "P-HSG",
+     "qty": 1,
+     "unit": "件"
+    },
+    {
+     "level": 1,
+     "component": "AS-SUB-MOT",
+     "qty": 1,
+     "unit": "件"
+    },
+    {
+     "level": 2,
+     "component": "P-MOTOR",
+     "qty": 1,
+     "unit": "件"
+    },
+    {
+     "level": 2,
+     "component": "P-BRG",
+     "qty": 2,
+     "unit": "件"
+    },
+    {
+     "level": 2,
+     "component": "P-SEAL",
+     "qty": 1,
+     "unit": "件"
+    },
+    {
+     "level": 1,
+     "component": "P-ECU",
+     "qty": 1,
+     "unit": "件"
+    },
+    {
+     "level": 1,
+     "component": "P-BOLT-M8",
+     "qty": 6,
+     "unit": "件"
+    },
+    {
+     "level": 1,
+     "component": "P-LABEL",
+     "qty": 1,
+     "unit": "张"
+    },
+    {
+     "level": 1,
+     "component": "PK-CTN",
+     "qty": 0.125,
+     "unit": "个",
+     "remark": "8 件 / 箱"
+    }
+   ]
+  },
+  {
+   "import": "equipment",
+   "rows": [
+    {
+     "code": "PRS-01",
+     "name": "伺服压装机",
+     "etype": "press",
+     "line": "L-SUB",
+     "model": "SP-30kN",
+     "ideal_cycle_s": 40,
+     "rated_kw": 3
+    },
+    {
+     "code": "TQ-01",
+     "name": "1# 拧紧轴（双轴）",
+     "etype": "screwdriver",
+     "line": "L-AS1",
+     "model": "ETS-40",
+     "ideal_cycle_s": 45
+    },
+    {
+     "code": "LT-01",
+     "name": "气密检测仪",
+     "etype": "tester",
+     "line": "L-AS1",
+     "model": "LT-300",
+     "ideal_cycle_s": 60
+    },
+    {
+     "code": "EOL-01",
+     "name": "下线功能测试台",
+     "etype": "tester",
+     "line": "L-AS1",
+     "model": "EOL-EPS",
+     "ideal_cycle_s": 75
+    },
+    {
+     "code": "LB-01",
+     "name": "激光 / 标签打码贴标机",
+     "etype": "labeler",
+     "line": "L-AS1",
+     "ideal_cycle_s": 12
+    },
+    {
+     "code": "ST-AS10",
+     "name": "预装工位（防错料架）",
+     "etype": "assembly_station",
+     "line": "L-AS1",
+     "ideal_cycle_s": 55
+    }
+   ]
+  },
+  {
+   "import": "workstation",
+   "rows": [
+    {
+     "code": "WS-AS10",
+     "name": "10 预装",
+     "line": "L-AS1",
+     "process": "AS10",
+     "equipment": "ST-AS10",
+     "group": "AS10"
+    },
+    {
+     "code": "WS-AS20",
+     "name": "20 压装（分装线）",
+     "line": "L-SUB",
+     "process": "AS20",
+     "equipment": "PRS-01",
+     "group": "PRS"
+    },
+    {
+     "code": "WS-AS30",
+     "name": "30 拧紧",
+     "line": "L-AS1",
+     "process": "AS30",
+     "equipment": "TQ-01",
+     "group": "TQ"
+    },
+    {
+     "code": "WS-AS40",
+     "name": "40 气密",
+     "line": "L-AS1",
+     "process": "AS40",
+     "equipment": "LT-01",
+     "group": "LT"
+    },
+    {
+     "code": "WS-AS45",
+     "name": "45 下线测试",
+     "line": "L-AS1",
+     "process": "AS45",
+     "equipment": "EOL-01",
+     "group": "EOL"
+    },
+    {
+     "code": "WS-AS50",
+     "name": "50 贴标",
+     "line": "L-AS1",
+     "process": "AS50",
+     "equipment": "LB-01",
+     "group": "LB"
+    },
+    {
+     "code": "WS-AS60",
+     "name": "60 终检",
+     "line": "L-AS1",
+     "process": "AS60",
+     "group": "FIN"
+    }
+   ]
+  },
+  {
+   "import": "route",
+   "rows": [
+    {
+     "route_code": "RT-SUB-MOT",
+     "route_name": "电机组件分装",
+     "product": "AS-SUB-MOT",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "AS20",
+     "station_group": "PRS",
+     "std_cycle_s": 40,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "轴承压到位：压装力 8–12 kN，位移窗口 15.0–15.3 mm；曲线不合格自动锁定。",
+     "params": {
+      "压装力 kN": "8–12",
+      "终止位移 mm": "15.0–15.3",
+      "压装速度 mm/s": "5"
+     }
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "AS10",
+     "station_group": "AS10",
+     "std_cycle_s": 55,
+     "inspection": false,
+     "report_mode": "scan",
+     "fai": true,
+     "instruction": "扫总成码 → 按亮灯取件（防错料架）；电机组件扫码校验型号。"
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 20,
+     "process": "AS30",
+     "station_group": "TQ",
+     "std_cycle_s": 48,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "6 颗 M8 对角交叉两遍拧紧；结果自动绑定总成码。",
+     "params": {
+      "终扭矩 N·m": "24 ± 2",
+      "角度 °": "30–60",
+      "拧紧顺序": "1-4-2-5-3-6"
+     }
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 30,
+     "process": "AS40",
+     "station_group": "LT",
+     "std_cycle_s": 60,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "充气 300 kPa，泄漏率 ≤ 30 Pa/min。",
+     "params": {
+      "测试压力 kPa": "300",
+      "泄漏率上限 Pa/min": "30"
+     }
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 40,
+     "process": "AS45",
+     "station_group": "EOL",
+     "std_cycle_s": 75,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "助力特性、电流、异响测试；NG 进返修台。",
+     "params": {
+      "助力电流 A": "≤ 65",
+      "空载噪声 dB": "≤ 45"
+     }
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 50,
+     "process": "AS50",
+     "station_group": "LB",
+     "std_cycle_s": 12,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "测试 OK 才能打印合格标签。"
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 60,
+     "process": "AS60",
+     "station_group": "FIN",
+     "std_cycle_s": 40,
+     "inspection": true,
+     "report_mode": "scan",
+     "fai": false,
+     "instruction": "外观、标签扫码复核。"
+    },
+    {
+     "route_code": "RT-EPS-A",
+     "route_name": "EPS 总成 A 型装配",
+     "product": "AS-EPS-A",
+     "version": "V1",
+     "status": "active",
+     "seq": 70,
+     "process": "AS70",
+     "station_group": null,
+     "std_cycle_s": 20,
+     "inspection": false,
+     "report_mode": "scan",
+     "fai": false,
+     "instruction": "8 件 / 箱装箱，扫码入库。"
+    }
+   ]
+  },
+  {
+   "import": "shift",
+   "rows": [
+    {
+     "code": "A",
+     "name": "早班",
+     "start": "08:00",
+     "end": "16:30",
+     "active": true,
+     "break_min": 30
+    },
+    {
+     "code": "B",
+     "name": "中班",
+     "start": "16:30",
+     "end": "01:00",
+     "active": true,
+     "break_min": 30
+    }
+   ]
+  },
+  {
+   "import": "team",
+   "rows": [
+    {
+     "code": "AT1",
+     "name": "总装甲班",
+     "shift": "A",
+     "leader": "许强"
+    },
+    {
+     "code": "AT2",
+     "name": "总装乙班",
+     "shift": "B",
+     "leader": "邓凯"
+    }
+   ]
+  },
+  {
+   "import": "employee",
+   "rows": [
+    {
+     "code": "A001",
+     "name": "许强",
+     "team": "AT1",
+     "post": "班长"
+    },
+    {
+     "code": "A002",
+     "name": "黄敏",
+     "team": "AT1",
+     "post": "装配工"
+    },
+    {
+     "code": "A003",
+     "name": "何亮",
+     "team": "AT1",
+     "post": "装配工"
+    },
+    {
+     "code": "A004",
+     "name": "马丽",
+     "team": "AT1",
+     "post": "测试工"
+    },
+    {
+     "code": "A005",
+     "name": "杨帆",
+     "team": "AT1",
+     "post": "分装 / 压装"
+    },
+    {
+     "code": "A006",
+     "name": "邓凯",
+     "team": "AT2",
+     "post": "班长"
+    },
+    {
+     "code": "A007",
+     "name": "罗娜",
+     "team": "AT2",
+     "post": "装配工"
+    },
+    {
+     "code": "A008",
+     "name": "梁斌",
+     "team": "AT2",
+     "post": "装配工"
+    },
+    {
+     "code": "A009",
+     "name": "宋洁",
+     "team": "AT2",
+     "post": "测试工"
+    },
+    {
+     "code": "A010",
+     "name": "唐军",
+     "team": "AT2",
+     "post": "分装 / 压装"
+    },
+    {
+     "code": "A011",
+     "name": "韩梅",
+     "team": "AT1",
+     "post": "质检员"
+    },
+    {
+     "code": "A012",
+     "name": "曹阳",
+     "team": "AT1",
+     "post": "返修 / 技术员"
+    }
+   ]
+  },
+  {
+   "import": "skill",
+   "rows": [
+    {
+     "employee": "A002",
+     "process": "AS10",
+     "level": "3"
+    },
+    {
+     "employee": "A002",
+     "process": "AS30",
+     "level": "2"
+    },
+    {
+     "employee": "A003",
+     "process": "AS10",
+     "level": "2"
+    },
+    {
+     "employee": "A003",
+     "process": "AS30",
+     "level": "3"
+    },
+    {
+     "employee": "A004",
+     "process": "AS40",
+     "level": "3"
+    },
+    {
+     "employee": "A004",
+     "process": "AS45",
+     "level": "3"
+    },
+    {
+     "employee": "A005",
+     "process": "AS20",
+     "level": "3"
+    },
+    {
+     "employee": "A007",
+     "process": "AS10",
+     "level": "2"
+    },
+    {
+     "employee": "A007",
+     "process": "AS30",
+     "level": "2"
+    },
+    {
+     "employee": "A008",
+     "process": "AS10",
+     "level": "3"
+    },
+    {
+     "employee": "A009",
+     "process": "AS40",
+     "level": "2"
+    },
+    {
+     "employee": "A009",
+     "process": "AS45",
+     "level": "2"
+    },
+    {
+     "employee": "A010",
+     "process": "AS20",
+     "level": "2"
+    },
+    {
+     "employee": "A011",
+     "process": "AS60",
+     "level": "3"
+    },
+    {
+     "employee": "A012",
+     "process": "AS45",
+     "level": "4"
+    },
+    {
+     "employee": "A012",
+     "process": "AS30",
+     "level": "4"
+    }
+   ]
+  },
+  {
+   "import": "warehouse",
+   "rows": [
+    {
+     "code": "AW-RM",
+     "name": "原材料仓",
+     "wtype": "raw"
+    },
+    {
+     "code": "AW-LINE",
+     "name": "总装线边库",
+     "wtype": "wip"
+    },
+    {
+     "code": "AW-FG",
+     "name": "成品仓",
+     "wtype": "fg"
+    }
+   ]
+  },
+  {
+   "import": "location",
+   "rows": [
+    {
+     "code": "AW-RM-01",
+     "name": "原材料仓 1 区",
+     "warehouse": "AW-RM",
+     "capacity": 200
+    },
+    {
+     "code": "AW-RM-02",
+     "name": "原材料仓 2 区",
+     "warehouse": "AW-RM",
+     "capacity": 200
+    },
+    {
+     "code": "AW-LINE-01",
+     "name": "线边 1 区",
+     "warehouse": "AW-LINE",
+     "capacity": 30
+    },
+    {
+     "code": "AW-LINE-02",
+     "name": "线边 2 区",
+     "warehouse": "AW-LINE",
+     "capacity": 30
+    },
+    {
+     "code": "AW-FG-01",
+     "name": "成品仓 1 区",
+     "warehouse": "AW-FG",
+     "capacity": 120
+    },
+    {
+     "code": "AW-FG-02",
+     "name": "成品仓 2 区",
+     "warehouse": "AW-FG",
+     "capacity": 120
+    }
+   ]
+  },
+  {
+   "import": "opening_stock",
+   "rows": [
+    {
+     "material": "P-HSG",
+     "warehouse": "AW-RM",
+     "location": "AW-RM-01",
+     "lot": "H2610-21",
+     "qty": 360
+    },
+    {
+     "material": "P-MOTOR",
+     "warehouse": "AW-RM",
+     "location": "AW-RM-01",
+     "lot": "M2610-17",
+     "qty": 240
+    },
+    {
+     "material": "P-BRG",
+     "warehouse": "AW-RM",
+     "location": "AW-RM-02",
+     "qty": 6,
+     "unit": "箱",
+     "remark": "6 箱 × 100"
+    },
+    {
+     "material": "P-SEAL",
+     "warehouse": "AW-RM",
+     "location": "AW-RM-02",
+     "qty": 800
+    },
+    {
+     "material": "P-ECU",
+     "warehouse": "AW-RM",
+     "location": "AW-RM-01",
+     "lot": "E2610-30",
+     "qty": 260
+    },
+    {
+     "material": "P-BOLT-M8",
+     "warehouse": "AW-LINE",
+     "location": "AW-LINE-01",
+     "qty": 4,
+     "unit": "盒"
+    },
+    {
+     "material": "P-LABEL",
+     "warehouse": "AW-LINE",
+     "location": "AW-LINE-02",
+     "qty": 1500
+    },
+    {
+     "material": "PK-CTN",
+     "warehouse": "AW-LINE",
+     "location": "AW-LINE-02",
+     "qty": 90
+    },
+    {
+     "material": "AS-SUB-MOT",
+     "warehouse": "AW-LINE",
+     "location": "AW-LINE-01",
+     "qty": 36
+    },
+    {
+     "material": "AS-EPS-A",
+     "warehouse": "AW-FG",
+     "location": "AW-FG-01",
+     "lot": "A261103",
+     "qty": 22,
+     "unit": "箱"
+    }
+   ]
+  },
+  {
+   "import": "tooling",
+   "rows": [
+    {
+     "code": "FX-PRS-01",
+     "name": "轴承压装夹具",
+     "ttype": "fixture",
+     "product": "AS-SUB-MOT",
+     "process": "AS20",
+     "station_group": "PRS",
+     "shots": 41200,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 40000,
+     "status": "in_use",
+     "location": "PRS-01"
+    },
+    {
+     "code": "FX-LT-01",
+     "name": "气密测试封堵工装",
+     "ttype": "fixture",
+     "product": "AS-EPS-A",
+     "process": "AS40",
+     "station_group": "LT",
+     "shots": 38800,
+     "life_shots": 100000,
+     "maint_every": 10000,
+     "last_maint_shots": 30000,
+     "status": "in_use",
+     "location": "LT-01"
+    },
+    {
+     "code": "GA-TQ-01",
+     "name": "数显扭力扳手 5–60 N·m",
+     "ttype": "gauge",
+     "process": "AS30",
+     "status": "available",
+     "location": "质检柜"
+    }
+   ]
+  },
+  {
+   "import": "work_order",
+   "rows": [
+    {
+     "product": "AS-SUB-MOT",
+     "route": "RT-SUB-MOT",
+     "qty": 300,
+     "start_plan": "@hour+0h",
+     "due": "@hour+2d",
+     "priority": 3,
+     "customer": "内部（总装）"
+    },
+    {
+     "product": "AS-EPS-A",
+     "route": "RT-EPS-A",
+     "qty": 320,
+     "start_plan": "@hour+4h",
+     "due": "@hour+3d",
+     "priority": 3,
+     "customer": "某主机厂"
+    }
+   ]
+  },
+  {
+   "settings": {
+    "company": [
+     "某转向系统装配厂（演示）",
+     "公司名称"
+    ]
+   }
+  }
+ ],
+ "after_equipment": []
+}

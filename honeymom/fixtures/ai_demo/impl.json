@@ -1,0 +1,328 @@
+{
+ "version": 1,
+ "feature": "impl",
+ "items": {
+  "map_columns:449f0899447c2ccf": {
+   "op": "map_columns",
+   "request": {
+    "columns": [
+     {
+      "key": "code",
+      "label": "编码",
+      "t": "str"
+     },
+     {
+      "key": "spec",
+      "label": "规格",
+      "t": "str"
+     },
+     {
+      "key": "unit",
+      "label": "单位",
+      "t": "str"
+     },
+     {
+      "key": "mtype",
+      "label": "类型",
+      "t": "enum"
+     },
+     {
+      "key": "safety_stock",
+      "label": "安全库存",
+      "t": "float"
+     },
+     {
+      "key": "price",
+      "label": "单价元",
+      "t": "float"
+     },
+     {
+      "key": "weight_kg",
+      "label": "单重kg",
+      "t": "float"
+     }
+    ],
+    "headers": [
+     "料品编号",
+     "计量单位",
+     "类别"
+    ],
+    "importer": "material",
+    "samples": {
+     "料品编号": [
+      "ai-1"
+     ],
+     "类别": [
+      "成品"
+     ],
+     "计量单位": [
+      "件"
+     ]
+    }
+   },
+   "raw_request": {
+    "importer": "material",
+    "headers": [
+     "料品编号",
+     "计量单位",
+     "类别"
+    ],
+    "samples": {
+     "料品编号": [
+      "AI-1"
+     ],
+     "计量单位": [
+      "件"
+     ],
+     "类别": [
+      "成品"
+     ]
+    },
+    "columns": [
+     {
+      "key": "code",
+      "label": "编码",
+      "t": "str"
+     },
+     {
+      "key": "spec",
+      "label": "规格",
+      "t": "str"
+     },
+     {
+      "key": "unit",
+      "label": "单位",
+      "t": "str"
+     },
+     {
+      "key": "mtype",
+      "label": "类型",
+      "t": "enum"
+     },
+     {
+      "key": "safety_stock",
+      "label": "安全库存",
+      "t": "float"
+     },
+     {
+      "key": "price",
+      "label": "单价 元",
+      "t": "float"
+     },
+     {
+      "key": "weight_kg",
+      "label": "单重 kg",
+      "t": "float"
+     }
+    ]
+   },
+   "response": {
+    "mapping": {
+     "料品编号": "code",
+     "计量单位": "unit",
+     "类别": "mtype"
+    },
+    "reasons": {
+     "料品编号": "料品编号就是物料编码（唯一）",
+     "计量单位": "基本计量单位",
+     "类别": "物料类型：成品 / 半成品 / 原材料"
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-05 10:00:11"
+  },
+  "map_columns:9bf893665de695b3": {
+   "op": "map_columns",
+   "request": {
+    "columns": [
+     {
+      "key": "code",
+      "label": "编码",
+      "t": "str"
+     },
+     {
+      "key": "name",
+      "label": "名称",
+      "t": "str"
+     },
+     {
+      "key": "spec",
+      "label": "规格",
+      "t": "str"
+     },
+     {
+      "key": "unit",
+      "label": "单位",
+      "t": "str"
+     },
+     {
+      "key": "mtype",
+      "label": "类型",
+      "t": "enum"
+     },
+     {
+      "key": "safety_stock",
+      "label": "安全库存",
+      "t": "float"
+     },
+     {
+      "key": "price",
+      "label": "单价元",
+      "t": "float"
+     },
+     {
+      "key": "weight_kg",
+      "label": "单重kg",
+      "t": "float"
+     }
+    ],
+    "headers": [
+     "存货代码",
+     "存货全称",
+     "规格型号",
+     "主计量",
+     "存货分类",
+     "最低库存",
+     "参考成本"
+    ],
+    "importer": "material",
+    "samples": {
+     "主计量": [
+      "件",
+      "件"
+     ],
+     "参考成本": [
+      "380",
+      "160"
+     ],
+     "存货代码": [
+      "ch-001",
+      "ch-002"
+     ],
+     "存货全称": [
+      "转向器壳体",
+      "壳体毛坯"
+     ],
+     "存货分类": [
+      "产成品",
+      "半成品"
+     ],
+     "最低库存": [
+      "200",
+      "300"
+     ],
+     "规格型号": [
+      "qt450-10",
+      "qt450铸件"
+     ]
+    }
+   },
+   "raw_request": {
+    "importer": "material",
+    "headers": [
+     "存货代码",
+     "存货全称",
+     "规格型号",
+     "主计量",
+     "存货分类",
+     "最低库存",
+     "参考成本"
+    ],
+    "samples": {
+     "存货代码": [
+      "CH-001",
+      "CH-002"
+     ],
+     "存货全称": [
+      "转向器壳体",
+      "壳体毛坯"
+     ],
+     "规格型号": [
+      "QT450-10",
+      "QT450 铸件"
+     ],
+     "主计量": [
+      "件",
+      "件"
+     ],
+     "存货分类": [
+      "产成品",
+      "半成品"
+     ],
+     "最低库存": [
+      "200",
+      "300"
+     ],
+     "参考成本": [
+      "380",
+      "160"
+     ]
+    },
+    "columns": [
+     {
+      "key": "code",
+      "label": "编码",
+      "t": "str"
+     },
+     {
+      "key": "name",
+      "label": "名称",
+      "t": "str"
+     },
+     {
+      "key": "spec",
+      "label": "规格",
+      "t": "str"
+     },
+     {
+      "key": "unit",
+      "label": "单位",
+      "t": "str"
+     },
+     {
+      "key": "mtype",
+      "label": "类型",
+      "t": "enum"
+     },
+     {
+      "key": "safety_stock",
+      "label": "安全库存",
+      "t": "float"
+     },
+     {
+      "key": "price",
+      "label": "单价 元",
+      "t": "float"
+     },
+     {
+      "key": "weight_kg",
+      "label": "单重 kg",
+      "t": "float"
+     }
+    ]
+   },
+   "response": {
+    "mapping": {
+     "存货代码": "code",
+     "存货全称": "name",
+     "规格型号": "spec",
+     "主计量": "unit",
+     "存货分类": "mtype",
+     "最低库存": "safety_stock",
+     "参考成本": "price"
+    },
+    "reasons": {
+     "存货代码": "ERP 的存货代码对应物料编码",
+     "存货全称": "存货名称 = 物料名称",
+     "规格型号": "规格",
+     "主计量": "主计量单位 = 基本单位",
+     "存货分类": "产成品 → 成品，半成品 → 半成品",
+     "最低库存": "最低库存按安全库存导入",
+     "参考成本": "参考成本作为单价"
+    },
+    "by": "ai"
+   },
+   "recorded_at": "2026-11-05 10:00:11"
+  }
+ }
+}

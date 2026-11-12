@@ -1,0 +1,103 @@
+{
+ "version": 1,
+ "feature": "quality_plus",
+ "items": {
+  "pfmea_draft:2cd9745d6e3e78ed": {
+   "op": "pfmea_draft",
+   "request": {
+    "q": "sgh-450转向器壳体过程fmea"
+   },
+   "raw_request": {
+    "q": "SGH-450 转向器壳体 过程 FMEA"
+   },
+   "response": {
+    "rows": [
+     {
+      "effect": "油道交叉孔残留毛刺脱落进入转向油路，导致阀芯卡滞、转向沉重（客户线下故障）",
+      "cause": "去毛刺毛刷磨损超过 30% 未更换；钻头磨损使交叉口毛刺增大",
+      "prevention": "毛刷按件数寿命更换（MES 计数）；T03 钻头 100 件换刀",
+      "detection_ctrl": "自动内窥 100% 检测交叉孔，毛刺 >0.1 mm 判 NG"
+     },
+     {
+      "effect": "内腔气孔在 12 MPa 保压下渗漏，转向器总成气密检测不合格",
+      "cause": "型砂水分偏高（>3.5%）、浇注温度偏低导致卷气",
+      "prevention": "型砂水分在线监测超限报警；浇注温度采集与联锁",
+      "detection_ctrl": "内窥检测内腔气孔 ≤0.8 mm；首件剖切"
+     },
+     {
+      "effect": "缸孔尺寸超差导致活塞配合间隙异常，异响或内泄",
+      "cause": "精镗刀磨损、机床热变形",
+      "prevention": "刀具寿命计数 + 换刀首检",
+      "detection_ctrl": "测头 100% 在线测量；SPC 判异报警"
+     }
+    ]
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  },
+  "reaction:57ef22422b0e0183": {
+   "op": "reaction",
+   "request": {
+    "q": "cc缸孔直径φ40h7"
+   },
+   "raw_request": {
+    "q": "CC 缸孔直径 Φ40 H7"
+   },
+   "response": {
+    "reaction": "立即停机并隔离上次合格测量以来的零件，100% 复测缸孔；通知质量工程师和工艺；查测头补偿、精镗刀磨损和机床热变形，按 NCR 评审处置；纠正后连续 5 件合格、首件经质量工程师电子签名放行后恢复生产"
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  },
+  "reaction:ebb5a6c80efea1b5": {
+   "op": "reaction",
+   "request": {
+    "q": "cc残余镁"
+   },
+   "raw_request": {
+    "q": "CC 残余镁"
+   },
+   "response": {
+    "reaction": "本包铁水停止浇注，已浇铸件按炉次冻结待金相复检；调整球化剂加入量并复测残镁；连续两包合格后恢复，记录进 NCR"
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  },
+  "reaction:e0c2a5081d73d1ce": {
+   "op": "reaction",
+   "request": {
+    "q": "sc端面平面度"
+   },
+   "raw_request": {
+    "q": "SC 端面平面度"
+   },
+   "response": {
+    "reaction": "停机检查夹具定位面和夹紧力，追溯本班产品加严检验（连续 5 件合格恢复正常频次），登记 NCR"
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  },
+  "reaction:a9bbfea6e7f1f6e2": {
+   "op": "reaction",
+   "request": {
+    "q": "none外观"
+   },
+   "raw_request": {
+    "q": "none 外观"
+   },
+   "response": {
+    "reaction": "调整后复检；不合格品隔离并登记 NCR"
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  },
+  "complaint:afa214ef711448a6": {
+   "op": "complaint",
+   "request": {
+    "q": "装配时发现缸孔内壁气孔"
+   },
+   "raw_request": {
+    "q": "装配时发现缸孔内壁气孔"
+   },
+   "response": {
+    "containment": "影响判断：问题件所在炉次的其余零件同样存在内腔气孔风险。已发运的部分请客户立即隔离，按 ASN 箱号清单 100% 挑选（内窥或剖切抽检）；在厂的同炉次零件已冻结，装车未发的托盘发运时会被系统拦下。下一步：发起 8D，D3 写本遏制措施；D4 从该炉次的浇注温度、型砂水分和残镁数据追溯根因，必要时安排驻厂挑选或走 RMA 退货。"
+   },
+   "recorded_at": "2026-11-05 10:23:24"
+  }
+ }
+}

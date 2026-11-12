@@ -1,0 +1,1703 @@
+{
+ "code": "foundry_housing",
+ "name": "示范工厂：转向器壳体（铸造 + 机加一体）",
+ "requires": [
+  "foundry",
+  "machining"
+ ],
+ "description": "某转向器壳体铸造厂：SGH-450 / SGH-520 两个产品，铸造 + 机加一体工艺路线（9 道工序），三班 24 人，5 个仓库，期初库存，3 张演示工单，检验模板、作业指示、加工图纸、模具 / 夹具、排产约束（技能、换型时间、停机计划）。设备从虚拟工厂导入后自动补夹具、NC 程序、点检保养计划。",
+ "steps": [
+  {
+   "entity": "plant",
+   "keys": [
+    "code"
+   ],
+   "rows": [
+    {
+     "code": "GR",
+     "name": "某转向器壳体铸造厂",
+     "address": "示例厂区",
+     "vf_source": "http://127.0.0.1:8800|foundry-housing"
+    }
+   ]
+  },
+  {
+   "import": "material",
+   "rows": [
+    {
+     "code": "SGH-450",
+     "name": "SGH-450 转向器壳体",
+     "spec": "QT450-10 精加工",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 200.0,
+     "price": 380.0,
+     "weight_kg": 15.2
+    },
+    {
+     "code": "SGH-450-B",
+     "name": "SGH-450 壳体毛坯",
+     "spec": "QT450-10 铸件",
+     "unit": "件",
+     "mtype": "semi",
+     "safety_stock": 300.0,
+     "price": 160.0,
+     "weight_kg": 18.5
+    },
+    {
+     "code": "CM-PIG",
+     "name": "Z14 生铁",
+     "spec": "炉料",
+     "unit": "t",
+     "mtype": "raw",
+     "safety_stock": 30.0,
+     "price": 3300.0
+    },
+    {
+     "code": "CM-STEEL",
+     "name": "废钢",
+     "spec": "炉料",
+     "unit": "t",
+     "mtype": "raw",
+     "safety_stock": 20.0,
+     "price": 2600.0
+    },
+    {
+     "code": "CM-RET",
+     "name": "回炉料",
+     "spec": "浇冒口/废件",
+     "unit": "t",
+     "mtype": "raw",
+     "safety_stock": 0.0,
+     "price": 1800.0
+    },
+    {
+     "code": "CM-CARB",
+     "name": "增碳剂",
+     "spec": "C≥95%",
+     "unit": "t",
+     "mtype": "aux",
+     "safety_stock": 1.0,
+     "price": 4500.0
+    },
+    {
+     "code": "CM-FESI",
+     "name": "75 硅铁",
+     "spec": "Si 75%",
+     "unit": "t",
+     "mtype": "aux",
+     "safety_stock": 1.0,
+     "price": 7500.0
+    },
+    {
+     "code": "AUX-NODU",
+     "name": "球化剂 FeSiMg6",
+     "spec": "Mg 6%",
+     "unit": "t",
+     "mtype": "aux",
+     "safety_stock": 2.0,
+     "price": 12500.0
+    },
+    {
+     "code": "AUX-INOC",
+     "name": "孕育剂 FeSi75-Ba",
+     "unit": "t",
+     "mtype": "aux",
+     "safety_stock": 1.0,
+     "price": 9800.0
+    },
+    {
+     "code": "AUX-SAND",
+     "name": "型砂",
+     "spec": "膨润土湿型砂",
+     "unit": "t",
+     "mtype": "aux",
+     "safety_stock": 50.0,
+     "price": 380.0
+    },
+    {
+     "code": "AUX-SHOT",
+     "name": "钢丸 S330",
+     "unit": "t",
+     "mtype": "consumable",
+     "safety_stock": 2.0,
+     "price": 6200.0
+    },
+    {
+     "code": "SGH-520",
+     "name": "SGH-520 转向器壳体（加长）",
+     "spec": "QT450-10 精加工",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 100.0,
+     "price": 420.0,
+     "weight_kg": 17.1
+    }
+   ]
+  },
+  {
+   "import": "bom",
+   "rows": [
+    {
+     "product": "SGH-450",
+     "component": "SGH-450-B",
+     "qty": 1.0,
+     "unit": "件"
+    },
+    {
+     "product": "SGH-450",
+     "component": "AUX-SHOT",
+     "qty": 0.0004,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-450-B",
+     "component": "CM-PIG",
+     "qty": 0.0095,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-450-B",
+     "component": "CM-STEEL",
+     "qty": 0.0053,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-450-B",
+     "component": "CM-RET",
+     "qty": 0.0059,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-450-B",
+     "component": "AUX-NODU",
+     "qty": 0.0003,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-450-B",
+     "component": "AUX-SAND",
+     "qty": 0.012,
+     "unit": "t"
+    },
+    {
+     "product": "SGH-520",
+     "component": "SGH-450-B",
+     "qty": 1.0,
+     "unit": "件"
+    },
+    {
+     "product": "SGH-520",
+     "component": "AUX-SHOT",
+     "qty": 0.0004,
+     "unit": "t"
+    }
+   ]
+  },
+  {
+   "import": "route",
+   "rows": [
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 10,
+     "process": "P10",
+     "station_group": "FUR",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+     "params": {
+      "出铁温度 °C": "1480–1500",
+      "C %": "3.60–3.80",
+      "Si %": "1.40–1.70"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 20,
+     "process": "P20",
+     "station_group": "TRT1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+     "params": {
+      "球化剂 FeSiMg6 %": "1.4–1.6",
+      "残镁 %": "0.030–0.055",
+      "温度 °C": "≥1420"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 30,
+     "process": "P30",
+     "station_group": "MOLD1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+     "params": {
+      "浇注温度 °C": "1380–1420",
+      "型砂水分 %": "3.3–3.5",
+      "紧实率 %": "38–42"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 40,
+     "process": "P40",
+     "station_group": "COOL1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 50,
+     "process": "P50",
+     "station_group": "SHOT1",
+     "std_cycle_s": 25.0,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+     "params": {
+      "抛丸时间 min": "8",
+      "钢丸": "S330"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 60,
+     "process": "P60",
+     "station_group": "CNC",
+     "std_cycle_s": 430.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+     "params": {
+      "主程序": "O1201 V3",
+      "缸孔 Φ40 H7": "40.000–40.025 mm",
+      "端面平面度": "≤0.03 mm",
+      "主轴转速 rpm": "2800",
+      "进给 mm/r": "0.15"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 70,
+     "process": "P70",
+     "station_group": "DEB1",
+     "std_cycle_s": 65.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+     "params": {
+      "毛刷转速 rpm": "1800",
+      "节拍 s": "65"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 80,
+     "process": "P80",
+     "station_group": "INS1",
+     "std_cycle_s": 60.0,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+     "params": {
+      "残余毛刺": "≤0.1 mm",
+      "气孔/缩松": "≤0.8 mm",
+      "光源亮度": "≥60%"
+     }
+    },
+    {
+     "route_code": "RT-SGH450",
+     "route_name": "SGH-450 铸造+机加一体",
+     "product": "SGH-450",
+     "version": "V3",
+     "status": "active",
+     "seq": 90,
+     "process": "P90",
+     "station_group": "ASRS1",
+     "std_cycle_s": 10.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "P10",
+     "station_group": "FUR",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "按配料单加料，先加回炉料和生铁，后加废钢；熔清后取样光谱，C/Si 合格再升温出铁。",
+     "params": {
+      "出铁温度 °C": "1480–1500",
+      "C %": "3.60–3.80",
+      "Si %": "1.40–1.70"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 20,
+     "process": "P20",
+     "station_group": "TRT1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "浇包烘烤 ≥600°C；球化剂冲入法、覆盖铁屑；球化后 12 分钟内浇完，超时回炉。",
+     "params": {
+      "球化剂 FeSiMg6 %": "1.4–1.6",
+      "残镁 %": "0.030–0.055",
+      "温度 °C": "≥1420"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 30,
+     "process": "P30",
+     "station_group": "MOLD1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "核对模板编号与产品一致；浇注前确认型砂水分和紧实率；浇注连续不断流。",
+     "params": {
+      "浇注温度 °C": "1380–1420",
+      "型砂水分 %": "3.3–3.5",
+      "紧实率 %": "38–42"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 40,
+     "process": "P40",
+     "station_group": "COOL1",
+     "std_cycle_s": 20.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 50,
+     "process": "P50",
+     "station_group": "SHOT1",
+     "std_cycle_s": 25.0,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "挂件均匀，抛丸后检查表面无粘砂；发现冷隔、裂纹挑出登记不合格。",
+     "params": {
+      "抛丸时间 min": "8",
+      "钢丸": "S330"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 60,
+     "process": "P60",
+     "station_group": "CNC",
+     "std_cycle_s": 481.6,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "装夹前清理定位面；开工、换型、换刀后首件三坐标检验，质检放行后再批量加工；测头每件自动测缸孔。",
+     "params": {
+      "主程序": "O1201 V3",
+      "缸孔 Φ40 H7": "40.000–40.025 mm",
+      "端面平面度": "≤0.03 mm",
+      "主轴转速 rpm": "2800",
+      "进给 mm/r": "0.15"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 70,
+     "process": "P70",
+     "station_group": "DEB1",
+     "std_cycle_s": 65.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "毛刷磨损超过 30% 更换；交叉孔逐个复刷。",
+     "params": {
+      "毛刷转速 rpm": "1800",
+      "节拍 s": "65"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 80,
+     "process": "P80",
+     "station_group": "INS1",
+     "std_cycle_s": 60.0,
+     "inspection": true,
+     "report_mode": "auto",
+     "fai": false,
+     "instruction": "按内窥判定标准判定；毛刺超标返修一次，复检仍不合格判废；气孔/缩松直接判废并回溯炉次。",
+     "params": {
+      "残余毛刺": "≤0.1 mm",
+      "气孔/缩松": "≤0.8 mm",
+      "光源亮度": "≥60%"
+     }
+    },
+    {
+     "route_code": "RT-SGH520",
+     "route_name": "SGH-520 铸造+机加一体",
+     "product": "SGH-520",
+     "version": "V1",
+     "status": "active",
+     "seq": 90,
+     "process": "P90",
+     "station_group": "ASRS1",
+     "std_cycle_s": 10.0,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": false
+    }
+   ]
+  },
+  {
+   "import": "shift",
+   "rows": [
+    {
+     "code": "A",
+     "name": "早班",
+     "start": "07:00",
+     "end": "15:00",
+     "active": true,
+     "break_min": 0
+    },
+    {
+     "code": "B",
+     "name": "中班",
+     "start": "15:00",
+     "end": "23:00",
+     "active": true,
+     "break_min": 0
+    },
+    {
+     "code": "C",
+     "name": "夜班",
+     "start": "23:00",
+     "end": "07:00",
+     "active": true,
+     "break_min": 0
+    }
+   ]
+  },
+  {
+   "import": "team",
+   "rows": [
+    {
+     "code": "T1",
+     "name": "甲班",
+     "shift": "A",
+     "leader": "张强"
+    },
+    {
+     "code": "T2",
+     "name": "乙班",
+     "shift": "B",
+     "leader": "刘洋"
+    },
+    {
+     "code": "T3",
+     "name": "丙班",
+     "shift": "C",
+     "leader": "陈刚"
+    }
+   ]
+  },
+  {
+   "import": "employee",
+   "rows": [
+    {
+     "code": "E001",
+     "name": "张强",
+     "team": "T1",
+     "post": "班长"
+    },
+    {
+     "code": "E002",
+     "name": "王建国",
+     "team": "T1",
+     "post": "炉前工"
+    },
+    {
+     "code": "E003",
+     "name": "李伟",
+     "team": "T1",
+     "post": "球化浇包工"
+    },
+    {
+     "code": "E004",
+     "name": "马超",
+     "team": "T1",
+     "post": "浇注工"
+    },
+    {
+     "code": "E005",
+     "name": "何军",
+     "team": "T1",
+     "post": "抛丸挂件工"
+    },
+    {
+     "code": "E006",
+     "name": "赵磊",
+     "team": "T1",
+     "post": "CNC 操作工"
+    },
+    {
+     "code": "E007",
+     "name": "钱明",
+     "team": "T1",
+     "post": "CNC 操作工"
+    },
+    {
+     "code": "E008",
+     "name": "孙涛",
+     "team": "T1",
+     "post": "CNC 操作工"
+    },
+    {
+     "code": "E009",
+     "name": "冯杰",
+     "team": "T1",
+     "post": "去毛刺/返修工"
+    },
+    {
+     "code": "E010",
+     "name": "吴芳",
+     "team": "T1",
+     "post": "仓管员"
+    },
+    {
+     "code": "E011",
+     "name": "孙敏",
+     "team": "T1",
+     "post": "质检员"
+    },
+    {
+     "code": "E012",
+     "name": "周涛",
+     "team": "T1",
+     "post": "设备员"
+    },
+    {
+     "code": "E013",
+     "name": "郑凯",
+     "team": "T1",
+     "post": "工艺工程师"
+    },
+    {
+     "code": "E014",
+     "name": "李娜",
+     "team": "T1",
+     "post": "计划员"
+    },
+    {
+     "code": "E015",
+     "name": "刘洋",
+     "team": "T2",
+     "post": "班长"
+    },
+    {
+     "code": "E016",
+     "name": "陈刚",
+     "team": "T3",
+     "post": "班长"
+    },
+    {
+     "code": "E017",
+     "name": "黄伟",
+     "team": "T2",
+     "post": "CNC 操作工"
+    },
+    {
+     "code": "E018",
+     "name": "林峰",
+     "team": "T2",
+     "post": "炉前工"
+    },
+    {
+     "code": "E019",
+     "name": "高原",
+     "team": "T2",
+     "post": "去毛刺/返修工"
+    },
+    {
+     "code": "E020",
+     "name": "罗斌",
+     "team": "T3",
+     "post": "CNC 操作工"
+    },
+    {
+     "code": "E021",
+     "name": "谢磊",
+     "team": "T3",
+     "post": "炉前工"
+    },
+    {
+     "code": "E022",
+     "name": "韩冰",
+     "team": "T3",
+     "post": "去毛刺/返修工"
+    },
+    {
+     "code": "E023",
+     "name": "唐亮",
+     "team": "T2",
+     "post": "浇注工"
+    },
+    {
+     "code": "E024",
+     "name": "彭宇",
+     "team": "T3",
+     "post": "浇注工"
+    }
+   ]
+  },
+  {
+   "import": "insp_template",
+   "mode": "upsert",
+   "rows": [
+    {
+     "tpl_code": "T-BORE",
+     "tpl_name": "CNC 在线测量（缸孔）",
+     "itype": "IPQC",
+     "material": "SGH-450",
+     "process": "P60",
+     "sample_rule": "100% 测头",
+     "seq": 10,
+     "name": "缸孔直径",
+     "char": "BORE_DIA",
+     "method": "测头",
+     "std": "Φ40 +0.025/0",
+     "lo": 40.0,
+     "hi": 40.025,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-ENDO",
+     "tpl_name": "内窥检测（油道交叉孔）",
+     "itype": "IPQC",
+     "material": "SGH-450",
+     "process": "P80",
+     "sample_rule": "100% 自动",
+     "seq": 10,
+     "name": "交叉孔毛刺",
+     "char": "ENDO_BURR",
+     "method": "自动内窥",
+     "std": "残余毛刺 ≤0.1 mm",
+     "hi": 0.1,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-ENDO",
+     "tpl_name": "内窥检测（油道交叉孔）",
+     "itype": "IPQC",
+     "material": "SGH-450",
+     "process": "P80",
+     "sample_rule": "100% 自动",
+     "seq": 20,
+     "name": "内腔气孔/缩松",
+     "char": "ENDO_PORE",
+     "method": "自动内窥",
+     "std": "≤0.8 mm",
+     "hi": 0.8,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-NODU",
+     "tpl_name": "球化检验（试块）",
+     "itype": "IPQC",
+     "material": "SGH-450-B",
+     "process": "P20",
+     "sample_rule": "每包",
+     "seq": 10,
+     "name": "残余镁",
+     "char": "MG",
+     "method": "光谱",
+     "std": "0.030–0.055",
+     "lo": 0.03,
+     "hi": 0.055,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-NODU",
+     "tpl_name": "球化检验（试块）",
+     "itype": "IPQC",
+     "material": "SGH-450-B",
+     "process": "P20",
+     "sample_rule": "每包",
+     "seq": 20,
+     "name": "球化率",
+     "char": "NODU",
+     "method": "金相",
+     "std": "≥85%",
+     "lo": 85.0,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-FAI",
+     "tpl_name": "首件检验",
+     "itype": "FAI",
+     "material": "SGH-450",
+     "process": "P60",
+     "sample_rule": "每班首件 / 换刀后",
+     "seq": 10,
+     "name": "缸孔直径",
+     "char": "BORE_DIA",
+     "method": "三坐标",
+     "std": "Φ40 +0.025/0",
+     "lo": 40.0,
+     "hi": 40.025,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-FAI",
+     "tpl_name": "首件检验",
+     "itype": "FAI",
+     "material": "SGH-450",
+     "process": "P60",
+     "sample_rule": "每班首件 / 换刀后",
+     "seq": 20,
+     "name": "端面平面度",
+     "char": "FLAT",
+     "method": "三坐标",
+     "std": "≤0.03",
+     "hi": 0.03,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-FAI",
+     "tpl_name": "首件检验",
+     "itype": "FAI",
+     "material": "SGH-450",
+     "process": "P60",
+     "sample_rule": "每班首件 / 换刀后",
+     "seq": 30,
+     "name": "油道孔位置度",
+     "char": "POS_OIL",
+     "method": "三坐标",
+     "std": "≤0.1",
+     "hi": 0.1,
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-FAI",
+     "tpl_name": "首件检验",
+     "itype": "FAI",
+     "material": "SGH-450",
+     "process": "P60",
+     "sample_rule": "每班首件 / 换刀后",
+     "seq": 40,
+     "name": "螺纹 M10",
+     "char": "THREAD",
+     "method": "通止规",
+     "std": "通规通、止规止",
+     "key": false
+    },
+    {
+     "tpl_code": "T-IQC",
+     "tpl_name": "炉料来料检验",
+     "itype": "IQC",
+     "material": "CM-PIG",
+     "sample_rule": "每批",
+     "seq": 10,
+     "name": "碳",
+     "char": "IQC_C",
+     "method": "光谱",
+     "std": "≥4.0",
+     "lo": 4.0,
+     "unit": "%",
+     "key": false
+    },
+    {
+     "tpl_code": "T-IQC",
+     "tpl_name": "炉料来料检验",
+     "itype": "IQC",
+     "material": "CM-PIG",
+     "sample_rule": "每批",
+     "seq": 20,
+     "name": "硫",
+     "char": "IQC_S",
+     "method": "光谱",
+     "std": "≤0.04",
+     "hi": 0.04,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-OQC",
+     "tpl_name": "出货检验",
+     "itype": "OQC",
+     "material": "SGH-450",
+     "process": "P90",
+     "sample_rule": "GB/T 2828.1 一般Ⅱ AQL 0.65",
+     "seq": 10,
+     "name": "外观",
+     "char": "OQC_APP",
+     "method": "目视",
+     "std": "无磕碰锈蚀",
+     "key": false
+    },
+    {
+     "tpl_code": "T-OQC",
+     "tpl_name": "出货检验",
+     "itype": "OQC",
+     "material": "SGH-450",
+     "process": "P90",
+     "sample_rule": "GB/T 2828.1 一般Ⅱ AQL 0.65",
+     "seq": 20,
+     "name": "包装标识",
+     "char": "OQC_PKG",
+     "method": "目视",
+     "std": "零件码清晰可扫",
+     "key": false
+    }
+   ]
+  },
+  {
+   "import": "warehouse",
+   "rows": [
+    {
+     "code": "W-RAW",
+     "name": "原材料库",
+     "wtype": "raw"
+    },
+    {
+     "code": "W-BLANK",
+     "name": "毛坯库",
+     "wtype": "blank"
+    },
+    {
+     "code": "W-LINE",
+     "name": "机加线边库",
+     "wtype": "wip"
+    },
+    {
+     "code": "W-FG",
+     "name": "成品立体仓库",
+     "wtype": "fg"
+    },
+    {
+     "code": "W-AUX",
+     "name": "辅料库",
+     "wtype": "aux"
+    }
+   ]
+  },
+  {
+   "import": "location",
+   "rows": [
+    {
+     "code": "W-RAW-01",
+     "name": "原材料库 1 区",
+     "warehouse": "W-RAW",
+     "capacity": 200
+    },
+    {
+     "code": "W-RAW-02",
+     "name": "原材料库 2 区",
+     "warehouse": "W-RAW",
+     "capacity": 200
+    },
+    {
+     "code": "W-RAW-03",
+     "name": "原材料库 3 区",
+     "warehouse": "W-RAW",
+     "capacity": 200
+    },
+    {
+     "code": "W-BLANK-01",
+     "name": "毛坯库 1 区",
+     "warehouse": "W-BLANK",
+     "capacity": 200
+    },
+    {
+     "code": "W-BLANK-02",
+     "name": "毛坯库 2 区",
+     "warehouse": "W-BLANK",
+     "capacity": 200
+    },
+    {
+     "code": "W-BLANK-03",
+     "name": "毛坯库 3 区",
+     "warehouse": "W-BLANK",
+     "capacity": 200
+    },
+    {
+     "code": "W-LINE-01",
+     "name": "机加线边库 1 区",
+     "warehouse": "W-LINE",
+     "capacity": 200
+    },
+    {
+     "code": "W-LINE-02",
+     "name": "机加线边库 2 区",
+     "warehouse": "W-LINE",
+     "capacity": 200
+    },
+    {
+     "code": "W-LINE-03",
+     "name": "机加线边库 3 区",
+     "warehouse": "W-LINE",
+     "capacity": 200
+    },
+    {
+     "code": "W-FG-01",
+     "name": "成品立体仓库 1 区",
+     "warehouse": "W-FG",
+     "capacity": 200
+    },
+    {
+     "code": "W-FG-02",
+     "name": "成品立体仓库 2 区",
+     "warehouse": "W-FG",
+     "capacity": 200
+    },
+    {
+     "code": "W-FG-03",
+     "name": "成品立体仓库 3 区",
+     "warehouse": "W-FG",
+     "capacity": 200
+    },
+    {
+     "code": "W-AUX-01",
+     "name": "辅料库 1 区",
+     "warehouse": "W-AUX",
+     "capacity": 200
+    },
+    {
+     "code": "W-AUX-02",
+     "name": "辅料库 2 区",
+     "warehouse": "W-AUX",
+     "capacity": 200
+    },
+    {
+     "code": "W-AUX-03",
+     "name": "辅料库 3 区",
+     "warehouse": "W-AUX",
+     "capacity": 200
+    }
+   ]
+  },
+  {
+   "import": "opening_stock",
+   "rows": [
+    {
+     "material": "CM-PIG",
+     "warehouse": "W-RAW",
+     "qty": 180.0
+    },
+    {
+     "material": "CM-STEEL",
+     "warehouse": "W-RAW",
+     "qty": 120.0
+    },
+    {
+     "material": "CM-RET",
+     "warehouse": "W-RAW",
+     "qty": 60.0
+    },
+    {
+     "material": "CM-CARB",
+     "warehouse": "W-AUX",
+     "qty": 8.0
+    },
+    {
+     "material": "CM-FESI",
+     "warehouse": "W-AUX",
+     "qty": 5.0
+    },
+    {
+     "material": "AUX-NODU",
+     "warehouse": "W-AUX",
+     "qty": 6.0
+    },
+    {
+     "material": "AUX-INOC",
+     "warehouse": "W-AUX",
+     "qty": 3.0
+    },
+    {
+     "material": "AUX-SAND",
+     "warehouse": "W-AUX",
+     "qty": 400.0
+    },
+    {
+     "material": "AUX-SHOT",
+     "warehouse": "W-AUX",
+     "qty": 4.0
+    }
+   ]
+  },
+  {
+   "import": "work_order",
+   "rows": [
+    {
+     "product": "SGH-450",
+     "route": "RT-SGH450",
+     "qty": 600,
+     "start_plan": "@hour+0h",
+     "due": "@hour+2d",
+     "priority": 3,
+     "customer": "北辰重卡"
+    },
+    {
+     "product": "SGH-450",
+     "route": "RT-SGH450",
+     "qty": 800,
+     "start_plan": "@hour+8h",
+     "due": "@hour+4d",
+     "priority": 5,
+     "customer": "西岭重卡"
+    },
+    {
+     "product": "SGH-450",
+     "route": "RT-SGH450",
+     "qty": 500,
+     "start_plan": "@hour+16h",
+     "due": "@hour+6d",
+     "priority": 5,
+     "customer": "长河商用车"
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "内窥检测判定标准（SGH-450 油道）",
+     "tags": "质量,检测",
+     "content": "检测部位：8 个油道交叉孔。\n合格：交叉口残余毛刺 ≤0.1 mm，内腔气孔/缩松 ≤0.8 mm。\n毛刺超标的件返修一次（去毛刺单元复刷），复检仍不合格判废。\n气孔、缩松超标直接判废并回溯炉次。光源亮度不低于 60%。",
+     "updated": "@now",
+     "kind": "standard",
+     "product": "SGH-450",
+     "process": "P80"
+    },
+    {
+     "title": "SGH-450 机加工序图 OP60",
+     "tags": "图纸,P60",
+     "content": "机加工序图（DXF）：外形、缸孔 Φ40 H7、4×M10 螺栓孔、油道孔位置，平面度 0.03。工位终端和报工详情里按产品 + 工序自动带出。",
+     "updated": "@now",
+     "kind": "drawing",
+     "product": "SGH-450",
+     "process": "P60",
+     "version": "V3"
+    },
+    {
+     "title": "SGH-450 检验图 OP80",
+     "tags": "图纸,P80",
+     "content": "内窥 / 出货检验用检验图（PDF），标注缸孔、平面度、油道孔位置度和毛刺要求。",
+     "updated": "@now",
+     "kind": "drawing",
+     "product": "SGH-450",
+     "process": "P80",
+     "version": "V3"
+    },
+    {
+     "title": "SGH-450 毛坯图（浇口位置）",
+     "tags": "图纸,P30",
+     "content": "毛坯示意图（图片）：浇口、冒口位置和加工余量。",
+     "updated": "@now",
+     "kind": "drawing",
+     "product": "SGH-450",
+     "process": "P30",
+     "version": "V2"
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "mode": "upsert",
+   "rows": [
+    {
+     "title": "CNC 换刀作业指导",
+     "product": "SGH-450"
+    }
+   ]
+  },
+  {
+   "files": [
+    {
+     "kb": "SGH-450 机加工序图 OP60",
+     "file": "files/sgh450_op60.dxf"
+    },
+    {
+     "kb": "SGH-450 检验图 OP80",
+     "file": "files/sgh450_op80.pdf"
+    },
+    {
+     "kb": "SGH-450 毛坯图（浇口位置）",
+     "file": "files/sgh450_blank.png"
+    }
+   ]
+  },
+  {
+   "entity": "datasource",
+   "keys": [
+    "code"
+   ],
+   "rows": [
+    {
+     "code": "VF",
+     "name": "虚拟工厂（示范工厂）",
+     "protocol": "mqtt",
+     "endpoint": "mqtt://127.0.0.1:1883",
+     "prefix": "vfactory/foundry-housing/",
+     "enabled": true,
+     "remark": "示范工厂按标准交付包接入（接入中心 → 导入交付包）"
+    }
+   ]
+  },
+  {
+   "settings": {
+    "company": [
+     "蜂元科技（郑州）有限责任公司",
+     "公司名称"
+    ],
+    "tou": [
+     "谷电 23:00–07:00；峰电 08:00–11:00、18:00–22:00",
+     "峰谷电时段（能耗建议用）"
+    ]
+   }
+  },
+  {
+   "import": "skill",
+   "mode": "append",
+   "rows": [
+    {
+     "employee": "E002",
+     "process": "P10",
+     "station_group": "FUR",
+     "level": "3"
+    },
+    {
+     "employee": "E018",
+     "process": "P10",
+     "station_group": "FUR",
+     "level": "3"
+    },
+    {
+     "employee": "E021",
+     "process": "P10",
+     "station_group": "FUR",
+     "level": "3"
+    },
+    {
+     "employee": "E003",
+     "process": "P20",
+     "station_group": "TRT1",
+     "level": "2"
+    },
+    {
+     "employee": "E018",
+     "process": "P20",
+     "station_group": "TRT1",
+     "level": "2"
+    },
+    {
+     "employee": "E021",
+     "process": "P20",
+     "station_group": "TRT1",
+     "level": "2"
+    },
+    {
+     "employee": "E004",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "level": "3"
+    },
+    {
+     "employee": "E023",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "level": "3"
+    },
+    {
+     "employee": "E024",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "level": "3"
+    },
+    {
+     "employee": "E004",
+     "process": "P40",
+     "station_group": "COOL1",
+     "level": "2"
+    },
+    {
+     "employee": "E023",
+     "process": "P40",
+     "station_group": "COOL1",
+     "level": "2"
+    },
+    {
+     "employee": "E024",
+     "process": "P40",
+     "station_group": "COOL1",
+     "level": "2"
+    },
+    {
+     "employee": "E005",
+     "process": "P50",
+     "station_group": "SHOT1",
+     "level": "2"
+    },
+    {
+     "employee": "E023",
+     "process": "P50",
+     "station_group": "SHOT1",
+     "level": "2"
+    },
+    {
+     "employee": "E024",
+     "process": "P50",
+     "station_group": "SHOT1",
+     "level": "2"
+    },
+    {
+     "employee": "E006",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "3"
+    },
+    {
+     "employee": "E007",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "3"
+    },
+    {
+     "employee": "E008",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "3"
+    },
+    {
+     "employee": "E017",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "3"
+    },
+    {
+     "employee": "E020",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "3"
+    },
+    {
+     "employee": "E009",
+     "process": "P70",
+     "station_group": "DEB1",
+     "level": "2"
+    },
+    {
+     "employee": "E019",
+     "process": "P70",
+     "station_group": "DEB1",
+     "level": "2"
+    },
+    {
+     "employee": "E022",
+     "process": "P70",
+     "station_group": "DEB1",
+     "level": "2"
+    },
+    {
+     "employee": "E011",
+     "process": "P80",
+     "station_group": "INS1",
+     "level": "2"
+    },
+    {
+     "employee": "E019",
+     "process": "P80",
+     "station_group": "INS1",
+     "level": "2"
+    },
+    {
+     "employee": "E022",
+     "process": "P80",
+     "station_group": "INS1",
+     "level": "2"
+    },
+    {
+     "employee": "E010",
+     "process": "P90",
+     "station_group": "ASRS1",
+     "level": "2"
+    },
+    {
+     "employee": "E015",
+     "process": "P90",
+     "station_group": "ASRS1",
+     "level": "2"
+    },
+    {
+     "employee": "E016",
+     "process": "P90",
+     "station_group": "ASRS1",
+     "level": "2"
+    },
+    {
+     "employee": "E010",
+     "process": "P05",
+     "level": "2"
+    },
+    {
+     "employee": "E015",
+     "process": "P05",
+     "level": "2"
+    },
+    {
+     "employee": "E016",
+     "process": "P05",
+     "level": "2"
+    },
+    {
+     "employee": "E008",
+     "process": "P60",
+     "station_group": "CNC",
+     "level": "4"
+    }
+   ]
+  },
+  {
+   "import": "changeover",
+   "rows": [
+    {
+     "station_group": "CNC",
+     "from_product": "SGH-450",
+     "to_product": "SGH-520",
+     "minutes": 45.0,
+     "remark": "换夹具 + 调程序 O1203 + 首件"
+    },
+    {
+     "station_group": "CNC",
+     "from_product": "SGH-520",
+     "to_product": "SGH-450",
+     "minutes": 40.0,
+     "remark": "换夹具 + 调程序 O1201 + 首件"
+    },
+    {
+     "station_group": "MOLD1",
+     "from_product": "SGH-450",
+     "to_product": "SGH-520",
+     "minutes": 30.0,
+     "remark": "换模板"
+    },
+    {
+     "station_group": "MOLD1",
+     "from_product": "SGH-520",
+     "to_product": "SGH-450",
+     "minutes": 30.0,
+     "remark": "换模板"
+    },
+    {
+     "station_group": "DEB1",
+     "minutes": 10.0,
+     "remark": "换毛刷程序"
+    }
+   ]
+  },
+  {
+   "import": "tooling",
+   "rows": [
+    {
+     "code": "MB-450-01",
+     "name": "SGH-450 模板 1#",
+     "ttype": "pattern",
+     "product": "SGH-450",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "shots": 18420,
+     "life_shots": 60000,
+     "maint_every": 5000,
+     "last_maint_shots": 15000,
+     "status": "in_use",
+     "location": "模具库 A-01"
+    },
+    {
+     "code": "MB-450-02",
+     "name": "SGH-450 模板 2#（备用）",
+     "ttype": "pattern",
+     "product": "SGH-450",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "shots": 52300,
+     "life_shots": 60000,
+     "maint_every": 5000,
+     "last_maint_shots": 50000,
+     "status": "available",
+     "location": "模具库 A-02"
+    },
+    {
+     "code": "MB-520-01",
+     "name": "SGH-520 模板 1#",
+     "ttype": "pattern",
+     "product": "SGH-520",
+     "process": "P30",
+     "station_group": "MOLD1",
+     "shots": 6100,
+     "life_shots": 60000,
+     "maint_every": 5000,
+     "last_maint_shots": 5000,
+     "status": "available",
+     "location": "模具库 A-01"
+    }
+   ]
+  }
+ ],
+ "after_equipment": [
+  {
+   "entity": "nc_program",
+   "keys": [
+    "code"
+   ],
+   "rows": [
+    {
+     "code": "O1201-V3",
+     "name": "SGH-450 壳体加工主程序",
+     "product": "SGH-450",
+     "station_group": "CNC",
+     "version": "V3",
+     "status": "released",
+     "content": "%\nO1201 (SGH-450 壳体加工主程序 V3)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+     "approved_by": "郑凯",
+     "released_at": "@now",
+     "remark": "精镗余量 0.25→0.20，提高缸孔一致性"
+    },
+    {
+     "code": "O1201-V4",
+     "name": "SGH-450 壳体加工主程序",
+     "product": "SGH-450",
+     "station_group": "CNC",
+     "version": "V4",
+     "status": "draft",
+     "content": "%\nO1201 (SGH-450 壳体加工主程序 V4)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+     "remark": "OP30 钻油道孔进给 0.15→0.13，降低交叉孔毛刺（待试切）"
+    },
+    {
+     "code": "O1202-V1",
+     "name": "SGH-450 测头程序",
+     "product": "SGH-450",
+     "station_group": "CNC",
+     "version": "V1",
+     "status": "released",
+     "content": "%\nO1202 (SGH-450 测头程序 V1)\nG90 G54 G17\nT01 M06 (Φ80 面铣)\n...\nM30\n%",
+     "approved_by": "郑凯",
+     "released_at": "@now"
+    }
+   ]
+  },
+  {
+   "import": "tooling",
+   "rows": [
+    {
+     "code": "FX-450-01",
+     "name": "SGH-450 液压夹具 1#",
+     "ttype": "fixture",
+     "product": "SGH-450",
+     "process": "P60",
+     "station_group": "CNC",
+     "equipment": "CNC1",
+     "shots": 3731,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "in_use",
+     "location": "CNC1"
+    },
+    {
+     "code": "FX-450-02",
+     "name": "SGH-450 液压夹具 2#",
+     "ttype": "fixture",
+     "product": "SGH-450",
+     "process": "P60",
+     "station_group": "CNC",
+     "equipment": "CNC2",
+     "shots": 4462,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "in_use",
+     "location": "CNC2"
+    },
+    {
+     "code": "FX-450-03",
+     "name": "SGH-450 液压夹具 3#",
+     "ttype": "fixture",
+     "product": "SGH-450",
+     "process": "P60",
+     "station_group": "CNC",
+     "equipment": "CNC3",
+     "shots": 5193,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "in_use",
+     "location": "CNC3"
+    },
+    {
+     "code": "FX-450-04",
+     "name": "SGH-450 液压夹具 4#",
+     "ttype": "fixture",
+     "product": "SGH-450",
+     "process": "P60",
+     "station_group": "CNC",
+     "equipment": "CNC4",
+     "shots": 5924,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "in_use",
+     "location": "CNC4"
+    },
+    {
+     "code": "FX-520-01",
+     "name": "SGH-520 液压夹具 1#",
+     "ttype": "fixture",
+     "product": "SGH-520",
+     "process": "P60",
+     "station_group": "CNC",
+     "shots": 900,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "available",
+     "location": "工装库 B-1"
+    },
+    {
+     "code": "FX-520-02",
+     "name": "SGH-520 液压夹具 2#",
+     "ttype": "fixture",
+     "product": "SGH-520",
+     "process": "P60",
+     "station_group": "CNC",
+     "shots": 1800,
+     "life_shots": 200000,
+     "maint_every": 20000,
+     "last_maint_shots": 0,
+     "status": "available",
+     "location": "工装库 B-1"
+    }
+   ],
+   "skip_missing": true
+  },
+  {
+   "import": "tooling",
+   "mode": "upsert",
+   "rows": [
+    {
+     "code": "MB-450-01",
+     "equipment": "MOLD1"
+    }
+   ],
+   "skip_missing": true
+  },
+  {
+   "import": "downtime_plan",
+   "rows": [
+    {
+     "equipment": "CNC3",
+     "kind": "maint",
+     "start": "@day+1 08:00",
+     "end": "@day+1 12:00",
+     "reason": "月度保养：主轴润滑、导轨精度复测",
+     "created_by": "周涛"
+    }
+   ],
+   "skip_missing": true
+  }
+ ]
+}

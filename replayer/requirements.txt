@@ -1,0 +1,4 @@
+amqtt==0.12.1        # embedded MQTT broker + publisher
+asyncua==2.1.0       # OPC UA server
+pymodbus==3.8.6      # Modbus TCP server
+openpyxl>=3.1        # reads the delivery package point table (package / record / compile)

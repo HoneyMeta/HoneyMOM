@@ -1,0 +1,132 @@
+/* HoneyMOM design tokens (light "tech" style). Colors / font sizes / spacing / radii / shadows / motion are defined only here; pages and components always use var(--hm-*).
+   See design/README.md. */
+:root {
+  /* ---- Density: on large screens font size, spacing, control height and shell size scale with viewport width (1.0 / 1.125 / 1.25, breakpoints at the end of this file) ---- */
+  --hm-scale: 1;
+  /* ---- Surfaces ---- */
+  --hm-canvas: #f3f6fa;            /* Main canvas (with fine grid) */
+  --hm-surface: #ffffff;           /* Cards, tables */
+  --hm-surface-2: #f7f9fc;         /* Secondary surface: table headers, toolbars */
+  --hm-surface-3: #eef2f7;         /* Hover, group background */
+  --hm-glass: rgba(255, 255, 255, .78);
+  --hm-glass-strong: rgba(255, 255, 255, .9);
+  --hm-glass-blur: saturate(160%) blur(14px);
+  --hm-border: #e2e8f0;
+  --hm-border-strong: #cbd5e1;
+  --hm-hairline: rgba(15, 32, 60, .08);
+  --hm-grid-line: rgba(30, 64, 120, .045);
+
+  /* ---- Text ---- */
+  --hm-text: #0f1b2d;
+  --hm-text-2: #44536a;
+  --hm-text-3: #7b8aa0;
+  --hm-text-inv: #ffffff;
+
+  /* ---- Primary colors: precise cobalt blue + cyan (data / AI), brand amber accents ---- */
+  --hm-primary: #1463d6;
+  --hm-primary-hover: #0f55bd;
+  --hm-primary-press: #0c479f;
+  --hm-primary-soft: #e8f0fd;
+  --hm-primary-soft-2: #d3e3fb;
+  --hm-cyan: #0ba5c4;
+  --hm-cyan-soft: #e3f6fa;
+  --hm-cyan-ink: #0a6f87;          /* Text on cyan / background for white text (contrast ≥ 4.5; --hm-cyan is only for lines and graphics) */
+  --hm-amber: #d9822b;             /* HoneyMOM brand color */
+  --hm-amber-soft: #fcf1e5;
+  --hm-amber-ink: #9a5513;
+  /* AI only: subtle cyan → blue → purple gradient, used only on AI-related badges, selection rings and button outlines */
+  --hm-ai-1: #0ba5c4;
+  --hm-ai-2: #1463d6;
+  --hm-ai-3: #6d5ae6;
+  --hm-ai-grad: linear-gradient(120deg, var(--hm-ai-1), var(--hm-ai-2) 55%, var(--hm-ai-3));
+  --hm-ai-soft: #eef3ff;
+  --hm-ai-ring: rgba(20, 99, 214, .55);
+
+  /* ---- Status ---- */
+  --hm-run: #15a34a;      --hm-run-soft: #e4f6ea;   --hm-run-ink: #11713a;
+  --hm-idle: #d99a16;     --hm-idle-soft: #fcf3dc;  --hm-idle-ink: #8a5a07;
+  --hm-fault: #dc2b2b;    --hm-fault-soft: #fde7e7; --hm-fault-ink: #a11f1f;
+  --hm-offline: #94a3b8;  --hm-offline-soft: #eef1f5; --hm-offline-ink: #5b6b80;
+  --hm-setup: #1463d6;    --hm-setup-soft: #e8f0fd; --hm-setup-ink: #124b9e;
+
+  /* ---- Fonts ---- */
+  --hm-font: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  --hm-font-num: "DIN Alternate", "Bahnschrift", "Segoe UI", "HarmonyOS Sans SC", system-ui, sans-serif;   /* Numbers: narrow, tabular digits */
+  --hm-font-mono: "JetBrains Mono", "Cascadia Mono", Consolas, "SF Mono", monospace;
+  /* Font sizes scale with --hm-scale (large-screen density, see end of file) */
+  --hm-fs-2xs: calc(11px * var(--hm-scale)); --hm-fs-xs: calc(12px * var(--hm-scale)); --hm-fs-sm: calc(13px * var(--hm-scale)); --hm-fs-md: calc(14px * var(--hm-scale));
+  --hm-fs-lg: calc(16px * var(--hm-scale)); --hm-fs-xl: calc(20px * var(--hm-scale)); --hm-fs-2xl: calc(26px * var(--hm-scale)); --hm-fs-3xl: calc(34px * var(--hm-scale));
+  --hm-lh: 1.55;
+  --hm-fw-medium: 500; --hm-fw-semibold: 600;
+
+  /* ---- Spacing (multiples of 4) ---- */
+  --hm-sp-1: calc(4px * var(--hm-scale)); --hm-sp-2: calc(8px * var(--hm-scale)); --hm-sp-3: calc(12px * var(--hm-scale)); --hm-sp-4: calc(16px * var(--hm-scale));
+  --hm-sp-5: calc(20px * var(--hm-scale)); --hm-sp-6: calc(24px * var(--hm-scale)); --hm-sp-8: calc(32px * var(--hm-scale));
+  /* Grid gap, card padding */
+  --hm-gap: calc(14px * var(--hm-scale)); --hm-pad: calc(14px * var(--hm-scale));
+
+  /* ---- Radii ---- */
+  --hm-r-xs: 3px; --hm-r-sm: 5px; --hm-r-md: 8px; --hm-r-lg: 12px; --hm-r-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --hm-e1: 0 1px 2px rgba(15, 32, 60, .05);
+  --hm-e2: 0 1px 2px rgba(15, 32, 60, .05), 0 4px 14px rgba(15, 32, 60, .06);
+  --hm-e3: 0 2px 6px rgba(15, 32, 60, .08), 0 14px 38px rgba(15, 32, 60, .14);
+  --hm-focus: 0 0 0 2px #fff, 0 0 0 4px rgba(20, 99, 214, .5);
+
+  /* ---- Motion ---- */
+  --hm-ease: cubic-bezier(.2, .7, .2, 1);
+  --hm-dur-1: 120ms; --hm-dur-2: 200ms; --hm-dur-3: 320ms;
+
+  /* ---- Shell sizes ---- */
+  --hm-top-h: calc(52px * var(--hm-scale));
+  --hm-status-h: calc(26px * var(--hm-scale));
+  --hm-nav-w: calc(232px * var(--hm-scale));
+  --hm-nav-w-collapsed: calc(60px * var(--hm-scale));
+  --hm-dock-tab-w: 30px;
+  --hm-z-shell: 20; --hm-z-dock: 30; --hm-z-pop: 3200; --hm-z-palette: 3300;
+
+  /* ---- Element Plus: primary color set to cobalt, radii / font sizes aligned ---- */
+  --el-color-primary: #1463d6;
+  --el-color-primary-light-3: #5b92e2;
+  --el-color-primary-light-5: #89b1eb;
+  --el-color-primary-light-7: #b9d0f3;
+  --el-color-primary-light-8: #d0e0f7;
+  --el-color-primary-light-9: #e8f0fd;
+  --el-color-primary-dark-2: #0f4fab;
+  --el-color-success: #15a34a;
+  --el-color-warning: #d99a16;
+  --el-color-danger: #dc2b2b;
+  --el-color-error: #dc2b2b;
+  --el-border-radius-base: 6px;
+  --el-border-radius-small: 4px;
+  --el-border-color: #dbe2ea;
+  --el-border-color-light: #e2e8f0;
+  --el-border-color-lighter: #e9eef4;
+  --el-text-color-primary: #0f1b2d;
+  --el-text-color-regular: #44536a;
+  --el-text-color-secondary: #7b8aa0;
+  --el-fill-color-light: #f4f7fb;
+  --el-fill-color-lighter: #f7f9fc;
+  --el-bg-color-page: #f3f6fa;
+  --el-font-family: var(--hm-font);
+  --el-font-size-base: var(--hm-fs-sm); --el-font-size-small: var(--hm-fs-xs); --el-font-size-extra-small: var(--hm-fs-2xs); --el-font-size-medium: var(--hm-fs-md); --el-font-size-large: var(--hm-fs-lg);
+  --el-component-size: calc(32px * var(--hm-scale)); --el-component-size-small: calc(24px * var(--hm-scale)); --el-component-size-large: calc(40px * var(--hm-scale));
+  --el-box-shadow-light: 0 2px 6px rgba(15, 32, 60, .08), 0 10px 28px rgba(15, 32, 60, .1);
+
+  /* ---- Legacy variables (still used by older pages, mapped to the new tokens) ---- */
+  --honey: var(--hm-amber); --ink: var(--hm-text); --mu: var(--hm-text-3); --bg: var(--hm-canvas); --card: var(--hm-surface); --line: var(--hm-border); --fg: var(--hm-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --hm-dur-1: 0ms; --hm-dur-2: 0ms; --hm-dur-3: 0ms; }
+}
+
+/* ---- Density strategy ----
+   < 1800px (laptops, 1680×1050 workstation screens): 1.0, densest;
+   1800–2299px (1920×1080 office screens): 1.125;
+   ≥ 2300px (2560×1440 and larger): 1.25, font 13 → 16px, controls 32 → 40px, max page width grows too; extra grid columns are laid out by .g-auto.
+   Pages and components that use var(--hm-fs-*) / var(--hm-sp-*) / var(--hm-gap) follow automatically; hard-coded px values don't.
+   Charts (design/chart.ts) scale axis and legend text by the same --hm-scale. */
+@media (min-width: 1800px) { :root { --hm-scale: 1.125; } }
+@media (min-width: 2300px) { :root { --hm-scale: 1.25; } }

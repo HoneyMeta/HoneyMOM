@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy>=2.0
+scipy
+numpy
+amqtt==0.12.1
+asyncua==2.1.0
+pymodbus==3.8.6
+# PostgreSQL（正式部署，MES_DB=postgresql+psycopg://…）；只用 SQLite 可以不装
+psycopg[binary]>=3.2
+openpyxl>=3.1          # 导入模板 / 错误报告 / 报表导出（M3）
+pymupdf>=1.24          # label PDF rendering (AGPL-3.0 / Artifex commercial)
+python-docx>=1.1       # Word export (reports, 8D, PPAP)
+Pillow>=10             # image handling

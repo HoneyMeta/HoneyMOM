@@ -1,0 +1,316 @@
+{
+ "code": "common",
+ "name": "通用",
+ "version": "1.0.0",
+ "kind": "base",
+ "industry": "通用",
+ "description": "所有行业都用的基础：来料收货、成品入库两道工序，通用 SOP（设备故障停机处置、安灯响应），报工汇总参数，设备通用点检保养模板，通用报表与 KPI。选任何行业模板时都会先应用它。",
+ "requires": [],
+ "modules": [],
+ "enums": {
+  "process.ptype": {
+   "receiving": "来料",
+   "inspection": "检测",
+   "storage": "入库",
+   "other": "其他"
+  },
+  "equipment.etype": {
+   "receiving": "收货台",
+   "inspection": "检测站",
+   "warehouse": "立体仓库",
+   "agv": "AGV",
+   "crew": "班组",
+   "other": "其他"
+  },
+  "workshop.wtype": {
+   "warehouse": "仓储",
+   "other": "其他"
+  },
+  "defect_code.category": {
+   "appearance": "外观",
+   "other": "其他"
+  }
+ },
+ "device_templates": [
+  {
+   "code": "receiving",
+   "name": "收货台",
+   "etype": "receiving"
+  },
+  {
+   "code": "warehouse",
+   "name": "立体仓库",
+   "etype": "warehouse"
+  },
+  {
+   "code": "agv",
+   "name": "AGV 车队",
+   "etype": "agv"
+  },
+  {
+   "code": "compressor",
+   "name": "空压机",
+   "etype": "other"
+  }
+ ],
+ "maint_templates": [
+  {
+   "key": "D",
+   "code": "MP-{code}-D",
+   "name": "{name} 日常点检",
+   "mtype": "spot",
+   "cycle_days": 1,
+   "next_due_days": 0,
+   "default_items": "外观、紧固、润滑",
+   "skip_types": [
+    "crew",
+    "agv"
+   ],
+   "items_by_type": {
+    "warehouse": "堆垛机限位；货叉；光电"
+   }
+  },
+  {
+   "key": "M",
+   "code": "MP-{code}-M",
+   "name": "{name} 月度保养",
+   "mtype": "maint",
+   "cycle_days": 30,
+   "types": [],
+   "items": "更换滤芯；检查液压/润滑系统；电气柜除尘；精度/参数检查",
+   "next_due_days": 7,
+   "stagger": 20
+  }
+ ],
+ "kpis": [
+  {
+   "key": "attain",
+   "label": "计划达成率",
+   "unit": "%",
+   "target": 95,
+   "dir": "up",
+   "desc": "入库数 ÷ 截至当前应完成的计划数"
+  },
+  {
+   "key": "oee",
+   "label": "设备综合效率 OEE",
+   "unit": "%",
+   "target": 75,
+   "dir": "up",
+   "desc": "可用率 × 性能率 × 质量率"
+  },
+  {
+   "key": "scrap_rate",
+   "label": "废品率",
+   "unit": "%",
+   "target": 2,
+   "dir": "down",
+   "desc": "报废 ÷ 投入"
+  },
+  {
+   "key": "fpy",
+   "label": "一次合格率",
+   "unit": "%",
+   "target": 97,
+   "dir": "up",
+   "desc": "首次检验合格 ÷ 检验数"
+  },
+  {
+   "key": "mttr",
+   "label": "平均修复时间 MTTR",
+   "unit": "min",
+   "target": 60,
+   "dir": "down",
+   "desc": "维修工单报修到修复的平均分钟"
+  }
+ ],
+ "reports": [
+  {
+   "name": "工单完成情况（按产品）",
+   "dataset": "work_order",
+   "chart": "bar",
+   "shared_roles": [
+    "*"
+   ],
+   "config": {
+    "group": [
+     {
+      "field": "product__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty",
+      "agg": "sum",
+      "label": "计划"
+     },
+     {
+      "field": "qty_done",
+      "agg": "sum",
+      "label": "完工"
+     },
+     {
+      "field": "qty_scrap",
+      "agg": "sum",
+      "label": "报废"
+     }
+    ]
+   }
+  },
+  {
+   "name": "近 7 天不合格品（按缺陷）",
+   "dataset": "ncr",
+   "chart": "bar",
+   "shared_roles": [
+    "qc",
+    "manager",
+    "engineer"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "found_at",
+      "op": "last_days",
+      "value": 7
+     }
+    ],
+    "group": [
+     {
+      "field": "defect__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty",
+      "agg": "sum",
+      "label": "数量"
+     }
+    ],
+    "sort": [
+     {
+      "field": "qty_sum",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "维修工单停机（按设备）",
+   "dataset": "repair_order",
+   "chart": "bar",
+   "shared_roles": [
+    "maint",
+    "manager"
+   ],
+   "config": {
+    "group": [
+     {
+      "field": "equipment__label"
+     }
+    ],
+    "measures": [
+     {
+      "agg": "count",
+      "label": "次数"
+     },
+     {
+      "field": "downtime_min",
+      "agg": "sum",
+      "label": "停机 min"
+     }
+    ],
+    "sort": [
+     {
+      "field": "downtime_min_sum",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "每日报工产量",
+   "dataset": "report",
+   "chart": "line",
+   "shared_roles": [
+    "*"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "end",
+      "op": "last_days",
+      "value": 14
+     }
+    ],
+    "group": [
+     {
+      "field": "end",
+      "bucket": "day"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty_good",
+      "agg": "sum",
+      "label": "合格"
+     },
+     {
+      "field": "qty_ng",
+      "agg": "sum",
+      "label": "不良"
+     }
+    ]
+   }
+  }
+ ],
+ "config": [
+  {
+   "import": "process",
+   "rows": [
+    {
+     "code": "P05",
+     "name": "来料收货",
+     "ptype": "receiving",
+     "std_cycle_s": 106.0
+    },
+    {
+     "code": "P90",
+     "name": "成品入库",
+     "ptype": "storage",
+     "std_cycle_s": 10.0
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "设备故障停机处置流程",
+     "tags": "SOP,设备",
+     "content": "1. 设备故障停机后，操作工立即拉安灯并在 MES 报修，写清报警内容和停机时间。\n2. 设备员 10 分钟内到场，先确认安全（断电挂牌），再按报警代码排查。\n3. 加工中心常见故障：主轴过载（检查刀具磨损、切削参数）、润滑压力低（检查油位和油泵）、气压不足（检查气源 0.5 MPa）。\n4. 中频炉常见故障：冷却水流量低（检查水泵和过滤器）、炉衬漏电报警（立即停电，防止漏炉）。\n\n常用备件：主轴轴承、刀柄拉钉、润滑泵滤芯、电磁阀、冷却水泵密封、炉衬耐火材料。修复后填写故障原因和处理方法，班长验收。",
+     "updated": "@now",
+     "kind": "sop"
+    },
+    {
+     "title": "安灯响应规范",
+     "tags": "SOP,生产",
+     "content": "安灯分为设备、质量、物料、安全四类。设备类由设备员响应，质量类由质检员响应，物料类由仓管员响应，安全类班组长立即到场。\n响应时限：5 分钟内到场；15 分钟内不能解决的升级到车间主任。处理完毕在 MES 关闭安灯并写处理结果。",
+     "updated": "@now",
+     "kind": "sop"
+    }
+   ]
+  },
+  {
+   "settings": {
+    "report_auto_interval_min": [
+     "60",
+     "设备自动报工汇总间隔（分钟：5/10/15/20/30/60）"
+    ],
+    "report_over_pct": [
+     "0",
+     "报工允许超出计划的比例 %（0 = 不许超报）"
+    ]
+   }
+  }
+ ]
+}

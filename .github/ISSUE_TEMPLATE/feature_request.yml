@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest a change or a new feature
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What do you need to do on the shop floor or in the office that HoneyMOM does not support today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: How it could work (screens, data, interfaces). Mention the ISA-95 area if you know it.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Production operations
+        - Quality operations
+        - Maintenance operations
+        - Inventory operations
+        - Planning and ERP
+        - Equipment connectivity (MQTT / OPC UA / Modbus / other)
+        - AI features
+        - Platform (permissions, audit, backup, deployment, i18n)
+        - Other
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Industry, plant size, existing systems; anything that helps us understand the use case.

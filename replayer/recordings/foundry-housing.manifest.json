@@ -1,0 +1,25 @@
+{
+ "plant": "foundry-housing",
+ "file": "foundry-housing.jsonl.gz",
+ "bytes": 6578616,
+ "format": "honeymom-replay/1",
+ "source": "simulated",
+ "recorded_from": "2026-11-11T17:03:16+08:00",
+ "duration_h": 24.0,
+ "created": "2026-11-11T19:05:20+08:00",
+ "counts": {
+  "mqtt_messages": 1007603,
+  "mes_part_events": 19052,
+  "mes_production_events": 260,
+  "opcua_value_changes": 376429,
+  "modbus_register_changes": 130886,
+  "events_total": 1514918,
+  "mqtt_topics": 1261,
+  "opcua_nodes": 342,
+  "modbus_blocks": 16
+ },
+ "dropped_as_unchanged": {
+  "mqtt": 11652,
+  "opcua": 0
+ }
+}

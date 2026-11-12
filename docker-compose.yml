@@ -1,0 +1,84 @@
+# HoneyMOM one-command start:  docker compose up
+#
+#   mom       HoneyMOM (API + web UI)                       http://localhost:8900
+#   db        PostgreSQL 17
+#   replayer  plays back a recorded day of the demo foundry over MQTT, OPC UA and Modbus TCP
+#
+# Default = demo mode (MOM_DEMO=1): demo accounts admin / manager / planner / ... with password honey123, the demo plant
+# "Northfield Castings" and live data from the replayer. Do not expose a demo instance to an untrusted network.
+#
+# Production mode (no demo data, first start asks for the administrator):
+#   docker compose -f docker-compose.yml -f docker/compose.production.yml up -d
+# See docs/deployment.md. Settings can go into a .env file next to this file (template: docker/env.example).
+
+name: honeymom
+
+x-honeymom-image: &honeymom-image
+  image: ${HONEYMOM_IMAGE:-honeymom:local}
+  build:
+    context: .
+
+services:
+  mom:
+    <<: *honeymom-image
+    restart: unless-stopped
+    environment:
+      MOM_DEMO: ${MOM_DEMO:-1}
+      MOM_DEMO_LANG: ${MOM_DEMO_LANG:-en}
+      MOM_LANG: ${MOM_LANG:-}
+      MOM_DB: postgresql+psycopg://${POSTGRES_USER:-honeymom}:${POSTGRES_PASSWORD:-honeymom}@db:5432/${POSTGRES_DB:-honeymom}
+      MOM_DATA: /data
+      TZ: ${TZ:-UTC}
+      # AI (OpenAI-compatible endpoint, no defaults): a model is called only when all three are set, and each AI
+      # feature must also be switched on under System -> AI features.
+      MOM_LLM_BASE_URL: ${MOM_LLM_BASE_URL:-}
+      MOM_LLM_API_KEY: ${MOM_LLM_API_KEY:-}
+      MOM_LLM_MODEL: ${MOM_LLM_MODEL:-}
+    ports:
+      - "${MOM_PORT:-8900}:8900"
+      # The replayer shares this container's network (see below). To reach its servers from the host, e.g. with
+      # an MQTT or OPC UA client, uncomment:
+      # - "127.0.0.1:1883:1883"   # MQTT
+      # - "127.0.0.1:4840:4840"   # OPC UA
+      # - "127.0.0.1:5020:5020"   # Modbus TCP
+    volumes:
+      - mom-data:/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+  replayer:
+    <<: *honeymom-image
+    restart: unless-stopped
+    command: ["python", "-m", "replayer", "--host", "0.0.0.0", "--speed", "${REPLAYER_SPEED:-1}"]
+    environment:
+      TZ: ${TZ:-UTC}
+    # Same network namespace as mom: the demo data sources point at 127.0.0.1:1883 (MQTT),
+    # opc.tcp://127.0.0.1:4840/vfactory/ (OPC UA) and 127.0.0.1:5020 (Modbus), which then reach the replayer.
+    network_mode: "service:mom"
+    depends_on:
+      mom:
+        condition: service_started
+        restart: true
+    healthcheck:
+      disable: true
+
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-honeymom}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-honeymom}
+      POSTGRES_DB: ${POSTGRES_DB:-honeymom}
+      TZ: ${TZ:-UTC}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  mom-data:
+  pg-data:

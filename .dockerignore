@@ -1,0 +1,23 @@
+# Build context for the Dockerfile: only requirements, honeymom/, replayer/, config/llm.example.json and web/ are used.
+.git
+.github
+.gitignore
+.vscode
+.idea
+**/__pycache__
+**/*.pyc
+**/*.log
+*.cmd
+
+# local data, secrets and build output
+data/
+config/llm.local.json
+.env*
+web/node_modules/
+web/dist/
+
+# not needed in the image
+docs/
+tests/
+docker-compose*.yml
+docker/

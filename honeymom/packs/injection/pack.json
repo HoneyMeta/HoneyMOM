@@ -1,0 +1,524 @@
+{
+ "code": "injection",
+ "name": "注塑",
+ "version": "1.0.0",
+ "kind": "industry",
+ "industry": "注塑成型（汽车内外饰、家电结构件；卧式注塑机 + 机械手 + 模温机 + 干燥机）",
+ "description": "原料干燥、注塑成型、去浇口修边、外观全检、包装入库工序；注塑机 / 干燥机 / 模温机 / 取件机械手 / 冷水机 / 粉碎机设备类型；短射、飞边、缩痕等注塑缺陷代码；注塑首件、巡检、粒料来料检验模板；开机、换模（SMED）、原料干燥作业指导；成型周期、换模时间、模具寿命等 KPI 和报表。",
+ "requires": [
+  "common"
+ ],
+ "modules": [
+  "injection"
+ ],
+ "demo": "injection",
+ "enums": {
+  "process.ptype": {
+   "drying": "原料干燥",
+   "injection": "注塑成型",
+   "degating": "去浇口 / 修边",
+   "welding": "焊接（超声 / 热板）"
+  },
+  "equipment.etype": {
+   "injection": "注塑机",
+   "dryer": "干燥机",
+   "mold_temp": "模温机",
+   "robot": "机械手",
+   "chiller": "冷水机",
+   "crusher": "粉碎机"
+  },
+  "workshop.wtype": {
+   "injection": "注塑"
+  },
+  "defect_code.category": {
+   "molding": "注塑成型"
+  }
+ },
+ "device_templates": [
+  {
+   "code": "injection",
+   "name": "注塑机",
+   "etype": "injection"
+  },
+  {
+   "code": "robot_cell",
+   "name": "机器人单元（取件机械手）",
+   "etype": "robot"
+  },
+  {
+   "code": "compressor",
+   "name": "空压机",
+   "etype": "other"
+  },
+  {
+   "code": "conveyor",
+   "name": "输送线",
+   "etype": "other"
+  }
+ ],
+ "maint_templates": [
+  {
+   "key": "D",
+   "items_by_type": {
+    "injection": "液压油位油温；料筒加热圈；安全门联锁；顶针润滑；喷嘴漏胶",
+    "dryer": "滤网清洁；露点 / 出风温度；料斗无结块",
+    "mold_temp": "水路渗漏；温控表；水箱水位",
+    "robot": "原点；吸盘 / 夹具气压；安全光栅",
+    "chiller": "冷凝器清洁；出水温度",
+    "crusher": "刀片磨损；筛网"
+   }
+  },
+  {
+   "key": "M",
+   "types": [
+    "injection",
+    "mold_temp",
+    "chiller"
+   ]
+  }
+ ],
+ "kpis": [
+  {
+   "key": "cycle_attain",
+   "label": "成型周期达成率",
+   "unit": "%",
+   "target": 95,
+   "dir": "up",
+   "desc": "标准周期 ÷ 实际周期（按模具 / 机台）"
+  },
+  {
+   "key": "smed",
+   "label": "平均换模时间",
+   "unit": "min",
+   "target": 30,
+   "dir": "down",
+   "desc": "上一模最后一件到下一模首件合格"
+  },
+  {
+   "key": "fpy",
+   "label": "注塑一次合格率",
+   "unit": "%",
+   "target": 98.5,
+   "dir": "up",
+   "desc": "外观全检一次合格 ÷ 成型数"
+  },
+  {
+   "key": "regrind",
+   "label": "水口料比例",
+   "unit": "%",
+   "target": 8,
+   "dir": "down",
+   "desc": "浇口料 + 不良粉碎回用 ÷ 原料投入"
+  },
+  {
+   "key": "mold_life",
+   "label": "模具寿命消耗",
+   "unit": "%",
+   "target": 80,
+   "dir": "down",
+   "desc": "当前模次 ÷ 寿命模次（超过 80% 安排保养 / 备模）"
+  }
+ ],
+ "reports": [
+  {
+   "name": "注塑缺陷排列",
+   "dataset": "ncr",
+   "chart": "bar",
+   "shared_roles": [
+    "qc",
+    "engineer",
+    "manager"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "defect__category",
+      "op": "=",
+      "value": "molding"
+     }
+    ],
+    "group": [
+     {
+      "field": "defect__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty",
+      "agg": "sum",
+      "label": "数量"
+     }
+    ],
+    "sort": [
+     {
+      "field": "qty_sum",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "模具模次与寿命",
+   "dataset": "tooling",
+   "chart": "bar",
+   "shared_roles": [
+    "maint",
+    "engineer",
+    "manager"
+   ],
+   "config": {
+    "group": [
+     {
+      "field": "name"
+     }
+    ],
+    "measures": [
+     {
+      "field": "shots",
+      "agg": "max",
+      "label": "当前模次"
+     },
+     {
+      "field": "life_shots",
+      "agg": "max",
+      "label": "寿命模次"
+     }
+    ]
+   }
+  },
+  {
+   "name": "注塑机报工（按机台）",
+   "dataset": "report",
+   "chart": "bar",
+   "shared_roles": [
+    "leader",
+    "manager"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "end",
+      "op": "last_days",
+      "value": 7
+     }
+    ],
+    "group": [
+     {
+      "field": "equipment__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty_good",
+      "agg": "sum",
+      "label": "合格"
+     },
+     {
+      "field": "qty_ng",
+      "agg": "sum",
+      "label": "不良"
+     }
+    ]
+   }
+  }
+ ],
+ "config": [
+  {
+   "import": "process",
+   "rows": [
+    {
+     "code": "IM05",
+     "name": "原料干燥",
+     "ptype": "drying",
+     "std_cycle_s": 0,
+     "desc": "按材料干燥温度 / 时间烘料，露点 ≤ -30°C（吸湿料）"
+    },
+    {
+     "code": "IM10",
+     "name": "注塑成型",
+     "ptype": "injection",
+     "std_cycle_s": 35,
+     "desc": "合模 → 注射 → 保压 → 冷却 → 开模顶出，机械手取件"
+    },
+    {
+     "code": "IM20",
+     "name": "去浇口 / 修边",
+     "ptype": "degating",
+     "std_cycle_s": 12,
+     "desc": "剪浇口、修毛边，浇口料进粉碎机"
+    },
+    {
+     "code": "IM30",
+     "name": "超声波焊接",
+     "ptype": "welding",
+     "std_cycle_s": 20
+    },
+    {
+     "code": "IM40",
+     "name": "外观全检",
+     "ptype": "inspection",
+     "std_cycle_s": 8,
+     "desc": "光源箱下逐件目检"
+    },
+    {
+     "code": "IM50",
+     "name": "包装入库",
+     "ptype": "storage",
+     "std_cycle_s": 5
+    }
+   ]
+  },
+  {
+   "import": "defect_code",
+   "rows": [
+    {
+     "code": "IM-D01",
+     "name": "短射（缺料）",
+     "category": "molding",
+     "severity": "major",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D02",
+     "name": "飞边（毛边）",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D03",
+     "name": "缩痕",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D04",
+     "name": "熔接线",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D05",
+     "name": "气纹 / 银纹",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM05"
+    },
+    {
+     "code": "IM-D06",
+     "name": "翘曲变形",
+     "category": "molding",
+     "severity": "major",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D07",
+     "name": "黑点 / 杂质",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM05"
+    },
+    {
+     "code": "IM-D08",
+     "name": "顶白 / 顶伤",
+     "category": "molding",
+     "severity": "minor",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D09",
+     "name": "尺寸超差",
+     "category": "molding",
+     "severity": "major",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D10",
+     "name": "色差",
+     "category": "appearance",
+     "severity": "minor",
+     "process": "IM10"
+    },
+    {
+     "code": "IM-D11",
+     "name": "划伤 / 碰伤",
+     "category": "appearance",
+     "severity": "minor",
+     "process": "IM20"
+    }
+   ]
+  },
+  {
+   "import": "insp_template",
+   "rows": [
+    {
+     "tpl_code": "T-IM-FAI",
+     "tpl_name": "注塑首件检验",
+     "itype": "FAI",
+     "process": "IM10",
+     "sample_rule": "开机 / 换模 / 调机后首 5 模",
+     "seq": 10,
+     "name": "外观（缺料、飞边、缩痕、熔接线）",
+     "char": "IM_APP",
+     "method": "目视 + 光源箱",
+     "std": "符合限度样件",
+     "unit": "",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-FAI",
+     "tpl_name": "注塑首件检验",
+     "itype": "FAI",
+     "process": "IM10",
+     "sample_rule": "开机 / 换模 / 调机后首 5 模",
+     "seq": 20,
+     "name": "单件重量",
+     "char": "IM_WT",
+     "method": "电子秤",
+     "std": "标准重量 ±1.5%",
+     "unit": "g",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-FAI",
+     "tpl_name": "注塑首件检验",
+     "itype": "FAI",
+     "process": "IM10",
+     "sample_rule": "开机 / 换模 / 调机后首 5 模",
+     "seq": 30,
+     "name": "关键尺寸 L",
+     "char": "IM_L",
+     "method": "卡尺 / 检具",
+     "std": "图纸公差",
+     "unit": "mm",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-FAI",
+     "tpl_name": "注塑首件检验",
+     "itype": "FAI",
+     "process": "IM10",
+     "sample_rule": "开机 / 换模 / 调机后首 5 模",
+     "seq": 40,
+     "name": "色差 ΔE",
+     "char": "IM_DE",
+     "method": "色差仪",
+     "std": "ΔE ≤ 1.0",
+     "hi": 1.0,
+     "unit": "",
+     "key": false
+    },
+    {
+     "tpl_code": "T-IM-PATROL",
+     "tpl_name": "注塑巡检",
+     "itype": "patrol",
+     "process": "IM10",
+     "sample_rule": "每 2 小时 5 件",
+     "seq": 10,
+     "name": "外观",
+     "char": "IM_APP",
+     "method": "目视",
+     "std": "符合限度样件",
+     "unit": "",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-PATROL",
+     "tpl_name": "注塑巡检",
+     "itype": "patrol",
+     "process": "IM10",
+     "sample_rule": "每 2 小时 5 件",
+     "seq": 20,
+     "name": "单件重量",
+     "char": "IM_WT",
+     "method": "电子秤",
+     "std": "标准重量 ±1.5%",
+     "unit": "g",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-PATROL",
+     "tpl_name": "注塑巡检",
+     "itype": "patrol",
+     "process": "IM10",
+     "sample_rule": "每 2 小时 5 件",
+     "seq": 30,
+     "name": "成型周期",
+     "char": "IM_CT",
+     "method": "机台显示",
+     "std": "≤ 标准周期 × 105%",
+     "unit": "s",
+     "key": false
+    },
+    {
+     "tpl_code": "T-IM-IQC",
+     "tpl_name": "粒料来料检验",
+     "itype": "IQC",
+     "sample_rule": "每批",
+     "seq": 10,
+     "name": "含水率",
+     "char": "RM_H2O",
+     "method": "水分仪",
+     "std": "≤ 0.05%（PA / PC ≤ 0.02%）",
+     "hi": 0.05,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-IM-IQC",
+     "tpl_name": "粒料来料检验",
+     "itype": "IQC",
+     "sample_rule": "每批",
+     "seq": 20,
+     "name": "熔融指数 MFR",
+     "char": "RM_MFR",
+     "method": "熔指仪",
+     "std": "供应商规格 ±10%",
+     "unit": "g/10min",
+     "key": false
+    },
+    {
+     "tpl_code": "T-IM-IQC",
+     "tpl_name": "粒料来料检验",
+     "itype": "IQC",
+     "sample_rule": "每批",
+     "seq": 30,
+     "name": "颜色 / 杂质",
+     "char": "RM_CLR",
+     "method": "目视",
+     "std": "与标准样一致、无黑点",
+     "unit": "",
+     "key": false
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "注塑机开机作业指导",
+     "tags": "注塑,SOP",
+     "kind": "sop",
+     "process": "IM10",
+     "content": "1. 确认原料已干燥到时（看干燥机计时），料斗无结块。\n2. 料筒按工艺卡升温，到温后保温 20 分钟再射退。\n3. 模温机到设定温度后合模、低压保护确认。\n4. 首 5 模报首检，质检放行后量产；首检不合格不得批量生产。\n5. 每 2 小时自检外观和重量，填巡检记录。"
+    },
+    {
+     "title": "换模作业指导（SMED）",
+     "tags": "注塑,换模",
+     "kind": "sop",
+     "process": "IM10",
+     "content": "外部作业（停机前完成）：下一副模具、吊具、水管、机械手程序、原料提前备到机台。\n内部作业：拆水路 → 拆模 → 装模（定位圈对中）→ 锁模 → 接水路 → 调机械手原点。\n目标：内部作业 ≤ 30 分钟；换模后首件检验合格才能量产。"
+    },
+    {
+     "title": "原料干燥规范",
+     "tags": "注塑,原料",
+     "kind": "standard",
+     "process": "IM05",
+     "content": "ABS：80°C × 2–3 h；PC：120°C × 3–4 h；PA66：80°C 除湿 × 4 h；PP 一般不用干燥（含填充的 80°C × 1 h）。\n干燥料在料斗里存放超过 4 小时要重新干燥。水口料回用比例 ≤ 20%。"
+    }
+   ]
+  }
+ ]
+}

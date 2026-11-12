@@ -1,0 +1,150 @@
+{
+ "style": "soft isometric line art, charcoal outlines, white / cool-grey fills, cobalt + cyan data layer, amber accents, no text (matches web/public/brand/mark.svg and VF docs/brand/prompts.md, recoloured to the MES cobalt/cyan palette)",
+ "generated": "2026-11-04",
+ "post": "PIL: alpha-crop / background key / resize / WebP",
+ "items": [
+  {
+   "name": "login-hero",
+   "file": "art/login-hero.webp",
+   "w": 1309,
+   "h": 973,
+   "bytes": 264302,
+   "use": "Login page hero (left column, under the headline)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Wide hero illustration for the login page of a manufacturing execution system. A floating isometric factory island seen from above at 30 degrees: an induction melting furnace with an amber ladle, a compact CNC machining center, a short conveyor carrying cast metal housings, an inspection table with a measuring arm, and a slim shop-floor terminal on a stand with a blank screen. Above the island floats a translucent cobalt-and-cyan wireframe digital-twin layer of the same machines, linked to them by thin dotted vertical data lines with small hexagon nodes, converging into one small glowing hexagon hub; a few translucent hexagon tiles drift upward. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "empty-data",
+   "file": "art/empty-data.webp",
+   "w": 560,
+   "h": 559,
+   "bytes": 41806,
+   "use": "HmEmpty icon=\"data\": no data yet",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Small empty-state spot illustration for an industrial MES software app, centered, compact, simple: an isometric empty shallow parts tray on three flat hexagon floor tiles, a blank clipboard leaning on it with only empty lines, and a small cyan hexagon with a tiny flat bar-chart outline (three short bars, no characters) floating above. Keep it to a few objects with plenty of air around. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "empty-search",
+   "file": "art/empty-search.webp",
+   "w": 560,
+   "h": 504,
+   "bytes": 48260,
+   "use": "HmEmpty icon=\"search\": no results for the filter",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Small empty-state spot illustration for an industrial MES software app, centered, compact, simple: an isometric magnifying glass hovering over a small cluster of three flat hexagon tiles, one tile outlined with a dashed line and empty, a curious nothing-found feel. Keep it to a few objects with plenty of air around. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "empty-permission",
+   "file": "art/empty-permission.webp",
+   "w": 560,
+   "h": 705,
+   "bytes": 44570,
+   "use": "HmEmpty icon=\"lock\": no permission",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Small empty-state spot illustration for an industrial MES software app, centered, compact, simple: an isometric closed control cabinet with a small cobalt padlock on its door handle, a hexagon shield badge in cyan floating beside it, the cabinet sits on one flat hexagon tile. Keep it to a few objects with plenty of air around. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "empty-ai-off",
+   "file": "art/empty-ai-off.webp",
+   "w": 560,
+   "h": 465,
+   "bytes": 45744,
+   "use": "HmEmpty icon=\"ai\": AI feature switched off",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Small empty-state spot illustration for an industrial MES software app, centered, compact, simple: an isometric small hexagon-shaped AI core module resting dimmed and quiet on a flat base, a large toggle switch beside it in the off position, a few faint grey dotted data lines that fade out, a tiny four-point sparkle outline drawn in pale grey above. Keep it to a few objects with plenty of air around. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "empty-offline",
+   "file": "art/empty-offline.webp",
+   "w": 560,
+   "h": 279,
+   "bytes": 30858,
+   "use": "HmEmpty icon=\"offline\": server / data source offline",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x1024",
+   "prompt": "Small empty-state spot illustration for an industrial MES software app, centered, compact, simple: an isometric small server box and a slim shop-floor terminal with a cable between them that is unplugged in the middle, the two plug ends floating apart, a small amber warning hexagon above (no symbol characters inside). Keep it to a few objects with plenty of air around. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Fully transparent background, no floor plate larger than the objects, no shadow outside the objects."
+  },
+  {
+   "name": "head-equipment",
+   "file": "art/head-equipment.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 105318,
+   "use": "HmPageHead art=\"equipment\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: two isometric CNC machining centers and a robot arm on a light floor tile, small floating cyan status rings and a tiny line-chart card above each machine, connected by dotted data lines to a hexagon node. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "head-quality",
+   "file": "art/head-quality.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 105662,
+   "use": "HmPageHead art=\"quality\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: an isometric inspection station: a coordinate measuring machine probing a cast metal housing, a small rack of good parts and one separated part in a tray, above floats a translucent cyan control-chart card made only of a zigzag line between two dashed limit lines, no characters. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "head-production",
+   "file": "art/head-production.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 94156,
+   "use": "HmPageHead art=\"production\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: an isometric production line from a molding machine to a conveyor to a machining center, small amber parts moving along, above floats a translucent cobalt schedule card made only of horizontal bars like a gantt chart, no characters. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "head-material",
+   "file": "art/head-material.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 116634,
+   "use": "HmPageHead art=\"material\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: an isometric automated storage rack with bins, a stacker crane, a small AGV cart carrying a pallet of parts, and a stack of raw metal ingots, thin cyan dotted paths on the floor. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "head-foundry",
+   "file": "art/head-foundry.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 108980,
+   "use": "HmPageHead art=\"foundry\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: an isometric induction melting furnace pouring glowing amber iron into a ladle, a sand molding box beside it and cooling cast housings on a short conveyor, a translucent cyan thermometer-like gauge card floating above made only of shapes. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "head-energy",
+   "file": "art/head-energy.webp",
+   "w": 562,
+   "h": 240,
+   "bytes": 126630,
+   "use": "HmPageHead art=\"energy\": module header illustration (right side)",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "1536x512",
+   "prompt": "Wide module header illustration. All content sits in a horizontal band through the middle; the top 12% and bottom 12% are plain background. The left 50% is completely empty plain background for a title; content spans only the right 50%: an isometric electrical switchgear cabinet with an energy meter, a compact transformer, and power cables running to a small factory hall with a sawtooth roof, above floats a translucent cyan stacked bar card made only of bars, no characters. Style: soft isometric line art illustration, thin rounded charcoal-grey (#3a3f47) outlines of even weight, flat fills in white and very light cool greys (#eef2f7, #dfe6ef), accents of cobalt blue (#1463d6) and cyan (#0ba5c4) for the digital / data layer, a small touch of warm amber (#d9822b) on a few machine parts and hexagon details. Precise, calm, premium industrial software look, tidy, generous empty space, no clutter. Absolutely no text, no letters, no numbers, no logos, no signage, no people. Plain flat very light cool off-white background (#f3f6fa), no vignette, no border."
+  },
+  {
+   "name": "screen-bg",
+   "file": "art/screen-bg.webp",
+   "w": 1920,
+   "h": 1080,
+   "bytes": 30228,
+   "use": "Big screen (/screen) background: background: #0b1626 url(/art/screen-bg.webp) center / cover",
+   "model": "gpt-image-2.5-sunburst",
+   "source_size": "2048x1152",
+   "prompt": "Very subtle full-screen background texture for a dark industrial control-room big screen. Deep navy background (#0b1626 to #0f1d33 gentle vertical gradient). A very faint fine hexagon grid in thin lines (#1c2c46), a few slightly brighter cyan (#0ba5c4) hexagon outlines scattered sparsely, faint thin isometric line-art silhouettes of a factory floor (furnace, conveyors, machining centers) along the bottom 25% in low-contrast blue-grey lines, a soft cyan glow at the top center fading out. Low contrast overall so that data panels on top stay readable. Absolutely no text, no letters, no numbers, no logos, no people, no UI elements."
+  }
+ ]
+}

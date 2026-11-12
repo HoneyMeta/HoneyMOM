@@ -1,0 +1,952 @@
+{
+ "code": "injection_demo",
+ "name": "示范工厂：汽车内饰件注塑",
+ "requires": [
+  "injection"
+ ],
+ "description": "某汽车内饰件注塑厂：门板饰条左 / 右、杯托盖三个产品，3 台注塑机（350T × 2、160T）+ 干燥机、模温机、机械手；两班 12 小时；原料仓 / 成品仓期初库存；模具 3 副（模次与寿命）；换模时间；2 张演示工单。",
+ "steps": [
+  {
+   "import": "plant",
+   "rows": [
+    {
+     "code": "IMP",
+     "name": "某汽车内饰件注塑厂",
+     "address": "示例工业园 A 区"
+    }
+   ]
+  },
+  {
+   "import": "workshop",
+   "rows": [
+    {
+     "code": "WS-IM",
+     "name": "注塑车间",
+     "plant": "IMP",
+     "wtype": "injection"
+    },
+    {
+     "code": "WS-IW",
+     "name": "注塑仓储",
+     "plant": "IMP",
+     "wtype": "warehouse"
+    }
+   ]
+  },
+  {
+   "import": "line",
+   "rows": [
+    {
+     "code": "L-IM1",
+     "name": "注塑一线（大机）",
+     "workshop": "WS-IM"
+    },
+    {
+     "code": "L-IM2",
+     "name": "注塑二线（小机）",
+     "workshop": "WS-IM"
+    }
+   ]
+  },
+  {
+   "import": "material",
+   "rows": [
+    {
+     "code": "IM-1001",
+     "name": "门板饰条 左",
+     "spec": "PP+EPDM-T20 黑色皮纹",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 800,
+     "price": 18.5,
+     "weight_kg": 0.182
+    },
+    {
+     "code": "IM-1002",
+     "name": "门板饰条 右",
+     "spec": "PP+EPDM-T20 黑色皮纹",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 800,
+     "price": 18.5,
+     "weight_kg": 0.182
+    },
+    {
+     "code": "IM-2001",
+     "name": "杯托盖",
+     "spec": "ABS 757 黑色 + M4 嵌件 ×2",
+     "unit": "件",
+     "mtype": "fg",
+     "safety_stock": 2000,
+     "price": 4.2,
+     "weight_kg": 0.061
+    },
+    {
+     "code": "RM-PP-T20",
+     "name": "PP+EPDM-T20 粒料",
+     "spec": "改性 PP，滑石粉 20%",
+     "unit": "kg",
+     "mtype": "raw",
+     "safety_stock": 1500,
+     "price": 13.8
+    },
+    {
+     "code": "RM-ABS",
+     "name": "ABS 757 粒料",
+     "spec": "通用级",
+     "unit": "kg",
+     "mtype": "raw",
+     "safety_stock": 500,
+     "price": 15.2
+    },
+    {
+     "code": "RM-MB-BLK",
+     "name": "黑色色母",
+     "spec": "载体 PP / ABS 通用，添加 2%",
+     "unit": "kg",
+     "mtype": "aux",
+     "safety_stock": 40,
+     "price": 26
+    },
+    {
+     "code": "IM-INS-01",
+     "name": "M4 铜嵌件",
+     "spec": "H62 滚花",
+     "unit": "件",
+     "mtype": "raw",
+     "safety_stock": 4000,
+     "price": 0.12
+    },
+    {
+     "code": "PK-BOX",
+     "name": "周转箱",
+     "spec": "600×400×280 带隔板",
+     "unit": "个",
+     "mtype": "consumable",
+     "safety_stock": 100,
+     "price": 35
+    }
+   ]
+  },
+  {
+   "import": "uom_conv",
+   "rows": [
+    {
+     "material": "IM-1001",
+     "from_unit": "箱",
+     "to_unit": "件",
+     "factor": 50,
+     "remark": "周转箱 50 件 / 箱"
+    },
+    {
+     "material": "IM-1002",
+     "from_unit": "箱",
+     "to_unit": "件",
+     "factor": 50,
+     "remark": "周转箱 50 件 / 箱"
+    },
+    {
+     "material": "IM-2001",
+     "from_unit": "箱",
+     "to_unit": "件",
+     "factor": 200
+    },
+    {
+     "material": "RM-PP-T20",
+     "from_unit": "袋",
+     "to_unit": "kg",
+     "factor": 25,
+     "remark": "25 kg / 袋"
+    },
+    {
+     "material": "RM-ABS",
+     "from_unit": "袋",
+     "to_unit": "kg",
+     "factor": 25
+    }
+   ]
+  },
+  {
+   "import": "bom",
+   "rows": [
+    {
+     "product": "IM-1001",
+     "component": "RM-PP-T20",
+     "qty": 0.196,
+     "unit": "kg",
+     "remark": "含浇口 0.014 kg"
+    },
+    {
+     "product": "IM-1001",
+     "component": "RM-MB-BLK",
+     "qty": 0.004,
+     "unit": "kg"
+    },
+    {
+     "product": "IM-1001",
+     "component": "PK-BOX",
+     "qty": 0.02,
+     "unit": "个",
+     "remark": "50 件 / 箱"
+    },
+    {
+     "product": "IM-1002",
+     "component": "RM-PP-T20",
+     "qty": 0.196,
+     "unit": "kg"
+    },
+    {
+     "product": "IM-1002",
+     "component": "RM-MB-BLK",
+     "qty": 0.004,
+     "unit": "kg"
+    },
+    {
+     "product": "IM-1002",
+     "component": "PK-BOX",
+     "qty": 0.02,
+     "unit": "个"
+    },
+    {
+     "product": "IM-2001",
+     "component": "RM-ABS",
+     "qty": 0.066,
+     "unit": "kg"
+    },
+    {
+     "product": "IM-2001",
+     "component": "RM-MB-BLK",
+     "qty": 0.0013,
+     "unit": "kg"
+    },
+    {
+     "product": "IM-2001",
+     "component": "IM-INS-01",
+     "qty": 2,
+     "unit": "件"
+    }
+   ]
+  },
+  {
+   "import": "equipment",
+   "rows": [
+    {
+     "code": "IMM-01",
+     "name": "1# 注塑机 350T",
+     "etype": "injection",
+     "line": "L-IM1",
+     "model": "MA3600",
+     "vendor": "某注塑机厂",
+     "ideal_cycle_s": 35,
+     "rated_kw": 37
+    },
+    {
+     "code": "IMM-02",
+     "name": "2# 注塑机 350T",
+     "etype": "injection",
+     "line": "L-IM1",
+     "model": "MA3600",
+     "vendor": "某注塑机厂",
+     "ideal_cycle_s": 35,
+     "rated_kw": 37
+    },
+    {
+     "code": "IMM-03",
+     "name": "3# 注塑机 160T",
+     "etype": "injection",
+     "line": "L-IM2",
+     "model": "MA1600",
+     "vendor": "某注塑机厂",
+     "ideal_cycle_s": 28,
+     "rated_kw": 18.5
+    },
+    {
+     "code": "DRY-01",
+     "name": "除湿干燥机",
+     "etype": "dryer",
+     "line": "L-IM1",
+     "model": "SCD-80",
+     "rated_kw": 9
+    },
+    {
+     "code": "MT-01",
+     "name": "1# 模温机",
+     "etype": "mold_temp",
+     "line": "L-IM1",
+     "model": "STM-910W",
+     "rated_kw": 9
+    },
+    {
+     "code": "RB-01",
+     "name": "1# 取件机械手",
+     "etype": "robot",
+     "line": "L-IM1",
+     "model": "三轴伺服"
+    },
+    {
+     "code": "CRS-01",
+     "name": "水口料粉碎机",
+     "etype": "crusher",
+     "line": "L-IM1",
+     "rated_kw": 5.5
+    }
+   ]
+  },
+  {
+   "import": "workstation",
+   "rows": [
+    {
+     "code": "ST-IMM01",
+     "name": "IMM-01 机台",
+     "line": "L-IM1",
+     "process": "IM10",
+     "equipment": "IMM-01",
+     "group": "IMM-350"
+    },
+    {
+     "code": "ST-IMM02",
+     "name": "IMM-02 机台",
+     "line": "L-IM1",
+     "process": "IM10",
+     "equipment": "IMM-02",
+     "group": "IMM-350"
+    },
+    {
+     "code": "ST-IMM03",
+     "name": "IMM-03 机台",
+     "line": "L-IM2",
+     "process": "IM10",
+     "equipment": "IMM-03",
+     "group": "IMM-160"
+    },
+    {
+     "code": "ST-TRIM",
+     "name": "修边台",
+     "line": "L-IM1",
+     "process": "IM20",
+     "group": "TRIM"
+    },
+    {
+     "code": "ST-QC",
+     "name": "外观全检台",
+     "line": "L-IM1",
+     "process": "IM40",
+     "group": "QC"
+    }
+   ]
+  },
+  {
+   "import": "route",
+   "rows": [
+    {
+     "route_code": "RT-IM1001",
+     "route_name": "门板饰条 左 注塑",
+     "product": "IM-1001",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "std_cycle_s": 35,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "确认模具 MD-1001、原料已干燥；首 5 模送首检；每 2 小时巡检。",
+     "params": {
+      "熔胶温度 °C": "205–225",
+      "模温 °C": "40–50",
+      "注射压力 MPa": "75",
+      "保压 MPa × s": "55 × 6",
+      "冷却时间 s": "18"
+     }
+    },
+    {
+     "route_code": "RT-IM1001",
+     "route_name": "门板饰条 左 注塑",
+     "product": "IM-1001",
+     "version": "V1",
+     "status": "active",
+     "seq": 20,
+     "process": "IM20",
+     "station_group": "TRIM",
+     "std_cycle_s": 12,
+     "inspection": false,
+     "report_mode": "manual",
+     "fai": false,
+     "instruction": "浇口剪平，残留 ≤ 0.3 mm；浇口料放粉碎料箱。"
+    },
+    {
+     "route_code": "RT-IM1001",
+     "route_name": "门板饰条 左 注塑",
+     "product": "IM-1001",
+     "version": "V1",
+     "status": "active",
+     "seq": 30,
+     "process": "IM40",
+     "station_group": "QC",
+     "std_cycle_s": 8,
+     "inspection": true,
+     "report_mode": "scan",
+     "fai": false,
+     "instruction": "光源箱下逐件目检；对照限度样件判定。"
+    },
+    {
+     "route_code": "RT-IM1001",
+     "route_name": "门板饰条 左 注塑",
+     "product": "IM-1001",
+     "version": "V1",
+     "status": "active",
+     "seq": 40,
+     "process": "IM50",
+     "station_group": null,
+     "std_cycle_s": 5,
+     "inspection": false,
+     "report_mode": "scan",
+     "fai": false,
+     "instruction": "50 件 / 箱，贴箱标后扫码入库。"
+    },
+    {
+     "route_code": "RT-IM1002",
+     "route_name": "门板饰条 右 注塑",
+     "product": "IM-1002",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "std_cycle_s": 35,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "确认模具 MD-1002；首 5 模送首检。",
+     "params": {
+      "熔胶温度 °C": "205–225",
+      "模温 °C": "40–50",
+      "注射压力 MPa": "75",
+      "保压 MPa × s": "55 × 6",
+      "冷却时间 s": "18"
+     }
+    },
+    {
+     "route_code": "RT-IM1002",
+     "route_name": "门板饰条 右 注塑",
+     "product": "IM-1002",
+     "version": "V1",
+     "status": "active",
+     "seq": 20,
+     "process": "IM20",
+     "station_group": "TRIM",
+     "std_cycle_s": 12,
+     "inspection": false,
+     "report_mode": "manual",
+     "fai": false
+    },
+    {
+     "route_code": "RT-IM1002",
+     "route_name": "门板饰条 右 注塑",
+     "product": "IM-1002",
+     "version": "V1",
+     "status": "active",
+     "seq": 30,
+     "process": "IM40",
+     "station_group": "QC",
+     "std_cycle_s": 8,
+     "inspection": true,
+     "report_mode": "scan",
+     "fai": false
+    },
+    {
+     "route_code": "RT-IM1002",
+     "route_name": "门板饰条 右 注塑",
+     "product": "IM-1002",
+     "version": "V1",
+     "status": "active",
+     "seq": 40,
+     "process": "IM50",
+     "station_group": null,
+     "std_cycle_s": 5,
+     "inspection": false,
+     "report_mode": "scan",
+     "fai": false
+    },
+    {
+     "route_code": "RT-IM2001",
+     "route_name": "杯托盖 嵌件注塑",
+     "product": "IM-2001",
+     "version": "V1",
+     "status": "active",
+     "seq": 10,
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "std_cycle_s": 28,
+     "inspection": false,
+     "report_mode": "auto",
+     "fai": true,
+     "instruction": "机械手放 2 个 M4 嵌件（嵌件预热 80°C）；1 出 4。",
+     "params": {
+      "熔胶温度 °C": "220–240",
+      "模温 °C": "55–65",
+      "注射压力 MPa": "85",
+      "嵌件预热 °C": "80"
+     }
+    },
+    {
+     "route_code": "RT-IM2001",
+     "route_name": "杯托盖 嵌件注塑",
+     "product": "IM-2001",
+     "version": "V1",
+     "status": "active",
+     "seq": 20,
+     "process": "IM40",
+     "station_group": "QC",
+     "std_cycle_s": 6,
+     "inspection": true,
+     "report_mode": "scan",
+     "fai": false,
+     "instruction": "检查嵌件到位、无缩痕。"
+    },
+    {
+     "route_code": "RT-IM2001",
+     "route_name": "杯托盖 嵌件注塑",
+     "product": "IM-2001",
+     "version": "V1",
+     "status": "active",
+     "seq": 30,
+     "process": "IM50",
+     "station_group": null,
+     "std_cycle_s": 4,
+     "inspection": false,
+     "report_mode": "scan",
+     "fai": false
+    }
+   ]
+  },
+  {
+   "import": "shift",
+   "rows": [
+    {
+     "code": "D",
+     "name": "白班",
+     "start": "08:00",
+     "end": "20:00",
+     "active": true,
+     "break_min": 60
+    },
+    {
+     "code": "N",
+     "name": "夜班",
+     "start": "20:00",
+     "end": "08:00",
+     "active": true,
+     "break_min": 60
+    }
+   ]
+  },
+  {
+   "import": "team",
+   "rows": [
+    {
+     "code": "IT1",
+     "name": "注塑甲班",
+     "shift": "D",
+     "leader": "刘伟"
+    },
+    {
+     "code": "IT2",
+     "name": "注塑乙班",
+     "shift": "N",
+     "leader": "彭飞"
+    }
+   ]
+  },
+  {
+   "import": "employee",
+   "rows": [
+    {
+     "code": "I001",
+     "name": "刘伟",
+     "team": "IT1",
+     "post": "班长"
+    },
+    {
+     "code": "I002",
+     "name": "张丽",
+     "team": "IT1",
+     "post": "注塑工"
+    },
+    {
+     "code": "I003",
+     "name": "王海",
+     "team": "IT1",
+     "post": "注塑工"
+    },
+    {
+     "code": "I004",
+     "name": "李娟",
+     "team": "IT1",
+     "post": "修边 / 全检"
+    },
+    {
+     "code": "I005",
+     "name": "赵峰",
+     "team": "IT1",
+     "post": "调机技术员"
+    },
+    {
+     "code": "I006",
+     "name": "彭飞",
+     "team": "IT2",
+     "post": "班长"
+    },
+    {
+     "code": "I007",
+     "name": "孙静",
+     "team": "IT2",
+     "post": "注塑工"
+    },
+    {
+     "code": "I008",
+     "name": "周勇",
+     "team": "IT2",
+     "post": "注塑工"
+    },
+    {
+     "code": "I009",
+     "name": "吴敏",
+     "team": "IT2",
+     "post": "修边 / 全检"
+    },
+    {
+     "code": "I010",
+     "name": "郑涛",
+     "team": "IT2",
+     "post": "调机技术员"
+    },
+    {
+     "code": "I011",
+     "name": "冯雪",
+     "team": "IT1",
+     "post": "质检员"
+    },
+    {
+     "code": "I012",
+     "name": "陈刚",
+     "team": "IT1",
+     "post": "模具 / 设备员"
+    }
+   ]
+  },
+  {
+   "import": "skill",
+   "rows": [
+    {
+     "employee": "I002",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "level": "2"
+    },
+    {
+     "employee": "I003",
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "level": "2"
+    },
+    {
+     "employee": "I005",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "level": "4"
+    },
+    {
+     "employee": "I005",
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "level": "4"
+    },
+    {
+     "employee": "I007",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "level": "2"
+    },
+    {
+     "employee": "I008",
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "level": "2"
+    },
+    {
+     "employee": "I010",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "level": "3"
+    },
+    {
+     "employee": "I010",
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "level": "3"
+    },
+    {
+     "employee": "I004",
+     "process": "IM20",
+     "level": "2"
+    },
+    {
+     "employee": "I004",
+     "process": "IM40",
+     "level": "2"
+    },
+    {
+     "employee": "I009",
+     "process": "IM20",
+     "level": "2"
+    },
+    {
+     "employee": "I009",
+     "process": "IM40",
+     "level": "2"
+    },
+    {
+     "employee": "I011",
+     "process": "IM40",
+     "level": "2"
+    }
+   ]
+  },
+  {
+   "import": "warehouse",
+   "rows": [
+    {
+     "code": "IW-RM",
+     "name": "原料仓",
+     "wtype": "raw"
+    },
+    {
+     "code": "IW-FG",
+     "name": "成品仓",
+     "wtype": "fg"
+    },
+    {
+     "code": "IW-LINE",
+     "name": "注塑线边库",
+     "wtype": "wip"
+    }
+   ]
+  },
+  {
+   "import": "location",
+   "rows": [
+    {
+     "code": "IW-RM-01",
+     "name": "原料仓 1 区",
+     "warehouse": "IW-RM",
+     "capacity": 120
+    },
+    {
+     "code": "IW-RM-02",
+     "name": "原料仓 2 区",
+     "warehouse": "IW-RM",
+     "capacity": 120
+    },
+    {
+     "code": "IW-FG-01",
+     "name": "成品仓 1 区",
+     "warehouse": "IW-FG",
+     "capacity": 300
+    },
+    {
+     "code": "IW-FG-02",
+     "name": "成品仓 2 区",
+     "warehouse": "IW-FG",
+     "capacity": 300
+    },
+    {
+     "code": "IW-LINE-01",
+     "name": "线边 1 区",
+     "warehouse": "IW-LINE",
+     "capacity": 40
+    },
+    {
+     "code": "IW-LINE-02",
+     "name": "线边 2 区",
+     "warehouse": "IW-LINE",
+     "capacity": 40
+    }
+   ]
+  },
+  {
+   "import": "opening_stock",
+   "rows": [
+    {
+     "material": "RM-PP-T20",
+     "warehouse": "IW-RM",
+     "location": "IW-RM-01",
+     "lot": "PP2610-15",
+     "qty": 120,
+     "unit": "袋",
+     "remark": "120 袋 × 25 kg"
+    },
+    {
+     "material": "RM-ABS",
+     "warehouse": "IW-RM",
+     "location": "IW-RM-02",
+     "lot": "ABS2610-08",
+     "qty": 800
+    },
+    {
+     "material": "RM-MB-BLK",
+     "warehouse": "IW-RM",
+     "location": "IW-RM-02",
+     "qty": 60
+    },
+    {
+     "material": "IM-INS-01",
+     "warehouse": "IW-RM",
+     "location": "IW-RM-02",
+     "qty": 5000
+    },
+    {
+     "material": "PK-BOX",
+     "warehouse": "IW-LINE",
+     "location": "IW-LINE-01",
+     "qty": 180
+    },
+    {
+     "material": "IM-1001",
+     "warehouse": "IW-FG",
+     "location": "IW-FG-01",
+     "lot": "L261103D",
+     "qty": 24,
+     "unit": "箱"
+    },
+    {
+     "material": "IM-1002",
+     "warehouse": "IW-FG",
+     "location": "IW-FG-01",
+     "lot": "L261103D",
+     "qty": 1150
+    },
+    {
+     "material": "IM-2001",
+     "warehouse": "IW-FG",
+     "location": "IW-FG-02",
+     "lot": "L261102N",
+     "qty": 4600
+    }
+   ]
+  },
+  {
+   "import": "tooling",
+   "rows": [
+    {
+     "code": "MD-1001",
+     "name": "门板饰条 左 模具（1 出 1）",
+     "ttype": "pattern",
+     "product": "IM-1001",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "shots": 182400,
+     "life_shots": 500000,
+     "maint_every": 50000,
+     "last_maint_shots": 150000,
+     "status": "in_use",
+     "location": "模具架 M-01"
+    },
+    {
+     "code": "MD-1002",
+     "name": "门板饰条 右 模具（1 出 1）",
+     "ttype": "pattern",
+     "product": "IM-1002",
+     "process": "IM10",
+     "station_group": "IMM-350",
+     "shots": 176900,
+     "life_shots": 500000,
+     "maint_every": 50000,
+     "last_maint_shots": 150000,
+     "status": "available",
+     "location": "模具架 M-02"
+    },
+    {
+     "code": "MD-2001",
+     "name": "杯托盖模具（1 出 4）",
+     "ttype": "pattern",
+     "product": "IM-2001",
+     "process": "IM10",
+     "station_group": "IMM-160",
+     "shots": 96300,
+     "life_shots": 300000,
+     "maint_every": 30000,
+     "last_maint_shots": 90000,
+     "status": "in_use",
+     "location": "模具架 M-03"
+    },
+    {
+     "code": "JG-1001",
+     "name": "饰条检具",
+     "ttype": "gauge",
+     "product": "IM-1001",
+     "process": "IM40",
+     "status": "available",
+     "location": "质检室"
+    }
+   ]
+  },
+  {
+   "import": "changeover",
+   "rows": [
+    {
+     "station_group": "IMM-350",
+     "from_product": "IM-1001",
+     "to_product": "IM-1002",
+     "minutes": 35,
+     "remark": "换模 + 机械手程序 + 首件"
+    },
+    {
+     "station_group": "IMM-350",
+     "from_product": "IM-1002",
+     "to_product": "IM-1001",
+     "minutes": 35,
+     "remark": "换模 + 机械手程序 + 首件"
+    },
+    {
+     "station_group": "IMM-160",
+     "minutes": 40,
+     "remark": "换模（任意产品之间）"
+    }
+   ]
+  },
+  {
+   "import": "work_order",
+   "rows": [
+    {
+     "product": "IM-1001",
+     "route": "RT-IM1001",
+     "qty": 2400,
+     "start_plan": "@hour+0h",
+     "due": "@hour+3d",
+     "priority": 3,
+     "customer": "某主机厂内饰部"
+    },
+    {
+     "product": "IM-2001",
+     "route": "RT-IM2001",
+     "qty": 8000,
+     "start_plan": "@hour+2h",
+     "due": "@hour+4d",
+     "priority": 5,
+     "customer": "某主机厂内饰部"
+    }
+   ]
+  },
+  {
+   "settings": {
+    "company": [
+     "某汽车内饰件注塑厂（演示）",
+     "公司名称"
+    ]
+   }
+  }
+ ],
+ "after_equipment": []
+}

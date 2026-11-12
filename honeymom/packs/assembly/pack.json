@@ -1,0 +1,443 @@
+{
+ "code": "assembly",
+ "name": "装配",
+ "version": "1.0.0",
+ "kind": "industry",
+ "industry": "机电产品装配（汽车零部件总成、电机、阀体；压装 + 拧紧 + 气密 / 功能测试 + 下线）",
+ "description": "部件预装、压装、拧紧、气密 / 功能测试、贴标、终检、包装入库工序；压装机 / 拧紧轴 / 测试台 / 贴标机 / 装配工位设备类型；漏装、错装、扭矩不合格等装配缺陷代码；拧紧扭矩、气密测试、终检模板；拧紧工艺规范、防错清单；一次下线合格率、错漏装 PPM、拧紧 Cpk 等 KPI。",
+ "requires": [
+  "common"
+ ],
+ "modules": [
+  "assembly"
+ ],
+ "demo": "assembly",
+ "enums": {
+  "process.ptype": {
+   "assembly": "装配",
+   "pressfit": "压装",
+   "screwing": "拧紧",
+   "testing": "测试",
+   "labeling": "贴标",
+   "packing": "包装"
+  },
+  "equipment.etype": {
+   "assembly_station": "装配工位",
+   "press": "压装机",
+   "screwdriver": "拧紧轴",
+   "tester": "测试台",
+   "labeler": "贴标机",
+   "robot": "机械手"
+  },
+  "workshop.wtype": {
+   "assembly": "装配"
+  },
+  "defect_code.category": {
+   "assembly": "装配"
+  }
+ },
+ "device_templates": [
+  {
+   "code": "robot_cell",
+   "name": "机器人单元",
+   "etype": "robot"
+  },
+  {
+   "code": "conveyor",
+   "name": "输送线（倍速链）",
+   "etype": "other"
+  },
+  {
+   "code": "inspection",
+   "name": "检测站（下线测试）",
+   "etype": "tester"
+  },
+  {
+   "code": "compressor",
+   "name": "空压机",
+   "etype": "other"
+  }
+ ],
+ "maint_templates": [
+  {
+   "key": "D",
+   "items_by_type": {
+    "press": "压力传感器零点；导柱润滑；安全光栅",
+    "screwdriver": "扭矩校验（每班首件）；套筒磨损；线缆",
+    "tester": "标准件点检（OK / NG 样件）；气路泄漏；夹具定位",
+    "labeler": "色带 / 标签余量；扫码复核",
+    "assembly_station": "防错传感器；工具定位；料盒标识"
+   }
+  },
+  {
+   "key": "M",
+   "types": [
+    "press",
+    "screwdriver",
+    "tester"
+   ]
+  }
+ ],
+ "kpis": [
+  {
+   "key": "ftt",
+   "label": "一次下线合格率 FTT",
+   "unit": "%",
+   "target": 98,
+   "dir": "up",
+   "desc": "不经返修一次通过下线测试 ÷ 下线数"
+  },
+  {
+   "key": "mis_ppm",
+   "label": "错漏装 PPM",
+   "unit": "ppm",
+   "target": 50,
+   "dir": "down",
+   "desc": "错装 + 漏装 ÷ 产量 × 10⁶"
+  },
+  {
+   "key": "torque_cpk",
+   "label": "关键拧紧 Cpk",
+   "unit": "",
+   "target": 1.67,
+   "dir": "up",
+   "desc": "关键螺栓终扭矩的过程能力"
+  },
+  {
+   "key": "takt",
+   "label": "节拍达成率",
+   "unit": "%",
+   "target": 95,
+   "dir": "up",
+   "desc": "节拍时间 ÷ 实际平均循环时间（瓶颈工位）"
+  },
+  {
+   "key": "rework_rate",
+   "label": "返修率",
+   "unit": "%",
+   "target": 1.5,
+   "dir": "down",
+   "desc": "返修台件数 ÷ 下线数"
+  }
+ ],
+ "reports": [
+  {
+   "name": "装配缺陷排列",
+   "dataset": "ncr",
+   "chart": "bar",
+   "shared_roles": [
+    "qc",
+    "engineer",
+    "manager"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "defect__category",
+      "op": "=",
+      "value": "assembly"
+     }
+    ],
+    "group": [
+     {
+      "field": "defect__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty",
+      "agg": "sum",
+      "label": "数量"
+     }
+    ],
+    "sort": [
+     {
+      "field": "qty_sum",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "各工位报工（近 7 天）",
+   "dataset": "report",
+   "chart": "bar",
+   "shared_roles": [
+    "leader",
+    "manager"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "end",
+      "op": "last_days",
+      "value": 7
+     }
+    ],
+    "group": [
+     {
+      "field": "process__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty_good",
+      "agg": "sum",
+      "label": "合格"
+     },
+     {
+      "field": "qty_ng",
+      "agg": "sum",
+      "label": "不良"
+     }
+    ]
+   }
+  }
+ ],
+ "config": [
+  {
+   "import": "process",
+   "rows": [
+    {
+     "code": "AS10",
+     "name": "部件预装",
+     "ptype": "assembly",
+     "std_cycle_s": 55
+    },
+    {
+     "code": "AS20",
+     "name": "轴承压装",
+     "ptype": "pressfit",
+     "std_cycle_s": 40,
+     "desc": "伺服压装，压装力-位移曲线判定"
+    },
+    {
+     "code": "AS30",
+     "name": "螺栓拧紧",
+     "ptype": "screwing",
+     "std_cycle_s": 48,
+     "desc": "拧紧轴扭矩 + 角度监控，结果绑定总成码"
+    },
+    {
+     "code": "AS40",
+     "name": "气密测试",
+     "ptype": "testing",
+     "std_cycle_s": 60,
+     "desc": "压降法"
+    },
+    {
+     "code": "AS45",
+     "name": "下线功能测试",
+     "ptype": "testing",
+     "std_cycle_s": 75
+    },
+    {
+     "code": "AS50",
+     "name": "贴标",
+     "ptype": "labeling",
+     "std_cycle_s": 12
+    },
+    {
+     "code": "AS60",
+     "name": "终检",
+     "ptype": "inspection",
+     "std_cycle_s": 40
+    },
+    {
+     "code": "AS70",
+     "name": "包装入库",
+     "ptype": "packing",
+     "std_cycle_s": 20
+    }
+   ]
+  },
+  {
+   "import": "defect_code",
+   "rows": [
+    {
+     "code": "AS-D01",
+     "name": "漏装零件",
+     "category": "assembly",
+     "severity": "critical",
+     "process": "AS10"
+    },
+    {
+     "code": "AS-D02",
+     "name": "错装零件",
+     "category": "assembly",
+     "severity": "critical",
+     "process": "AS10"
+    },
+    {
+     "code": "AS-D03",
+     "name": "扭矩 / 角度不合格",
+     "category": "assembly",
+     "severity": "major",
+     "process": "AS30"
+    },
+    {
+     "code": "AS-D04",
+     "name": "压装力超差",
+     "category": "assembly",
+     "severity": "major",
+     "process": "AS20"
+    },
+    {
+     "code": "AS-D05",
+     "name": "气密泄漏",
+     "category": "assembly",
+     "severity": "major",
+     "process": "AS40"
+    },
+    {
+     "code": "AS-D06",
+     "name": "功能测试 NG",
+     "category": "assembly",
+     "severity": "major",
+     "process": "AS45"
+    },
+    {
+     "code": "AS-D07",
+     "name": "标签错误 / 不可读",
+     "category": "assembly",
+     "severity": "minor",
+     "process": "AS50"
+    },
+    {
+     "code": "AS-D08",
+     "name": "外观划伤",
+     "category": "appearance",
+     "severity": "minor",
+     "process": "AS60"
+    },
+    {
+     "code": "AS-D09",
+     "name": "异响",
+     "category": "assembly",
+     "severity": "major",
+     "process": "AS45"
+    }
+   ]
+  },
+  {
+   "import": "insp_template",
+   "rows": [
+    {
+     "tpl_code": "T-AS-TQ",
+     "tpl_name": "拧紧扭矩检验",
+     "itype": "IPQC",
+     "process": "AS30",
+     "sample_rule": "每班首件 + 每 2 小时 1 件（扭力扳手复测）",
+     "seq": 10,
+     "name": "M8 螺栓终扭矩",
+     "char": "TQ_M8",
+     "method": "数显扭力扳手",
+     "std": "24 ± 2 N·m",
+     "lo": 22,
+     "hi": 26,
+     "unit": "N·m",
+     "key": true
+    },
+    {
+     "tpl_code": "T-AS-TQ",
+     "tpl_name": "拧紧扭矩检验",
+     "itype": "IPQC",
+     "process": "AS30",
+     "sample_rule": "每班首件 + 每 2 小时 1 件（扭力扳手复测）",
+     "seq": 20,
+     "name": "拧紧角度",
+     "char": "ANG_M8",
+     "method": "拧紧轴记录",
+     "std": "30–60°",
+     "lo": 30,
+     "hi": 60,
+     "unit": "°",
+     "key": false
+    },
+    {
+     "tpl_code": "T-AS-LEAK",
+     "tpl_name": "气密测试",
+     "itype": "IPQC",
+     "process": "AS40",
+     "sample_rule": "100% 设备自动",
+     "seq": 10,
+     "name": "泄漏率",
+     "char": "LEAK",
+     "method": "气密检测仪（压降法）",
+     "std": "≤ 30 Pa/min",
+     "hi": 30,
+     "unit": "Pa/min",
+     "key": true
+    },
+    {
+     "tpl_code": "T-AS-FIN",
+     "tpl_name": "装配终检",
+     "itype": "OQC",
+     "process": "AS60",
+     "sample_rule": "100%",
+     "seq": 10,
+     "name": "外观",
+     "char": "FIN_APP",
+     "method": "目视",
+     "std": "无划伤、无漏装",
+     "unit": "",
+     "key": true
+    },
+    {
+     "tpl_code": "T-AS-FIN",
+     "tpl_name": "装配终检",
+     "itype": "OQC",
+     "process": "AS60",
+     "sample_rule": "100%",
+     "seq": 20,
+     "name": "标签",
+     "char": "FIN_LBL",
+     "method": "扫码",
+     "std": "标签与总成码一致",
+     "unit": "",
+     "key": true
+    },
+    {
+     "tpl_code": "T-AS-FIN",
+     "tpl_name": "装配终检",
+     "itype": "OQC",
+     "process": "AS60",
+     "sample_rule": "100%",
+     "seq": 30,
+     "name": "下线测试结论",
+     "char": "FIN_EOL",
+     "method": "测试台记录",
+     "std": "OK",
+     "unit": "",
+     "key": true
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "拧紧工艺规范",
+     "tags": "装配,拧紧",
+     "kind": "standard",
+     "process": "AS30",
+     "content": "1. 关键螺栓用拧紧轴扭矩 + 角度控制，结果自动绑定总成码；不合格自动锁定，返修后重拧。\n2. 拧紧顺序：对角交叉，两遍到终扭矩。\n3. 每班首件用数显扭力扳手复测，偏差 > 5% 停线校准。"
+    },
+    {
+     "title": "防错（Poka-Yoke）清单",
+     "tags": "装配,防错",
+     "kind": "standard",
+     "process": "AS10",
+     "content": "料盒光电拣料防错；零件扫码校验型号；压装位移 / 压力曲线窗口；拧紧计数防漏拧；气密 / 下线测试不合格不能贴合格标签。\n每班开班用失效样件验证防错有效。"
+    },
+    {
+     "title": "气密测试作业指导",
+     "tags": "装配,测试",
+     "kind": "sop",
+     "process": "AS40",
+     "content": "充气 300 kPa，稳压 5 s，测试 10 s，泄漏率 ≤ 30 Pa/min 合格。每班开班用标准泄漏件验证。NG 件放红色区域，进返修台。"
+    }
+   ]
+  }
+ ]
+}

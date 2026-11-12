@@ -1,0 +1,149 @@
+/* HoneyMOM base styles: global baseline, utility classes (hm-*), new look for legacy page classes (.page/.card/.kpi…), Element Plus tweaks, motion. */
+
+* { box-sizing: border-box; }
+html, body, #app { margin: 0; height: 100%; }
+body {
+  font-family: var(--hm-font); font-size: var(--hm-fs-sm); line-height: var(--hm-lh); color: var(--hm-text); background: var(--hm-canvas);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+a { color: var(--hm-primary); text-decoration: none; } a:hover { text-decoration: underline; }
+:focus-visible { outline: none; box-shadow: var(--hm-focus); border-radius: var(--hm-r-sm); }
+/* Element Plus inputs draw their own focus ring (outer wrapper), so the inner input doesn't draw another one */
+.el-input__inner:focus-visible, .el-textarea__inner:focus-visible, .el-select__input:focus-visible, .el-input-number .el-input__inner:focus-visible { box-shadow: none; }
+::selection { background: rgba(20, 99, 214, .18); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, .28); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, .45); background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------------- Numbers ---------------- */
+.hm-num, .num { font-family: var(--hm-font-num); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.hm-mono, .mono { font-family: var(--hm-font-mono); font-variant-numeric: tabular-nums; font-size: .95em; }
+.hm-unit { color: var(--hm-text-3); font-size: .78em; margin-left: 2px; font-weight: 400; }
+
+/* ---------------- Canvas grid ---------------- */
+.hm-grid-bg {
+  background-color: var(--hm-canvas);
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(11, 165, 196, .06), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(217, 130, 43, .045), transparent 60%),
+    linear-gradient(var(--hm-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hm-grid-line) 1px, transparent 1px);
+  background-size: auto, auto, 24px 24px, 24px 24px;
+  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+}
+
+/* ---------------- Glass panel ---------------- */
+.hm-glass { background: var(--hm-glass); backdrop-filter: var(--hm-glass-blur); -webkit-backdrop-filter: var(--hm-glass-blur); border: 1px solid var(--hm-hairline); }
+
+/* ---------------- Page skeleton ---------------- */
+.page, .hm-page { padding: var(--hm-sp-4) var(--hm-sp-5) var(--hm-sp-8); max-width: calc(1920px * var(--hm-scale)); }
+.page-head, .hm-page-head { display: flex; align-items: center; gap: 10px; margin-bottom: var(--hm-sp-4); flex-wrap: wrap; min-height: 34px; }
+.page-head h2, .hm-page-head h2 { font-size: var(--hm-fs-xl); margin: 0; font-weight: var(--hm-fw-semibold); letter-spacing: .01em; color: var(--hm-text); }
+.page-head .sub, .hm-page-head .sub { color: var(--hm-text-3); font-size: var(--hm-fs-xs); }
+.page-head .grow, .grow { flex: 1; }
+
+/* ---------------- Cards ---------------- */
+.card, .hm-card {
+  background: var(--hm-surface); border-radius: var(--hm-r-lg); border: 1px solid var(--hm-border); padding: 14px 16px; box-shadow: var(--hm-e1);
+  position: relative;
+}
+.card h3, .hm-card h3 { margin: 0 0 10px; font-size: var(--hm-fs-md); font-weight: var(--hm-fw-semibold); display: flex; align-items: center; gap: 8px; color: var(--hm-text); }
+.card h3 small, .hm-card h3 small { color: var(--hm-text-3); font-weight: 400; font-size: var(--hm-fs-xs); }
+
+/* ---------------- Grid ---------------- */
+.grid { display: grid; gap: var(--hm-gap); }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.g6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+/* Auto column count (equipment cards, board cards): more columns on large screens; pages can override --min for the minimum column width */
+.g-auto { grid-template-columns: repeat(auto-fill, minmax(calc(var(--min, 260px) * var(--hm-scale)), 1fr)); }
+.mt { margin-top: var(--hm-gap); }
+@media (max-width: 1279px) { .g6 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1023px) { .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .g2, .g3, .g4, .g6 { grid-template-columns: minmax(0, 1fr); } .page, .hm-page { padding: 10px; } }
+
+/* ---------------- KPI (shared look for legacy .kpi and the HmKpi component) ---------------- */
+.kpi {
+  background: var(--hm-surface); border: 1px solid var(--hm-border); border-radius: var(--hm-r-lg); padding: 12px 14px 11px; position: relative; overflow: hidden;
+  box-shadow: var(--hm-e1); transition: border-color var(--hm-dur-2) var(--hm-ease), box-shadow var(--hm-dur-2) var(--hm-ease);
+}
+.kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--hm-border-strong); opacity: .7; }
+.kpi.ok::before { background: var(--hm-run); } .kpi.warn::before { background: var(--hm-idle); } .kpi.bad::before { background: var(--hm-fault); }
+.kpi small { color: var(--hm-text-3); font-size: var(--hm-fs-xs); display: block; letter-spacing: .02em; }
+.kpi b { font-size: var(--hm-fs-2xl); font-family: var(--hm-font-num); font-variant-numeric: tabular-nums; display: block; margin-top: 2px; font-weight: 600; line-height: 1.2; color: var(--hm-text); }
+.kpi i { font-style: normal; color: var(--hm-text-3); font-size: var(--hm-fs-xs); }
+.kpi.warn b { color: var(--hm-idle-ink); } .kpi.bad b { color: var(--hm-fault-ink); } .kpi.ok b { color: var(--hm-run-ink); }
+.kpi:hover { border-color: var(--hm-border-strong); box-shadow: var(--hm-e2); }
+
+/* ---------------- Text helpers ---------------- */
+.muted { color: var(--hm-text-3); } .small { font-size: var(--hm-fs-xs); }
+.ok { color: var(--hm-run-ink); } .bad { color: var(--hm-fault-ink); } .warn { color: var(--hm-idle-ink); }
+.md { white-space: pre-wrap; line-height: 1.7; font-size: var(--hm-fs-sm); }
+.md h2, .md h3 { margin: 10px 0 4px; }
+.click { cursor: pointer; }
+
+/* ---------------- Status pills (legacy .tag-st .st-xxx) ---------------- */
+.tag-st { display: inline-flex; align-items: center; gap: 5px; padding: 0 8px; border-radius: var(--hm-r-pill); font-size: var(--hm-fs-xs); line-height: 20px; background: var(--hm-offline-soft); color: var(--hm-offline-ink); white-space: nowrap; }
+.tag-st::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .85; }
+.st-running, .st-done, .st-completed, .st-OK, .st-closed, .st-verified, .st-ok, .st-released, .st-fg, .st-good { background: var(--hm-run-soft); color: var(--hm-run-ink); }
+.st-idle, .st-waiting, .st-pending, .st-open, .st-draft, .st-reported, .st-warn, .st-rework, .st-wip { background: var(--hm-idle-soft); color: var(--hm-idle-ink); }
+.st-down, .st-NG, .st-scrap, .st-urgent, .st-change, .st-cancelled { background: var(--hm-fault-soft); color: var(--hm-fault-ink); }
+.st-setup, .st-in_progress, .st-assigned, .st-repairing, .st-reviewing, .st-approved, .st-ready { background: var(--hm-setup-soft); color: var(--hm-setup-ink); }
+.st-offline { background: var(--hm-offline-soft); color: var(--hm-offline-ink); }
+
+/* ---------------- Data tables (Element Plus tables made "dense and precise") ---------------- */
+.el-table { --el-table-header-bg-color: var(--hm-surface-2); --el-table-row-hover-bg-color: #f2f6fc; --el-table-current-row-bg-color: var(--hm-primary-soft);
+  --el-table-border-color: var(--hm-border); --el-table-header-text-color: var(--hm-text-2); font-size: var(--hm-fs-sm); }
+.el-table .cell { white-space: nowrap; }
+.el-table th.el-table__cell { font-weight: var(--hm-fw-semibold); font-size: var(--hm-fs-xs); letter-spacing: .02em; }
+.el-table .el-table__cell { padding: 6px 0; }
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell { background: #fafbfd; }
+.el-table td .mono, .el-table td.is-num { font-variant-numeric: tabular-nums; }
+
+/* Native data tables (HmDataTable and hand-written tables use .hm-table) */
+.hm-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--hm-fs-sm); }
+.hm-table thead th { position: sticky; top: 0; z-index: 1; background: var(--hm-surface-2); color: var(--hm-text-2); font-weight: var(--hm-fw-semibold); font-size: var(--hm-fs-xs);
+  text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--hm-border); white-space: nowrap; user-select: none; }
+.hm-table thead th.sortable { cursor: pointer; } .hm-table thead th.sortable:hover { color: var(--hm-text); }
+.hm-table td { padding: 6px 10px; border-bottom: 1px solid #edf1f6; white-space: nowrap; color: var(--hm-text); }
+.hm-table td.num, .hm-table th.num { text-align: right; font-family: var(--hm-font-num); font-variant-numeric: tabular-nums; }
+.hm-table tbody tr:hover td { background: #f4f8fd; }
+.hm-table tbody tr.clickable { cursor: pointer; }
+
+/* ---------------- Element Plus tweaks ---------------- */
+.el-button { font-weight: var(--hm-fw-medium); }
+.el-drawer__header { margin-bottom: 8px; font-weight: 600; color: var(--hm-text); }
+.el-dialog { border-radius: var(--hm-r-lg); }
+.el-input__wrapper, .el-select__wrapper { box-shadow: 0 0 0 1px var(--el-border-color) inset; }
+.el-progress-bar__outer { background: var(--hm-surface-3); }
+/* Input prefix/suffix buttons (e.g. "Scan"): default secondary grey is below 3:1 on a light background */
+.el-input-group__append, .el-input-group__prepend { color: var(--hm-text-2); }
+.el-tag { font-variant-numeric: tabular-nums; }
+
+/* ---------------- AI-selectable elements ---------------- */
+[data-ai-key] { transition: box-shadow var(--hm-dur-2) var(--hm-ease); }
+[data-ai-selected], .ai-selected { box-shadow: 0 0 0 2px var(--hm-surface), 0 0 0 4px var(--hm-ai-ring) !important; }
+tr[data-ai-selected] > td { background: var(--hm-ai-soft) !important; }
+tr[data-ai-selected] { box-shadow: none !important; }
+tr[data-ai-selected] > td:first-child { box-shadow: inset 3px 0 0 var(--hm-primary); }
+.ai-flash { animation: hm-ai-flash 520ms var(--hm-ease); }
+body.ai-ctrl [data-ai-key]:hover, body.ai-ctrl [data-ai-rows] .el-table__row:hover { cursor: copy; outline: 1px dashed var(--hm-ai-ring); outline-offset: 2px; }
+
+/* ---------------- Motion ---------------- */
+@keyframes hm-pulse { 0% { box-shadow: 0 0 0 0 currentColor; } 70% { box-shadow: 0 0 0 6px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@keyframes hm-ai-flash { 0% { box-shadow: 0 0 0 0 rgba(20, 99, 214, .55); } 100% { box-shadow: 0 0 0 10px rgba(20, 99, 214, 0); } }
+@keyframes hm-shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes hm-fade-up { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.hm-pulse { animation: hm-pulse 1.8s infinite; }
+.hm-enter { animation: hm-fade-up var(--hm-dur-3) var(--hm-ease) both; }
+.hm-slide-right-enter-active, .hm-slide-right-leave-active { transition: transform var(--hm-dur-3) var(--hm-ease), opacity var(--hm-dur-2) var(--hm-ease); }
+.hm-slide-right-enter-from, .hm-slide-right-leave-to { transform: translateX(16px); opacity: 0; }
+.hm-fade-enter-active, .hm-fade-leave-active { transition: opacity var(--hm-dur-2) var(--hm-ease), transform var(--hm-dur-2) var(--hm-ease); }
+.hm-fade-enter-from, .hm-fade-leave-to { opacity: 0; transform: translateY(-3px) scale(.985); }
+@media (prefers-reduced-motion: reduce) {
+  .hm-pulse, .ai-flash, .hm-enter { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
+
+/* Popups must cover the shell and the AI panel */
+.assist-pop { z-index: 3100 !important; }

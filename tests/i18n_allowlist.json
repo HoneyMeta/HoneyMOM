@@ -1,0 +1,2069 @@
+{
+ "note": "Chinese literals that intentionally stay as they are (see tests/i18n_check.py)",
+ "items": [
+  {
+   "file": "db.py",
+   "text": "是",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "schema_exec.py",
+   "text": "委外仓",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/api.py",
+   "text": "未选事件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/api.py",
+   "text": "AD-模拟{}",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/api.py",
+   "text": "（已删除）",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/api.py",
+   "text": "AI 助手",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/engine.py",
+   "text": "会暂停等待",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/engine.py",
+   "text": "等待",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/engine.py",
+   "text": "[\\n,，]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/engine.py",
+   "text": "；",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/engine.py",
+   "text": "智能体",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/nodes.py",
+   "text": "你是分类器。只输出 JSON：{\"category\": \"类别id 或 other\", \"reason\": \"一句话理由\"}",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "agent/nodes.py",
+   "text": "[,，、\\s]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/nodes.py",
+   "text": "内容",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/queries.py",
+   "text": "运行",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/queries.py",
+   "text": "停机",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/queries.py",
+   "text": "换型换刀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/queries.py",
+   "text": "待机/等待",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/queries.py",
+   "text": "是",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/runtime.py",
+   "text": "[,，、]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/runtime.py",
+   "text": "[,，\\s]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/templates.py",
+   "text": "交接班",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "agent/tools.py",
+   "text": "业务数据",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/ai.py",
+   "text": "明细 [{material 物料编码, qty, price?, due?}]",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "erp/cost.py",
+   "text": "[已过账] ",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/finance.py",
+   "text": "发票",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/finance.py",
+   "text": "退货未开红票",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/integration.py",
+   "text": "对接器 ",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/mrp.py",
+   "text": "件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/mrp.py",
+   "text": "个",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/mrp.py",
+   "text": "套",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/mrp.py",
+   "text": "台",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/mrp.py",
+   "text": "箱",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/purchase.py",
+   "text": "入库",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/purchase.py",
+   "text": "退货",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/purchase.py",
+   "text": "付款",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "第{}行 {}",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "加第{}行 {}",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "取消第{}行 {}",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "发货",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "退货",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/sales.py",
+   "text": "收款",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/__init__.py",
+   "text": "往来单位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/__init__.py",
+   "text": "计划",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/__init__.py",
+   "text": "成本",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/__init__.py",
+   "text": "人工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "erp/__init__.py",
+   "text": "期初",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/assist.py",
+   "text": "\n只输出 JSON：{\"device\": {\"客户列名\": \"标准键\"}, \"point\": {...}}，对不上的列不要写。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "factory/assist.py",
+   "text": "开关量",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/assist.py",
+   "text": "采集点",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/assist.py",
+   "text": "[（(].*?[)）]|\\s",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/importers.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/layout.py",
+   "text": "名称",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/layout.py",
+   "text": "类型",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/layout.py",
+   "text": "AREA|ZONE|区域",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/layout.py",
+   "text": "WALL|墙",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "^\\s*(-?[\\d.]+)?\\s*[~～\\-–—至]\\s*(-?[\\d.]+)?\\s*$",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "状态码",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "＝",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "铸",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "机加",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "加工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "仓",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "物流",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "正常",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/model.py",
+   "text": "无",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "说明",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "交付包",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "工厂",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "（([A-Za-z0-9_-]+)）",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "格式",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "现场状态",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "（",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "点表",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/package.py",
+   "text": "\\s*(寿命设定.*|已用件数.*|寿命.*)$",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "（",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "）",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备表",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备清单",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "点表",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "点位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "采集点",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "变量表",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "点位编码",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "地址",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "含义",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "数据类型",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备编码",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备名称",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "设备类型",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "协议",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "未开",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "端点",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/pointtable.py",
+   "text": "主题前缀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/report.py",
+   "text": "、",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "factory/templates.py",
+   "text": "[\\s（）()#\\d]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/api.py",
+   "text": "服务",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/cf.py",
+   "text": "[,，\\n]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/flows.py",
+   "text": "，",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/flows.py",
+   "text": "审批流程",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "说明",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "填写说明",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "[\\*＊]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "[\\(（\\[【].*?[\\)）\\]】]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "[\\s_\\-:：/]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "(\\d{4})年(\\d{1,2})月(\\d{1,2})日?",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "[;；\\n]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "：",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "[=：:]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/importer.py",
+   "text": "把客户 Excel 的表头对到 MES 导入字段。只输出 JSON：{{\"mapping\": {{\"表头\": \"字段键 或 null\"}}, \"reasons\": {{\"表头\": \"一句话理由\"}}}}。\n导入：{label}\n可用字段：",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "impl/reports.py",
+   "text": "是",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/reports.py",
+   "text": "，",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/reports.py",
+   "text": "　",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "impl/reports.py",
+   "text": "报表设计器",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "近24小时OEE",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "近4小时OEE",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "近24小时报警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "当前点位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "刀具",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "刀位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "已用",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "寿命",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "AI磨损%",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "操作工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai.py",
+   "text": "故障",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "[,，、\\s]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "报警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "报警[「“\"]?([^」”\"，,。]{1,12})",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "^(就|时|了|，)",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "停机",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(\\d+(?:\\.\\d+)?)\\s*分钟",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "不合格",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "废品",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(\\d+)\\s*(?:条|个|件)",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(\\d+(?:\\.\\d+)?)\\s*(小时|分钟)",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(气孔|缩松|冷隔|毛刷|毛刺|尺寸|球化|砂眼)",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "小时",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(>=|<=|≥|≤|>|<|大于等于|小于等于|大于|小于|超过|高于|低于|不足|不到)\\s*(\\d+(?:\\.\\d+)?)",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "大于等于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "小于等于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "大于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "超过",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "高于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "小于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "低于",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "不足",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "不到",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "(?:连续|持续|超过)?\\s*(\\d+(?:\\.\\d+)?)\\s*分钟",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "提醒",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "通知",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "告诉",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "建议([^，,。；;]{2,30})",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "降速",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "报修",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "派维修",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "维修单",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "安灯",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "换刀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "寿命",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "[，,。].*$",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_automation.py",
+   "text": "你把工厂人员的一句话规则翻译成 MES 自动化流程 JSON。只输出 JSON 对象，字段：\nname（10 字以内的名字）, trigger, conditions, actions, cooldown_min。\ntrigger 四选一：{{\"type\":\"metric\",\"metric\":<指标 key>,\"equipment\":\"*\"或[\"CNC3\"],\"op\":\">\"|\">=\"|\"<\"|\"<=\",\"value\":数,\"for_min\":持续分钟}}；{{\"type\":\"alarm\",\"match\":\"报警内容关键字\",\"equipment\":\"*\"}}；{{\"type\":\"down\",\"equipment\":\"*\",\"for_min\":分钟}}；{{\"type\":\"ncr\",\"match\":\"缺陷关键字\",\"count\":条数,\"within_min\":分钟}}。\n指标 key：{cat}。设备：{eqs}。\nconditions 可选：[{{\"type\":\"time\",\"from\":\"08:00\",\"to\":\"20:00\"}}]。\nactions 数组，元素：{{\"type\":\"notify\",\"to_role\":\"leader|maint|qc|planner|manager|engineer|warehouse|operator\",\"title\":\"…\",\"content\":\"…\",\"level\":\"info|warn|urgent\"}}；{{\"type\":\"suggest\",\"text\":\"给现场的具体建议\"}}；{{\"type\":\"draft\",\"op\":\"repair_order|andon_raise|param_adjust|schedule_change\",\"payload\":{{…}}}}（写操作只能起草，等人审批）。文字里可用占位符 {{equipment}} {{value}} {{threshold}} {{duration}} {{metric}}。班长=leader，设备员=maint，质检=qc。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "回答格式（界面会把下面的\"块\"渲染成图表、表格、指标卡和可点的单据标签）：\n- 先用 1~3 句话给结论，再给依据。提到具体单据/设备时写成 [[实体:编号]]，例如 [[work_order:WO20261104001]]、[[equipment:CNC3]]、[[ncr:NCR20261104002]]、[[repair_order:WX20261104001]]，界面会变成可点开的标签。\n- 有趋势、对比、排名、构成时，在回答末尾附一个 ```blocks 代码块，内容是 JSON 数组，可以放这些块（数字必须来自查询结果，不要估算）：\n  {\"type\":\"kpis\",\"items\":[{\"label\":\"废品率\",\"value\":0.023,\"format\":\"pct\",\"delta\":-0.004,\"good\":\"down\"},{\"label\":\"机加\",\"value\":412,\"unit\":\"件\",\"format\":\"int\"}]}\n  {\"type\":\"chart\",\"kind\":\"line|bar|hbar|pie\",\"title\":\"近 8 小时机加产量\",\"x\":[\"08:00\",\"09:00\"],\"series\":[{\"name\":\"机加\",\"data\":[52,61]}],\"unit\":\"件\"}\n  {\"type\":\"table\",\"title\":\"OEE 最低的设备\",\"columns\":[{\"key\":\"code\",\"label\":\"设备\"},{\"key\":\"oee\",\"label\":\"OEE\",\"num\":true,\"format\":\"pct\"}],\"rows\":[{\"code\":\"CNC3\",\"oee\":0.62}]}\n  {\"type\":\"callout\",\"tone\":\"warn\",\"title\":\"需要关注\",\"md\":\"一两句提醒\"}\n  比率用 0~1 的小数并写 \"format\":\"pct\"；件数写 \"format\":\"int\"。一张图最多 6 个系列、40 个点；表格最多 15 行。\n- 排名、对比、趋势、构成类的问题一定要附图表块（必要时再加一张表）；简单的问题（一个数、一句话能说清）不要硬加图表。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "正在读取",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "正在",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "oee|率|rate|总|合计|count|数|n$",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "oee|率|rate|pct|ratio",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_blocks.py",
+   "text": "％",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "统计天数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "缺陷类别",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "零件数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "不良数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "不良率",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "因素",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "显著性 -log10p",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "最差分组",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "是平均的倍数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "分组",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_cross.py",
+   "text": "件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_daily.py",
+   "text": "操作工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_daily.py",
+   "text": "上料",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_daily.py",
+   "text": "你是铸造 + 机加工厂的生产经理助理，写当天生产日报的\"解读\"部分。只基于给出的数据，数字照抄不要估算。输出 JSON：{\"headline\":\"一句话头条（20~40 字，最重要的结论）\",\"summary\":\"两三句概述\",\"highlights\":[{\"text\":\"亮点\"}],\"risks\":[{\"text\":\"风险\",\"severity\":\"critical|warning\"}],\"actions\":[{\"text\":\"建议动作（具体到设备/工单/缺陷）\"}]}，亮点 2~3 条、风险 2~4 条、建议 2~4 条。比率（scrap_rate、OEE 等 0~1 的小数）写成百分数，如 0.053 写 5.3%；件数照抄。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/ai_daily.py",
+   "text": "规则生成",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_daily.py",
+   "text": " 件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_demo.py",
+   "text": "?？。.!！~～",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_drafts.py",
+   "text": "调整项 [{work_order, priority(1 最高), due(YYYY-MM-DD HH:MM)}]",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/ai_drafts.py",
+   "text": "生产工单",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_drafts.py",
+   "text": "安灯",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_drafts.py",
+   "text": "不合格品",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_drafts.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_switch.py",
+   "text": "AI 功能",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "今天",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "当天",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "昨天",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "本班",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "当班",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "上一班",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "刚结束的班次",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "本周",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "近7天",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "条",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "loss_运行",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_tools.py",
+   "text": "运行一个已保存的技能（确定的查询计划，不调用大模型）：skill 是技能 id 或名称，params 是参数（如 {\"line\": \"机加线\", \"period\": \"yesterday\"}）。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "近2小时P90",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "前24小时P90",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "操作工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "上料",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "次",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "报警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "次数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "累计分钟",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "刀具",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "磨损%",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "已用",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "寿命",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "近8小时废品率",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "之前24小时废品率",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "报废",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "投产",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "缺陷",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "条数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "工位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "工单",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "剩余",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "每小时",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "离交期小时",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "物料",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "需求",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ai_watch.py",
+   "text": "库存",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/assistant.py",
+   "text": "[\\d.,，%％+\\-−×/]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/assistant.py",
+   "text": "件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/assistant.py",
+   "text": "已生成动作草稿，等待用户审批（通过 / 修改后通过 / 驳回）；在用户通过之前不要说已经完成。",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/complaint.py",
+   "text": "[\\s,，;；]+",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/complaint.py",
+   "text": "客诉",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cross.py",
+   "text": "毛刺",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cross.py",
+   "text": "内腔",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cross.py",
+   "text": "气孔",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cross.py",
+   "text": "缩松",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cross.py",
+   "text": "建议",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "循环进行中",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "段号",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "程序步",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "电磁阀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "指令",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "到位",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "伸出",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "夹紧",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "缩回",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "松开",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "关",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "闭合",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "开",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "张开",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "运转",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "动作",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "当前中位数s",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "标准s",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "基线s",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "波动sd",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "漂移",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "告警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "动作变慢常见原因：气源压力、执行机构磨损或卡滞、到位开关位置偏移、程序参数被修改。",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "起点",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "中位数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "参考",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/cycle.py",
+   "text": "慢s",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/equipment.py",
+   "text": "停机",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/equipment.py",
+   "text": "换型换刀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/equipment.py",
+   "text": "待机/等待",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/equipment.py",
+   "text": "运行",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/esign.py",
+   "text": "批准",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_ai.py",
+   "text": "待分析",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_ai.py",
+   "text": "客户抱怨",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_ai.py",
+   "text": "控制计划项",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_ai.py",
+   "text": "客户投诉",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_doc.py",
+   "text": "工艺变更",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "质量",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "合格",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "个",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "入库",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_import.py",
+   "text": "销售",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_outsource.py",
+   "text": "委外",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_outsource.py",
+   "text": "；",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/exec_outsource.py",
+   "text": "备件",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/gates.py",
+   "text": "合格",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "设备",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "报警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "开始",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "确认人",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "安灯",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "类型",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "描述",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "状态",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "发起时间",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "工单",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "客户",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "计划",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "完成",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "交期",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "预计完工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "待处理",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "超过24小时",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "缺陷分布",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "到期",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "逾期",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "最长逾期天数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "待换刀",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "预警",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "刀具",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "库存",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/home_feed.py",
+   "text": "安全库存",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/iatf.py",
+   "text": "量检具",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/iatf.py",
+   "text": "量具",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/iatf.py",
+   "text": "严重度 S",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/iatf.py",
+   "text": "[已停用]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/iatf.py",
+   "text": "未计算",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/mcp_server.py",
+   "text": "【",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ops.py",
+   "text": "紧急",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ops.py",
+   "text": "高",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/ops.py",
+   "text": "否",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/shopfloor.py",
+   "text": "工人日报",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/skills.py",
+   "text": "手动",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/skills.py",
+   "text": "技能",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/skills.py",
+   "text": "[？?。！!]+$",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/skills.py",
+   "text": "把一次问答保存成可重复运行的\"技能\"。给出 JSON：{\"name\": 12 字以内的技能名, \"description\": 一句话说明, \"params\": [{\"key\": 参数 key（保持原样）, \"label\": 参数中文名}]}。只输出 JSON。",
+   "kind": "untranslated",
+   "reason": "model prompt / JSON template kept in the source language; every model call adds the UI-language instruction"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "出铁量 kg",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "出铁温度",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "铸件计数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "报废计数",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "说明",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "毛坯库/待上线",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "在机加工",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "成品库存（未发运）",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "已发运",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/trace_recon.py",
+   "text": "检验合格待入库",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/warehouse.py",
+   "text": "[已过账]",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  },
+  {
+   "file": "services/warehouse.py",
+   "text": "完成",
+   "kind": "hard-coded",
+   "reason": "matches Chinese input/stored values (keywords, regex, comparisons, dict keys)"
+  }
+ ]
+}

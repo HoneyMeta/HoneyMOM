@@ -1,0 +1,237 @@
+{
+ "code": "machining",
+ "name": "机加",
+ "version": "1.0.0",
+ "kind": "industry",
+ "industry": "机械加工（加工中心 / 数控车，去毛刺、在线测量、内窥检测）",
+ "description": "CNC 机加、去毛刺、内窥检测工序；加工中心 / 去毛刺单元设备类型；机加缺陷代码；刀具寿命监测、NC 程序管理、机加不良统计等机加模块；刀具寿命利用率、首检一次合格率等 KPI。",
+ "requires": [
+  "common"
+ ],
+ "modules": [
+  "machining"
+ ],
+ "demo": "foundry",
+ "enums": {
+  "process.ptype": {
+   "machining": "机加工",
+   "deburr": "去毛刺"
+  },
+  "equipment.etype": {
+   "cnc": "加工中心",
+   "deburr": "去毛刺单元"
+  },
+  "workshop.wtype": {
+   "machining": "机加"
+  },
+  "defect_code.category": {
+   "machining": "机加"
+  }
+ },
+ "device_templates": [
+  {
+   "code": "cnc",
+   "name": "加工中心",
+   "etype": "cnc"
+  },
+  {
+   "code": "deburr",
+   "name": "机器人去毛刺",
+   "etype": "deburr"
+  },
+  {
+   "code": "inspection",
+   "name": "检测站",
+   "etype": "inspection"
+  }
+ ],
+ "maint_templates": [
+  {
+   "key": "D",
+   "items_by_type": {
+    "cnc": "导轨润滑油位；切削液浓度；主轴异响；排屑器；气压 0.5 MPa",
+    "inspection": "镜头清洁；光源亮度；标准件比对",
+    "deburr": "毛刷磨损；机器人原点"
+   }
+  },
+  {
+   "key": "M",
+   "types": [
+    "cnc"
+   ]
+  }
+ ],
+ "kpis": [
+  {
+   "key": "tool_life_use",
+   "label": "刀具寿命利用率",
+   "unit": "%",
+   "target": 90,
+   "dir": "up",
+   "desc": "换刀时已用件数 ÷ 寿命"
+  },
+  {
+   "key": "fai_pass",
+   "label": "首检一次合格率",
+   "unit": "%",
+   "target": 95,
+   "dir": "up",
+   "desc": "首检一次放行 ÷ 首检数"
+  },
+  {
+   "key": "cpk_bore",
+   "label": "关键尺寸 Cpk",
+   "unit": "",
+   "target": 1.33,
+   "dir": "up",
+   "desc": "关键特性（如缸孔）的过程能力"
+  },
+  {
+   "key": "spindle_util",
+   "label": "主轴利用率",
+   "unit": "%",
+   "target": 80,
+   "dir": "up",
+   "desc": "加工中心运行时间 ÷ 计划时间"
+  }
+ ],
+ "reports": [
+  {
+   "name": "换刀原因统计",
+   "dataset": "tool_change",
+   "chart": "pie",
+   "shared_roles": [
+    "engineer",
+    "maint",
+    "manager"
+   ],
+   "config": {
+    "group": [
+     {
+      "field": "reason"
+     }
+    ],
+    "measures": [
+     {
+      "agg": "count",
+      "label": "次数"
+     }
+    ]
+   }
+  },
+  {
+   "name": "机加报工（按机床）",
+   "dataset": "report",
+   "chart": "bar",
+   "shared_roles": [
+    "leader",
+    "manager",
+    "engineer"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "equipment__label",
+      "op": "contains",
+      "value": "加工中心"
+     }
+    ],
+    "group": [
+     {
+      "field": "equipment__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty_good",
+      "agg": "sum",
+      "label": "合格"
+     },
+     {
+      "field": "qty_ng",
+      "agg": "sum",
+      "label": "不良"
+     }
+    ]
+   }
+  }
+ ],
+ "config": [
+  {
+   "import": "process",
+   "rows": [
+    {
+     "code": "P60",
+     "name": "CNC 机加",
+     "ptype": "machining",
+     "std_cycle_s": 430.0
+    },
+    {
+     "code": "P70",
+     "name": "去毛刺",
+     "ptype": "deburr",
+     "std_cycle_s": 65.0
+    },
+    {
+     "code": "P80",
+     "name": "内窥检测",
+     "ptype": "inspection",
+     "std_cycle_s": 60.0
+    }
+   ]
+  },
+  {
+   "import": "defect_code",
+   "rows": [
+    {
+     "code": "D06",
+     "name": "残余毛刺",
+     "category": "machining",
+     "severity": "minor",
+     "process": "P70"
+    },
+    {
+     "code": "D07",
+     "name": "缸孔尺寸超差",
+     "category": "machining",
+     "severity": "major",
+     "process": "P60"
+    },
+    {
+     "code": "D08",
+     "name": "断刀报废",
+     "category": "machining",
+     "severity": "major",
+     "process": "P60"
+    },
+    {
+     "code": "D09",
+     "name": "毛刺返修后仍不合格",
+     "category": "machining",
+     "severity": "major",
+     "process": "P70"
+    },
+    {
+     "code": "D10",
+     "name": "误报/待复判",
+     "category": "other",
+     "severity": "minor",
+     "process": "P80"
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "CNC 换刀作业指导",
+     "tags": "工艺,机加",
+     "content": "T03 Φ8 钻头寿命 100 件，到数自动换刀。\n换刀后首件必须测头复测缸孔，并做首件检验。\n主轴负载比换刀后初始值高 30% 以上时提前换刀（MES 刀具监测会预警）。\n钻头磨损会使交叉孔毛刺变大，是内窥检测毛刺 NG 的主要来源。",
+     "updated": "@now",
+     "kind": "sop",
+     "process": "P60"
+    }
+   ]
+  }
+ ]
+}

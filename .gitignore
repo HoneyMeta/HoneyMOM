@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/
+config/llm.local.json
+web/node_modules/
+web/dist/
+*.log

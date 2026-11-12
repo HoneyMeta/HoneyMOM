@@ -1,0 +1,488 @@
+{
+ "code": "foundry",
+ "name": "铸造",
+ "version": "1.0.0",
+ "kind": "industry",
+ "industry": "铸造（球墨铸铁 / 灰铸铁，中频炉熔炼 + 湿型砂造型）",
+ "description": "熔炼、球化孕育、造型浇注、冷却落砂、清理抛丸五道工序；中频炉 / 球化站 / 砂处理 / 造型线 / 冷却线 / 抛丸机设备类型；铸造缺陷代码；炉前光谱、球化检验模板；炉料库（配料优化）；炉次分析、配料优化、球化记录等铸造模块；吨铁电耗、球化合格率等 KPI。",
+ "requires": [
+  "common"
+ ],
+ "modules": [
+  "foundry"
+ ],
+ "demo": "foundry",
+ "enums": {
+  "process.ptype": {
+   "melting": "熔炼",
+   "treatment": "球化孕育",
+   "molding": "造型浇注",
+   "cooling": "冷却落砂",
+   "cleaning": "清理抛丸"
+  },
+  "equipment.etype": {
+   "furnace": "中频炉",
+   "treatment": "球化站",
+   "sand": "砂处理",
+   "molding": "造型线",
+   "cooling": "冷却线",
+   "shotblast": "抛丸机"
+  },
+  "workshop.wtype": {
+   "foundry": "铸造"
+  },
+  "defect_code.category": {
+   "casting": "铸造"
+  }
+ },
+ "device_templates": [
+  {
+   "code": "furnace",
+   "name": "中频炉",
+   "etype": "furnace"
+  },
+  {
+   "code": "treatment",
+   "name": "球化孕育站",
+   "etype": "treatment"
+  },
+  {
+   "code": "sand",
+   "name": "砂处理系统",
+   "etype": "sand"
+  },
+  {
+   "code": "molding",
+   "name": "造型线",
+   "etype": "molding"
+  },
+  {
+   "code": "cooling",
+   "name": "冷却线",
+   "etype": "cooling"
+  },
+  {
+   "code": "shotblast",
+   "name": "抛丸机",
+   "etype": "shotblast"
+  }
+ ],
+ "maint_templates": [
+  {
+   "key": "D",
+   "skip_types": [
+    "cooling"
+   ],
+   "items_by_type": {
+    "furnace": "冷却水流量/温度；炉衬漏电流；感应圈有无渗水；液压系统油位",
+    "molding": "液压站油温油位；模板清洁；脱模剂",
+    "sand": "混砂机刮板磨损；水分仪校准；皮带跑偏",
+    "shotblast": "抛头叶片磨损；钢丸量；除尘器压差",
+    "treatment": "浇包包衬；吊具"
+   }
+  },
+  {
+   "key": "M",
+   "types": [
+    "furnace",
+    "molding",
+    "shotblast"
+   ]
+  }
+ ],
+ "kpis": [
+  {
+   "key": "kwh_per_t",
+   "label": "吨铁电耗",
+   "unit": "kWh/t",
+   "target": 560,
+   "dir": "down",
+   "desc": "炉次电耗 ÷ 出铁量"
+  },
+  {
+   "key": "nodularity_ok",
+   "label": "球化合格率",
+   "unit": "%",
+   "target": 98,
+   "dir": "up",
+   "desc": "残镁 0.030–0.055% 的浇包占比"
+  },
+  {
+   "key": "casting_scrap",
+   "label": "铸件废品率",
+   "unit": "%",
+   "target": 3,
+   "dir": "down",
+   "desc": "铸造缺陷报废 ÷ 浇注数"
+  },
+  {
+   "key": "pour_temp_ok",
+   "label": "浇注温度合格率",
+   "unit": "%",
+   "target": 99,
+   "dir": "up",
+   "desc": "1380–1420°C 的比例"
+  }
+ ],
+ "reports": [
+  {
+   "name": "炉次吨耗（按天）",
+   "dataset": "heat",
+   "chart": "line",
+   "shared_roles": [
+    "engineer",
+    "manager"
+   ],
+   "config": {
+    "group": [
+     {
+      "field": "start",
+      "bucket": "day"
+     }
+    ],
+    "measures": [
+     {
+      "field": "kwh_per_t",
+      "agg": "avg",
+      "label": "吨耗"
+     },
+     {
+      "agg": "count",
+      "label": "炉数"
+     }
+    ]
+   }
+  },
+  {
+   "name": "铸造缺陷排列",
+   "dataset": "ncr",
+   "chart": "bar",
+   "shared_roles": [
+    "qc",
+    "engineer",
+    "manager"
+   ],
+   "config": {
+    "filters": [
+     {
+      "field": "defect__category",
+      "op": "=",
+      "value": "casting"
+     }
+    ],
+    "group": [
+     {
+      "field": "defect__label"
+     }
+    ],
+    "measures": [
+     {
+      "field": "qty",
+      "agg": "sum",
+      "label": "数量"
+     }
+    ],
+    "sort": [
+     {
+      "field": "qty_sum",
+      "dir": "desc"
+     }
+    ]
+   }
+  }
+ ],
+ "config": [
+  {
+   "import": "process",
+   "rows": [
+    {
+     "code": "P10",
+     "name": "熔炼",
+     "ptype": "melting",
+     "std_cycle_s": 20.0
+    },
+    {
+     "code": "P20",
+     "name": "球化孕育",
+     "ptype": "treatment",
+     "std_cycle_s": 20.0
+    },
+    {
+     "code": "P30",
+     "name": "造型浇注",
+     "ptype": "molding",
+     "std_cycle_s": 20.0
+    },
+    {
+     "code": "P40",
+     "name": "冷却落砂",
+     "ptype": "cooling",
+     "std_cycle_s": 20.0
+    },
+    {
+     "code": "P50",
+     "name": "清理抛丸",
+     "ptype": "cleaning",
+     "std_cycle_s": 25.0
+    }
+   ]
+  },
+  {
+   "import": "defect_code",
+   "rows": [
+    {
+     "code": "D01",
+     "name": "气孔",
+     "category": "casting",
+     "severity": "major",
+     "process": "P30"
+    },
+    {
+     "code": "D02",
+     "name": "缩松",
+     "category": "casting",
+     "severity": "major",
+     "process": "P20"
+    },
+    {
+     "code": "D03",
+     "name": "冷隔/开裂",
+     "category": "casting",
+     "severity": "critical",
+     "process": "P30"
+    },
+    {
+     "code": "D04",
+     "name": "球化不良",
+     "category": "casting",
+     "severity": "critical",
+     "process": "P20"
+    },
+    {
+     "code": "D05",
+     "name": "内腔气孔/缩松",
+     "category": "casting",
+     "severity": "major",
+     "process": "P30"
+    }
+   ]
+  },
+  {
+   "import": "insp_template",
+   "rows": [
+    {
+     "tpl_code": "T-SPEC",
+     "tpl_name": "炉前光谱（原铁水）",
+     "itype": "IPQC",
+     "process": "P10",
+     "sample_rule": "每炉",
+     "seq": 10,
+     "name": "碳 C",
+     "char": "C",
+     "method": "光谱仪",
+     "std": "3.60–3.80",
+     "lo": 3.6,
+     "hi": 3.8,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-SPEC",
+     "tpl_name": "炉前光谱（原铁水）",
+     "itype": "IPQC",
+     "process": "P10",
+     "sample_rule": "每炉",
+     "seq": 20,
+     "name": "硅 Si",
+     "char": "Si",
+     "method": "光谱仪",
+     "std": "1.40–1.70",
+     "lo": 1.4,
+     "hi": 1.7,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-SPEC",
+     "tpl_name": "炉前光谱（原铁水）",
+     "itype": "IPQC",
+     "process": "P10",
+     "sample_rule": "每炉",
+     "seq": 30,
+     "name": "锰 Mn",
+     "char": "Mn",
+     "method": "光谱仪",
+     "std": "≤0.40",
+     "hi": 0.4,
+     "unit": "%",
+     "key": false
+    },
+    {
+     "tpl_code": "T-SPEC",
+     "tpl_name": "炉前光谱（原铁水）",
+     "itype": "IPQC",
+     "process": "P10",
+     "sample_rule": "每炉",
+     "seq": 40,
+     "name": "硫 S",
+     "char": "S",
+     "method": "光谱仪",
+     "std": "≤0.020",
+     "hi": 0.02,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-SPEC",
+     "tpl_name": "炉前光谱（原铁水）",
+     "itype": "IPQC",
+     "process": "P10",
+     "sample_rule": "每炉",
+     "seq": 50,
+     "name": "碳当量 CE",
+     "char": "CE",
+     "method": "计算",
+     "std": "4.15–4.45",
+     "lo": 4.15,
+     "hi": 4.45,
+     "key": true
+    },
+    {
+     "tpl_code": "T-NODU",
+     "tpl_name": "球化检验（试块）",
+     "itype": "IPQC",
+     "process": "P20",
+     "sample_rule": "每包",
+     "seq": 10,
+     "name": "残余镁",
+     "char": "MG",
+     "method": "光谱",
+     "std": "0.030–0.055",
+     "lo": 0.03,
+     "hi": 0.055,
+     "unit": "%",
+     "key": true
+    },
+    {
+     "tpl_code": "T-NODU",
+     "tpl_name": "球化检验（试块）",
+     "itype": "IPQC",
+     "process": "P20",
+     "sample_rule": "每包",
+     "seq": 20,
+     "name": "球化率",
+     "char": "NODU",
+     "method": "金相",
+     "std": "≥85%",
+     "lo": 85.0,
+     "unit": "%",
+     "key": true
+    }
+   ]
+  },
+  {
+   "import": "charge_material",
+   "rows": [
+    {
+     "code": "CM-PIG",
+     "name": "Z14 生铁",
+     "price": 3300.0,
+     "C": 4.2,
+     "Si": 1.4,
+     "Mn": 0.3,
+     "S": 0.03,
+     "P": 0.06,
+     "min_ratio": 20.0,
+     "max_ratio": 70.0,
+     "stock_t": 180.0,
+     "yield_pct": 95.0
+    },
+    {
+     "code": "CM-STEEL",
+     "name": "废钢",
+     "price": 2600.0,
+     "C": 0.2,
+     "Si": 0.3,
+     "Mn": 0.5,
+     "S": 0.02,
+     "P": 0.02,
+     "min_ratio": 0.0,
+     "max_ratio": 45.0,
+     "stock_t": 120.0,
+     "yield_pct": 95.0
+    },
+    {
+     "code": "CM-RET",
+     "name": "回炉料",
+     "price": 1800.0,
+     "C": 3.6,
+     "Si": 2.4,
+     "Mn": 0.3,
+     "S": 0.012,
+     "P": 0.03,
+     "min_ratio": 15.0,
+     "max_ratio": 40.0,
+     "stock_t": 60.0,
+     "yield_pct": 95.0
+    },
+    {
+     "code": "CM-CARB",
+     "name": "增碳剂",
+     "price": 4500.0,
+     "C": 95.0,
+     "Si": 0.0,
+     "Mn": 0.0,
+     "S": 0.05,
+     "P": 0.0,
+     "min_ratio": 0.0,
+     "max_ratio": 3.0,
+     "stock_t": 8.0,
+     "yield_pct": 92.0
+    },
+    {
+     "code": "CM-FESI",
+     "name": "75 硅铁",
+     "price": 7500.0,
+     "C": 0.1,
+     "Si": 75.0,
+     "Mn": 0.4,
+     "S": 0.02,
+     "P": 0.04,
+     "min_ratio": 0.0,
+     "max_ratio": 2.0,
+     "stock_t": 5.0,
+     "yield_pct": 95.0
+    }
+   ]
+  },
+  {
+   "import": "kb_doc",
+   "rows": [
+    {
+     "title": "球化处理作业指导书",
+     "tags": "工艺,铸造",
+     "content": "1. 浇包烘烤到 600°C 以上再用。\n2. 球化剂 FeSiMg6 加入量 1.4–1.6%，冲入法，覆盖铁屑。\n3. 出铁温度 1480–1500°C，球化完成后 12 分钟内浇完，超时回炉。\n\n常见问题：残镁低于 0.030% 时球化不良风险大，检查球化剂加入量和浇包等待时间；浇注温度低于 1380°C 易出冷隔。",
+     "updated": "@now",
+     "kind": "sop",
+     "process": "P20"
+    },
+    {
+     "title": "中频炉安全操作规程",
+     "tags": "安全,设备",
+     "content": "1. 送电前确认冷却水流量 ≥30 m³/h、出水温度 <55°C。\n2. 炉衬漏电流超过报警值立即停电检查，防止漏炉。\n3. 加料不得有水分、密闭容器。\n\n炉衬余厚低于 60 mm 安排修炉。",
+     "updated": "@now",
+     "kind": "sop",
+     "process": "P10"
+    },
+    {
+     "title": "型砂水分控制要点",
+     "tags": "工艺,铸造",
+     "content": "目标水分 3.3–3.5%，紧实率 38–42%。\n回砂温度高于 45°C 时水分蒸发快，需提高加水量。\n水分偏高时气孔明显增多。",
+     "updated": "@now",
+     "kind": "sop",
+     "process": "P30"
+    }
+   ]
+  }
+ ]
+}

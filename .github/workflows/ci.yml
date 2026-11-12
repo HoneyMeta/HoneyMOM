@@ -1,0 +1,181 @@
+# CI: Python checks that need no browser (SQLite and PostgreSQL), an end-to-end run of HoneyMOM against the
+# data replayer, and the web build. Browser walk-throughs (node tests/*_ui.js, Playwright) are not run here.
+#
+# Language: foundation / impl / erp / exec checks assert Chinese messages and the Chinese demo dataset, so they run with
+# MOM_DEMO_LANG=zh and E2E_LANG=zh-CN. replayer_check and the i18n checks run in English.
+# tests/e2e.py needs the plant simulator (not part of this repository) and is replaced here by replayer_check.py.
+name: CI
+
+on:
+  push:
+    branches: [main, master, dev]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: '3.12'
+  NODE_VERSION: '22'
+  PYTHONUTF8: '1'
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  checks:
+    name: Python checks (SQLite)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      MOM_DEMO: '1'
+      MOM_DEMO_LANG: zh
+      E2E_LANG: zh-CN
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            replayer/requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r replayer/requirements.txt
+
+      - name: i18n (backend and web sources)
+        env:
+          MOM_DEMO_LANG: en
+          E2E_LANG: en
+        run: |
+          python tests/i18n_check.py
+          python tests/i18n_web_check.py
+
+      - name: Document numbering
+        run: python tests/code_check.py
+
+      - name: Data foundation (migrations, permissions, audit, API keys, time series, backup/restore)
+        run: python tests/foundation_check.py
+
+      - name: Implementation tools (import, industry templates, custom fields, approval flows, reports)
+        run: python tests/impl_check.py
+
+      - name: Built-in ERP and ERP integration
+        run: python tests/erp_check.py
+
+  checks-postgres:
+    name: Python checks (PostgreSQL)
+    runs-on: ubuntu-24.04   # postgresql-client-16 is available here; ubuntu-latest moves to 26.04
+    timeout-minutes: 45
+    continue-on-error: true      # not yet verified on GitHub runners; make it required once green
+    services:
+      postgres:
+        image: postgres:16          # same major version as the runner's pg_dump (Ubuntu 24.04)
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: ci
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U ci" --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      FC_PG: postgresql+psycopg://ci:ci@127.0.0.1:5432
+      MOM_DEMO: '1'
+      MOM_DEMO_LANG: zh
+      E2E_LANG: zh-CN
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: |
+          test -x /usr/lib/postgresql/16/bin/pg_dump || \
+            (sudo apt-get update && sudo apt-get install -y --no-install-recommends postgresql-client-16)
+          pip install -r requirements.txt
+      - name: Data foundation on PostgreSQL without TimescaleDB
+        env:
+          MOM_PG_BIN: /usr/lib/postgresql/16/bin
+        run: python tests/foundation_check.py --db pgplain
+      - name: Built-in ERP on PostgreSQL
+        run: python tests/erp_check.py --db pg
+
+  replayer-e2e:
+    name: End to end (HoneyMOM + replayer)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MOM_DEMO: '1'
+      REPLAYER_MQTT: mqtt://127.0.0.1:1883
+      REPLAYER_OPCUA: opc.tcp://127.0.0.1:4840/vfactory/
+      REPLAYER_MODBUS: 127.0.0.1:5020
+      LOGS: ${{ github.workspace }}/ci-logs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            replayer/requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r replayer/requirements.txt
+      - name: Start the replayer, HoneyMOM demo in English (:8900) and in Chinese (:8901)
+        run: |
+          mkdir -p "$LOGS"
+          nohup python -m replayer --speed 10 > "$LOGS/replayer.log" 2>&1 &
+          MOM_DATA="$RUNNER_TEMP/mom-en" MOM_DEMO_LANG=en nohup python -m honeymom serve --http 8900 > "$LOGS/mom-en.log" 2>&1 &
+          MOM_DATA="$RUNNER_TEMP/mom-zh" MOM_DEMO_LANG=zh nohup python -m honeymom serve --http 8901 > "$LOGS/mom-zh.log" 2>&1 &
+          for port in 8900 8901; do
+            for i in $(seq 1 180); do
+              curl -fsS "http://127.0.0.1:$port/api/setup/admin" > /dev/null 2>&1 && break
+              sleep 1
+            done
+            curl -fsS "http://127.0.0.1:$port/api/setup/admin"; echo
+          done
+      - name: Replayer check, English (collectors, live values, parts and events, cockpit, OEE, reports, cycle analysis)
+        env:
+          MES_URL: http://127.0.0.1:8900
+          MOM_DEMO_LANG: en
+          E2E_LANG: en
+        run: python tests/replayer_check.py 120
+      - name: Shop-floor execution and quality compliance API check (Chinese dataset)
+        env:
+          MES_URL: http://127.0.0.1:8901
+          MOM_DEMO_LANG: zh
+          E2E_LANG: zh-CN
+        run: python tests/exec_check.py
+      - name: Logs
+        if: always()
+        run: |
+          tail -n 100 "$LOGS/mom-en.log" || true
+          tail -n 100 "$LOGS/mom-zh.log" || true
+          tail -n 30 "$LOGS/replayer.log" || true
+
+  web:
+    name: Web build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Build
+        working-directory: web
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: web/dist
+          retention-days: 7

@@ -1,0 +1,321 @@
+{
+ "version": 1,
+ "feature": "watch",
+ "items": {
+  "finding:47a834d57cae88cc": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc6",
+    "text": "equipment.alarm_repeatcnc6",
+    "watcher": "equipment.alarm_repeat"
+   },
+   "raw_request": {
+    "watcher": "equipment.alarm_repeat",
+    "subject": "CNC6",
+    "text": "equipment.alarm_repeat CNC6"
+   },
+   "response": "CNC6 在 8 小时内发生 14 次下游缓存满，累计 67.5 分钟，说明上下游节拍不平衡，已造成堵料停滞。最可能原因是下游处理节拍偏慢或缓存容量不足；现在应优先平衡上下游节拍，并检查是否需要调整缓存。",
+   "recorded_at": "2026-11-04 18:12:33"
+  },
+  "finding:e51fe72b1c7d41e7": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc4",
+    "text": "equipment.alarm_repeatcnc4",
+    "watcher": "equipment.alarm_repeat"
+   },
+   "raw_request": {
+    "watcher": "equipment.alarm_repeat",
+    "subject": "CNC4",
+    "text": "equipment.alarm_repeat CNC4"
+   },
+   "response": "CNC4 在 8 小时内发生 11 次等待上下料，累计 146.3 分钟，说明人员到位问题正在影响设备开动率。最可能是上料岗位配置或排班衔接不匹配，操作工未能及时到位。现在应核对报警记录与岗位排班，优先协调人员到位，并调整上料岗位或排班。",
+   "recorded_at": "2026-11-04 18:13:10"
+  },
+  "finding:dc88585fa4db8cef": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc5",
+    "text": "equipment.alarm_repeatcnc5",
+    "watcher": "equipment.alarm_repeat"
+   },
+   "raw_request": {
+    "watcher": "equipment.alarm_repeat",
+    "subject": "CNC5",
+    "text": "equipment.alarm_repeat CNC5"
+   },
+   "response": "CNC5 在 8 小时内有 14 次等待上下料，累计 10.3 分钟，说明操作工到位不及时，已影响设备开动率。最可能原因是上料岗位或排班安排不足；现在应调整上料岗位或排班，并查看报警记录。",
+   "recorded_at": "2026-11-04 17:56:56"
+  },
+  "finding:72824e4378138dd4": {
+   "op": "finding",
+   "request": {
+    "subject": "mold1",
+    "text": "equipment.oee_dropmold1",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "MOLD1",
+    "text": "equipment.oee_drop MOLD1"
+   },
+   "response": "MOLD1 近 4 小时 OEE 从 64.5% 降至 40.0%，主要由性能率从 65% 降至 40% 导致，表示设备产出速度明显下降。最可能是设备运行节拍变慢；现在应立即核查 MOLD1 的实际节拍与性能率明细。",
+   "recorded_at": "2026-11-04 17:57:49"
+  },
+  "finding:b06010d5387870c2": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc1",
+    "text": "equipment.oee_dropcnc1",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "CNC1",
+    "text": "equipment.oee_drop CNC1"
+   },
+   "response": "CNC1 近 4 小时 OEE 从 72% 降至 42%，主要由性能率从 74% 降至 50% 导致，说明设备运行速度或节拍明显变慢。最可能是加工节拍异常或设备降速运行；立即核查 CNC1 的实际节拍、降速记录和当前加工状态。",
+   "recorded_at": "2026-11-04 18:00:07"
+  },
+  "finding:64d153210d2edf03": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc2",
+    "text": "equipment.spindlecnc2",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC2",
+    "text": "equipment.spindle CNC2"
+   },
+   "response": "CNC2 主轴负载近 2 小时 P90 为 61.4%，较前 24 小时的 53.3% 上升 15%，表明加工负荷出现异常抬升。最可能原因是刀具磨损、余量变大或冷却不足；现在检查刀具状态、加工余量和冷却供给，确认后及时调整。",
+   "recorded_at": "2026-11-04 18:00:51"
+  },
+  "finding:cb6ad0b62d790e22": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc3",
+    "text": "equipment.spindlecnc3",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC3",
+    "text": "equipment.spindle CNC3"
+   },
+   "response": "CNC3 主轴负载近 2 小时 P90 从前 24 小时的 52.7% 升至 60.7%，说明加工负荷明显上升。最可能是刀具磨损、加工余量变大或冷却不足；现在检查刀具状态、工件余量和冷却情况。",
+   "recorded_at": "2026-11-04 18:01:42"
+  },
+  "finding:79542c61233f8808": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc6t01",
+    "text": "equipment.tool_wearcnc6t01",
+    "watcher": "equipment.tool_wear"
+   },
+   "raw_request": {
+    "watcher": "equipment.tool_wear",
+    "subject": "CNC6 T01",
+    "text": "equipment.tool_wear CNC6 T01"
+   },
+   "response": "CNC6 T01 磨损已达 150%，但寿命计数仅为 249/400 件（62%），按计数换刀会晚，可能导致崩刃或尺寸超差。最可能是实际磨损快于计数，立即提前换刀，并下调该刀寿命计数。",
+   "recorded_at": "2026-11-04 18:04:00"
+  },
+  "finding:b2489671a07e1084": {
+   "op": "finding",
+   "request": {
+    "subject": "缸孔尺寸超差",
+    "text": "quality.defect_cluster缸孔尺寸超差",
+    "watcher": "quality.defect_cluster"
+   },
+   "raw_request": {
+    "watcher": "quality.defect_cluster",
+    "subject": "缸孔尺寸超差",
+    "text": "quality.defect_cluster 缸孔尺寸超差"
+   },
+   "response": " 8 小时内出现 8 条“缸孔尺寸超差”不合格品，其中 CNC2 有 6 条、CNC3 有 2 条，说明问题集中在这两个工位，可能存在共同原因。当前未处理数为 0，建议立即转评审并起草 8D，围绕 CNC2、CNC3 查找共同原因。",
+   "recorded_at": "2026-11-04 18:05:12"
+  },
+  "finding:8b5753e1f63c5cb4": {
+   "op": "finding",
+   "request": {
+    "subject": "断刀报废",
+    "text": "quality.defect_cluster断刀报废",
+    "watcher": "quality.defect_cluster"
+   },
+   "raw_request": {
+    "watcher": "quality.defect_cluster",
+    "subject": "断刀报废",
+    "text": "quality.defect_cluster 断刀报废"
+   },
+   "response": "8 小时内发生 4 条“断刀报废”，涉及 CNC1、CNC4、CNC5、CNC6，各 1 条，说明可能存在跨设备的共同原因。最可能与刀具、加工参数或材料批次相关；立即暂停相关批次并做缺陷回溯，转评审并起草 8D，当前 0 条未处理。",
+   "recorded_at": "2026-11-04 18:05:44"
+  },
+  "finding:6a49c39692e9c4d6": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc1",
+    "text": "equipment.spindlecnc1",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC1",
+    "text": "equipment.spindle CNC1"
+   },
+   "response": " CNC1 近 2 小时主轴负载 P90 为 65.0%，高于前 24 小时的 54.1%；T01 磨损 64%，刀具变钝是可能原因。检查 T01 磨损情况，必要时更换，并持续关注主轴负载。",
+   "recorded_at": "2026-11-04 18:06:02"
+  },
+  "finding:f5d884d4d4ab3a21": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc4",
+    "text": "equipment.spindlecnc4",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC4",
+    "text": "equipment.spindle CNC4"
+   },
+   "response": "CNC4 主轴负载近 2 小时 P90 为 63.8%，较前 24 小时的 54.1% 上升，说明加工负荷明显增加。最可能原因是 T03 刀具磨损 68%、刀具变钝；应立即检查并评估更换 T03，同时关注主轴负载是否继续上升。",
+   "recorded_at": "2026-11-04 18:06:54"
+  },
+  "finding:2f2cc7dbabd2b607": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc5",
+    "text": "equipment.spindlecnc5",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC5",
+    "text": "equipment.spindle CNC5"
+   },
+   "response": "CNC5 主轴负载近 2 小时 P90 从 54.2% 升至 63.5%，上升 17%，表明加工阻力增加。最可能原因是 T01 刀具磨损 150%、刀具变钝；现在应检查并更换 T01，确认更换后主轴负载是否回落。",
+   "recorded_at": "2026-11-04 18:07:54"
+  },
+  "finding:dd481fe517a60623": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc6",
+    "text": "equipment.spindlecnc6",
+    "watcher": "equipment.spindle"
+   },
+   "raw_request": {
+    "watcher": "equipment.spindle",
+    "subject": "CNC6",
+    "text": "equipment.spindle CNC6"
+   },
+   "response": " CNC6 主轴负载近2小时P90为62.6%，高于前24小时的54.0%，上升16%，说明负载明显升高。最可能原因是T01刀具磨损150%导致变钝；现在应检查并更换T01刀具，再复核主轴负载。",
+   "recorded_at": "2026-11-04 18:11:05"
+  },
+  "finding:2679958022b55b4b": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc2t01",
+    "text": "equipment.tool_wearcnc2t01",
+    "watcher": "equipment.tool_wear"
+   },
+   "raw_request": {
+    "watcher": "equipment.tool_wear",
+    "subject": "CNC2 T01",
+    "text": "equipment.tool_wear CNC2 T01"
+   },
+   "response": " CNC2 T01 的 AI 估计磨损为 150%，但已用 286/400 件、计数约 72%，按计数换刀可能偏晚，有崩刃或尺寸超差风险。最可能是寿命计数未能反映实际磨损；现在应提前换刀，并下调这把刀的寿命计数。",
+   "recorded_at": "2026-11-04 18:11:20"
+  },
+  "finding:454fb49754442aa9": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc5t01",
+    "text": "equipment.tool_wearcnc5t01",
+    "watcher": "equipment.tool_wear"
+   },
+   "raw_request": {
+    "watcher": "equipment.tool_wear",
+    "subject": "CNC5 T01",
+    "text": "equipment.tool_wear CNC5 T01"
+   },
+   "response": "CNC5 T01 的 AI 估计磨损已达 150%，但寿命计数仅为 278/400 件，按计数换刀可能导致崩刃或尺寸超差。最可能是实际磨损与寿命计数不一致；现在应立即提前更换该刀具，并下调其寿命计数。",
+   "recorded_at": "2026-11-04 18:12:09"
+  },
+  "finding:9e8adbf87e3749ec": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc6t03",
+    "text": "equipment.tool_wearcnc6t03",
+    "watcher": "equipment.tool_wear"
+   },
+   "raw_request": {
+    "watcher": "equipment.tool_wear",
+    "subject": "CNC6 T03",
+    "text": "equipment.tool_wear CNC6 T03"
+   },
+   "response": "CNC6 T03 磨损已达 83.8%，已用 86/100 件，按当前寿命计数换刀可能偏晚，存在崩刃或尺寸超差风险。最可能是实际磨损快于计数设定；现在提前更换刀具，并将寿命计数下调。",
+   "recorded_at": "2026-11-04 18:14:12"
+  },
+  "finding:941a06b9466ad624": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc3",
+    "text": "equipment.oee_dropcnc3",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "CNC3",
+    "text": "equipment.oee_drop CNC3"
+   },
+   "response": "CNC3 近 4 小时 OEE 从 68.2% 降至 50.8%，下降主要来自性能率由 70% 降至 51%，说明设备当前运行速度明显低于正常水平。最可能是加工节拍变慢或频繁降速，立即核查 CNC3 的实际加工周期、降速记录及近期工艺参数。",
+   "recorded_at": "2026-11-04 18:19:54"
+  },
+  "finding:e704b6dde1a14419": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc4",
+    "text": "equipment.oee_dropcnc4",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "CNC4",
+    "text": "equipment.oee_drop CNC4"
+   },
+   "response": " CNC4 近 4 小时 OEE 为 50.8%，低于 24 小时的 68.2%；主要变化是性能率从 71% 降至 58%。优先排查性能率下降原因，并查看 OEE 分析。",
+   "recorded_at": "2026-11-04 18:20:01"
+  },
+  "finding:796b3ae0f7c9ae06": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc5",
+    "text": "equipment.oee_dropcnc5",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "CNC5",
+    "text": "equipment.oee_drop CNC5"
+   },
+   "response": "CNC5 近 4 小时 OEE 从 24 小时的 67.2% 降至 53.7%，下降主要来自性能率由 69% 降至 54%，说明设备运行速度或节拍明显变慢。最可能是加工节拍变长或降速运行；立即查看 OEE 分析，核对近期实际节拍与标准节拍并排查降速原因。",
+   "recorded_at": "2026-11-04 18:20:33"
+  },
+  "finding:a9fea66425ab3f9e": {
+   "op": "finding",
+   "request": {
+    "subject": "cnc6",
+    "text": "equipment.oee_dropcnc6",
+    "watcher": "equipment.oee_drop"
+   },
+   "raw_request": {
+    "watcher": "equipment.oee_drop",
+    "subject": "CNC6",
+    "text": "equipment.oee_drop CNC6"
+   },
+   "response": "CNC6 近4小时 OEE 从24小时的65.2%降至50.8%，主要由性能率从67%降至51%导致，说明设备加工速度或节拍明显下降。最可能是降速运行、频繁短暂停机或加工节拍异常；立即核查CNC6当前运行速度、短停记录和实际节拍。",
+   "recorded_at": "2026-11-04 18:20:48"
+  }
+ }
+}
